@@ -10,7 +10,7 @@ variable "viserver" {
 
 // default VM name in vSphere and its hostname
 variable "vmname" {
-  default = "LAB-C01"
+  default = "LAB-U01"
 }
 
 // default VM domain for guest customization
@@ -35,7 +35,7 @@ variable "vmrp" {
 
 // default VM Template
 variable "vmtemp" {
-  default = "Templates/CENTOS7"
+  default = "Templates/UBUNTU1604"
 }
 
 // default datastore cluster
@@ -52,7 +52,7 @@ variable "vmnetlabel" {
   default = "VM Network"
 }
 variable "vmip" {
-  default = "10.1.3.90"
+  default = "10.1.3.100"
 }
 variable "vmmask" {
   default = "24"

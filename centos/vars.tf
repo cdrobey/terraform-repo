@@ -10,7 +10,7 @@ variable "viserver" {
 
 // default VM name in vSphere and its hostname
 variable "vmname" {
-  default = "LAB-C01"
+  default = "LAB-C0"
 }
 
 // default VM domain for guest customization
@@ -28,10 +28,10 @@ variable "vmcluster" {
   default = "Virtual"
 }
 
-// default Resource Pool
-variable "vmrp" {
-  default = "labesx01.fr.lan"
-}
+//default Resource Pool
+//variable "vmrp" {
+//  default = "Virtual/labesx02.fr.lan"
+//}
 
 // default VM Template
 variable "vmtemp" {
@@ -52,7 +52,7 @@ variable "vmnetlabel" {
   default = "VM Network"
 }
 variable "vmip" {
-  default = "10.1.3.90"
+  default = "10.1.3.9"
 }
 variable "vmmask" {
   default = "24"

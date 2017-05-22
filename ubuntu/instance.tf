@@ -1,4 +1,4 @@
-resource "vsphere_virtual_machine" "centos" {
+resource "vsphere_virtual_machine" "ubuntu" {
   name   = "${var.vmname}"
   vcpu   = 1
   memory = 1024
