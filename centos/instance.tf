@@ -26,4 +26,19 @@ resource "vsphere_virtual_machine" "centos" {
   }
 
   time_zone = "${var.vmtz}"
+
+  connection {
+    type     = "ssh"
+    user     = "centos"
+    password = "${var.root_password}"
+  }
+
+provisioner "remote-exec" {
+  inline = [<<EOF
+
+    echo "I'm worked" > /tmp/test.out
+
+  EOF
+  ]
+}
 }
