@@ -30,7 +30,7 @@ variable "vmcluster" {
 
 // default VM Template
 variable "vmtemp" {
-  default = "Templates/CENTOS7"
+  default = "Lab/CENTOS-TPL"
 }
 
 // default datastore cluster
