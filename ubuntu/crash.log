@@ -1,0 +1,3354 @@
+2017/05/22 18:10:09 [INFO] Terraform version: 0.9.5  a59ee0b30e1350d18e44a3a2a405124302751f93
+2017/05/22 18:10:09 [INFO] Go runtime version: go1.8
+2017/05/22 18:10:09 [INFO] CLI args: []string{"/Users/chris.roberson/bin/terraform", "apply"}
+2017/05/22 18:10:09 [DEBUG] Detected home directory from env var: /Users/chris.roberson
+2017/05/22 18:10:09 [DEBUG] Detected home directory from env var: /Users/chris.roberson
+2017/05/22 18:10:09 [DEBUG] Attempting to open CLI config file: /Users/chris.roberson/.terraformrc
+2017/05/22 18:10:09 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2017/05/22 18:10:09 [DEBUG] Detected home directory from env var: /Users/chris.roberson
+2017/05/22 18:10:09 [INFO] CLI command args: []string{"apply"}
+2017/05/22 18:10:09 [DEBUG] command: loading backend config file: /Users/chris.roberson/src/terraform-repo/ubuntu
+2017/05/22 18:10:09 [DEBUG] command: no data state file found for backend config
+2017/05/22 18:10:09 [DEBUG] New state was assigned lineage "d96f3ae4-8c88-4858-9708-6f6e3b195dad"
+2017/05/22 18:10:09 [INFO] command: backend initialized: <nil>
+2017/05/22 18:10:09 [INFO] command: backend <nil> is not enhanced, wrapping in local
+2017/05/22 18:10:09 [INFO] backend/local: starting Apply operation
+2017/05/22 18:10:09 [TRACE] Preserving existing state lineage "a3a02fb9-8bcc-4c5f-9779-f2ee65b2df15"
+2017/05/22 18:10:09 [TRACE] Preserving existing state lineage "a3a02fb9-8bcc-4c5f-9779-f2ee65b2df15"
+2017/05/22 18:10:09 [INFO] terraform: building graph: GraphTypeInput
+2017/05/22 18:10:09 [TRACE] ConfigTransformer: Starting for path: []
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ConfigTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.OutputTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.OrphanResourceTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+2017/05/22 18:10:09 [TRACE] AttachResourceConfigTransformer: Beginning...
+2017/05/22 18:10:09 [TRACE] AttachResourceConfigTransformer: Attach resource config request: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:09 [TRACE] Attaching resource config: &config.Resource{Mode:0, Name:"ubuntu", Type:"vsphere_virtual_machine", RawCount:(*config.RawConfig)(0xc42032ae40), RawConfig:(*config.RawConfig)(0xc420452a80), Provisioners:[]*config.Provisioner(nil), Provider:"", DependsOn:[]string(nil), Lifecycle:config.ResourceLifecycle{CreateBeforeDestroy:false, PreventDestroy:false, IgnoreChanges:[]string(nil)}}
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.AttachResourceConfigTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+2017/05/22 18:10:09 [DEBUG] Resource state not found for "vsphere_virtual_machine.ubuntu": vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.RootVariableTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.MissingProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.DisableProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ParentProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [TRACE] Attach provider request: []string{} vsphere
+2017/05/22 18:10:09 [TRACE] Attaching provider config: *config.ProviderConfig{Name:"vsphere", Alias:"", RawConfig:(*config.RawConfig)(0xc42032b3e0)}
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.AttachProviderConfigTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ModuleVariableTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdc" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdatastore" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmiptest" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmnetlabel" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmip" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.viserver" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmname" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdomain" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "provider.vsphere" references: [var.viserver var.viuser var.vipassword]
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmrp" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmtemp" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmgateway" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmcluster" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdns" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmtz" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "vsphere_virtual_machine.ubuntu" references: [var.vmcluster var.vmdatastore var.vmdc var.vmdns var.vmdomain var.vmgateway var.vmip var.vmmask var.vmname var.vmnetlabel var.vmtemp var.vmtz]
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.viuser" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vipassword" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmmask" references: []
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.CountBoundaryTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.CloseProviderTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  provider.vsphere - *terraform.NodeApplyableProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.CloseProvisionerTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  provider.vsphere - *terraform.NodeApplyableProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.RootTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  provider.vsphere - *terraform.NodeApplyableProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere (close) - *terraform.graphNodeCloseProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.TransitiveReductionTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere (close) - *terraform.graphNodeCloseProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeAbstractResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [DEBUG] Starting graph walk: walkInput
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmiptest"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmnetlabel"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmip"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmname"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdomain"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmrp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "provider.vsphere (close)"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdc"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmmask"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "root"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "provider.vsphere"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmtemp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.viuser"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vipassword"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdatastore"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmtz"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmgateway"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmcluster"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdns"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "meta.count-boundary (count boundary fixup)"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.viserver"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmtemp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "provider.vsphere (close)"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmnetlabel"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdatastore"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "provider.vsphere"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmgateway"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "provider.vsphere (close)" waiting on "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmip"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdomain"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmcluster"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "var.vmiptest"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "provider.vsphere" waiting on "var.viserver"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmtz"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "var.vmrp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "provider.vsphere" waiting on "var.viuser"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmmask"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdc"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "meta.count-boundary (count boundary fixup)"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmname"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "provider.vsphere" waiting on "var.vipassword"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdns"
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "meta.count-boundary (count boundary fixup)", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "provider.vsphere", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "vsphere_virtual_machine.ubuntu", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "root", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "provider.vsphere (close)", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdc"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdc': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdatastore"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdatastore': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmnetlabel"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmnetlabel': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmmask"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmmask': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmtemp"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmtemp': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmgateway"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmgateway': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.viuser"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.viuser': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmcluster"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmcluster': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmtz"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmtz': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vipassword"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vipassword': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmrp"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmrp': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmip"
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmname"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmip': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmname': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdomain"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdomain': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdns"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdns': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.viserver"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.viserver': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmiptest"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmiptest': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "provider.vsphere"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.provider.vsphere': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.provider.vsphere': evaluating
+2017/05/22 18:10:09 [TRACE] [walkInput] Entering eval tree: provider.vsphere
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalInitProvider
+2017/05/22 18:10:09 [DEBUG] plugin: starting plugin: /Users/chris.roberson/bin/terraform []string{"/Users/chris.roberson/bin/terraform", "internal-plugin", "provider", "vsphere"}
+2017/05/22 18:10:09 [DEBUG] plugin: waiting for RPC address for: /Users/chris.roberson/bin/terraform
+2017/05/22 18:10:09 [DEBUG] plugin: terraform: 2017/05/22 18:10:09 [INFO] Terraform version: 0.9.5  a59ee0b30e1350d18e44a3a2a405124302751f93
+2017/05/22 18:10:09 [DEBUG] plugin: terraform: 2017/05/22 18:10:09 [INFO] Go runtime version: go1.8
+2017/05/22 18:10:09 [DEBUG] plugin: terraform: 2017/05/22 18:10:09 [INFO] CLI args: []string{"/Users/chris.roberson/bin/terraform", "internal-plugin", "provider", "vsphere"}
+2017/05/22 18:10:09 [DEBUG] plugin: terraform: 2017/05/22 18:10:09 [DEBUG] Detected home directory from env var: /Users/chris.roberson
+2017/05/22 18:10:09 [DEBUG] plugin: terraform: 2017/05/22 18:10:09 [DEBUG] Detected home directory from env var: /Users/chris.roberson
+2017/05/22 18:10:09 [DEBUG] plugin: terraform: 2017/05/22 18:10:09 [DEBUG] Attempting to open CLI config file: /Users/chris.roberson/.terraformrc
+2017/05/22 18:10:09 [DEBUG] plugin: terraform: 2017/05/22 18:10:09 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2017/05/22 18:10:09 [DEBUG] plugin: terraform: 2017/05/22 18:10:09 [DEBUG] Detected home directory from env var: /Users/chris.roberson
+2017/05/22 18:10:09 [DEBUG] plugin: terraform: 2017/05/22 18:10:09 [INFO] CLI command args: []string{"internal-plugin", "provider", "vsphere"}
+2017/05/22 18:10:09 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:09 [INFO] Starting provider plugin vsphere
+2017/05/22 18:10:09 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:09 [DEBUG] plugin: plugin address: unix /var/folders/31/pj8x43455y565rwlh_jt2ns40000gq/T/plugin709566588
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalOpFilter
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalGetProvider
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalInterpolate
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalBuildProviderConfig
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalInputProvider
+2017/05/22 18:10:09 [DEBUG] root: eval: terraform.EvalNoop
+2017/05/22 18:10:09 [DEBUG] root: eval: terraform.EvalNoop
+2017/05/22 18:10:09 [DEBUG] root: eval: terraform.EvalNoop
+2017/05/22 18:10:09 [TRACE] [walkInput] Exiting eval tree: provider.vsphere
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.vsphere_virtual_machine.ubuntu': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "provider.vsphere (close)"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.provider.vsphere (close)': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.provider.vsphere (close)': evaluating
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "meta.count-boundary (count boundary fixup)"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.meta.count-boundary (count boundary fixup)': walking
+2017/05/22 18:10:09 [TRACE] [walkInput] Entering eval tree: provider.vsphere (close)
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalCloseProvider
+2017/05/22 18:10:09 [TRACE] [walkInput] Exiting eval tree: provider.vsphere (close)
+2017/05/22 18:10:09 [DEBUG] vertex 'root.meta.count-boundary (count boundary fixup)': evaluating
+2017/05/22 18:10:09 [TRACE] [walkInput] Entering eval tree: meta.count-boundary (count boundary fixup)
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalCountFixZeroOneBoundaryGlobal
+2017/05/22 18:10:09 [TRACE] [walkInput] Exiting eval tree: meta.count-boundary (count boundary fixup)
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "root"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.root': walking
+2017/05/22 18:10:09 [INFO] terraform: building graph: GraphTypeValidate
+2017/05/22 18:10:09 [TRACE] ConfigTransformer: Starting for path: []
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ConfigTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.OutputTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.OrphanResourceTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+2017/05/22 18:10:09 [TRACE] AttachResourceConfigTransformer: Beginning...
+2017/05/22 18:10:09 [TRACE] AttachResourceConfigTransformer: Attach resource config request: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:09 [TRACE] Attaching resource config: &config.Resource{Mode:0, Name:"ubuntu", Type:"vsphere_virtual_machine", RawCount:(*config.RawConfig)(0xc42032ae40), RawConfig:(*config.RawConfig)(0xc420452a80), Provisioners:[]*config.Provisioner(nil), Provider:"", DependsOn:[]string(nil), Lifecycle:config.ResourceLifecycle{CreateBeforeDestroy:false, PreventDestroy:false, IgnoreChanges:[]string(nil)}}
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.AttachResourceConfigTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+2017/05/22 18:10:09 [DEBUG] Resource state not found for "vsphere_virtual_machine.ubuntu": vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.RootVariableTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.MissingProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.DisableProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ParentProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [TRACE] Attach provider request: []string{} vsphere
+2017/05/22 18:10:09 [TRACE] Attaching provider config: *config.ProviderConfig{Name:"vsphere", Alias:"", RawConfig:(*config.RawConfig)(0xc42032b3e0)}
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.AttachProviderConfigTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.graphTransformerMulti:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ModuleVariableTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdns" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmcluster" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdatastore" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.viserver" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmip" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmmask" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmgateway" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.viuser" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vipassword" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmtz" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "provider.vsphere" references: [var.viuser var.vipassword var.viserver]
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmname" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmnetlabel" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdc" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmrp" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmtemp" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmiptest" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "vsphere_virtual_machine.ubuntu" references: [var.vmcluster var.vmdatastore var.vmdc var.vmdns var.vmdomain var.vmgateway var.vmip var.vmmask var.vmname var.vmnetlabel var.vmtemp var.vmtz]
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdomain" references: []
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.CountBoundaryTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.CloseProviderTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  provider.vsphere - *terraform.NodeApplyableProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.CloseProvisionerTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  provider.vsphere - *terraform.NodeApplyableProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.RootTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  provider.vsphere - *terraform.NodeApplyableProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere (close) - *terraform.graphNodeCloseProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.TransitiveReductionTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere (close) - *terraform.graphNodeCloseProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [DEBUG] Starting graph walk: walkValidate
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vipassword"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmip"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmmask"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdomain"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmtemp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmname"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdc"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmiptest"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmcluster"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdatastore"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.viuser"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.viserver"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "provider.vsphere"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmrp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "root"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmgateway"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmnetlabel"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmtz"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "meta.count-boundary (count boundary fixup)"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "provider.vsphere (close)"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdns"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmmask"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "provider.vsphere" waiting on "var.viserver"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdc"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "meta.count-boundary (count boundary fixup)"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "provider.vsphere (close)" waiting on "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "provider.vsphere (close)"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdatastore"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmnetlabel"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "provider.vsphere"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdns"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "provider.vsphere" waiting on "var.viuser"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "var.vmrp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmip"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmtemp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmgateway"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmtz"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmname"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "var.vmiptest"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "provider.vsphere" waiting on "var.vipassword"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmcluster"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdomain"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "meta.count-boundary (count boundary fixup)", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "vsphere_virtual_machine.ubuntu", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "provider.vsphere", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "root", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "provider.vsphere (close)", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdc"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdc': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmiptest"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmiptest': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdatastore"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdatastore': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmtz"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmtz': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vipassword"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vipassword': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmname"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmname': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmcluster"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmcluster': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdns"
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.viserver"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.viserver': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdns': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmgateway"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmgateway': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmip"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmip': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmrp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmmask"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmmask': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmrp': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.viuser"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.viuser': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdomain"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdomain': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmnetlabel"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmnetlabel': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmtemp"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmtemp': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "provider.vsphere"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.provider.vsphere': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.provider.vsphere': evaluating
+2017/05/22 18:10:09 [TRACE] [walkValidate] Entering eval tree: provider.vsphere
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalInitProvider
+2017/05/22 18:10:09 [DEBUG] root: eval: terraform.EvalNoop
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalOpFilter
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalGetProvider
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalInterpolate
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalBuildProviderConfig
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalValidateProvider
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalSetProviderConfig
+2017/05/22 18:10:09 [DEBUG] root: eval: terraform.EvalNoop
+2017/05/22 18:10:09 [DEBUG] root: eval: terraform.EvalNoop
+2017/05/22 18:10:09 [TRACE] [walkValidate] Exiting eval tree: provider.vsphere
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.vsphere_virtual_machine.ubuntu': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.vsphere_virtual_machine.ubuntu': evaluating
+2017/05/22 18:10:09 [TRACE] [walkValidate] Entering eval tree: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalInterpolate
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalIf
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalValidateCount
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalCountFixZeroOneBoundary
+2017/05/22 18:10:09 [TRACE] [walkValidate] Exiting eval tree: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:09 [DEBUG] vertex 'root.vsphere_virtual_machine.ubuntu': expanding/walking dynamic subgraph
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ResourceCountTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResourceInstance
+2017/05/22 18:10:09 [DEBUG] Resource state not found for "vsphere_virtual_machine.ubuntu": vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResourceInstance
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResourceInstance
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "vsphere_virtual_machine.ubuntu" references: []
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResourceInstance
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.RootTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeValidatableResourceInstance
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.vsphere_virtual_machine.ubuntu': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.vsphere_virtual_machine.ubuntu': evaluating
+2017/05/22 18:10:09 [TRACE] [walkValidate] Entering eval tree: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalValidateResourceSelfRef
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalGetProvider
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalInterpolate
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalValidateResource
+2017/05/22 18:10:09 [TRACE] [walkValidate] Exiting eval tree: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "provider.vsphere (close)"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.provider.vsphere (close)': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "meta.count-boundary (count boundary fixup)"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.meta.count-boundary (count boundary fixup)': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.provider.vsphere (close)': evaluating
+2017/05/22 18:10:09 [TRACE] [walkValidate] Entering eval tree: provider.vsphere (close)
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalCloseProvider
+2017/05/22 18:10:09 [TRACE] [walkValidate] Exiting eval tree: provider.vsphere (close)
+2017/05/22 18:10:09 [DEBUG] vertex 'root.meta.count-boundary (count boundary fixup)': evaluating
+2017/05/22 18:10:09 [TRACE] [walkValidate] Entering eval tree: meta.count-boundary (count boundary fixup)
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalCountFixZeroOneBoundaryGlobal
+2017/05/22 18:10:09 [TRACE] [walkValidate] Exiting eval tree: meta.count-boundary (count boundary fixup)
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "root"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.root': walking
+2017/05/22 18:10:09 [INFO] backend/local: apply calling Refresh
+2017/05/22 18:10:09 [INFO] terraform: building graph: GraphTypeRefresh
+2017/05/22 18:10:09 [TRACE] StateTransformer: starting
+2017/05/22 18:10:09 [TRACE] StateTransformer: Module: [root]
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.StateTransformer:
+
+2017/05/22 18:10:09 [TRACE] ConfigTransformer: Starting for path: []
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ConfigTransformer:
+
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+2017/05/22 18:10:09 [TRACE] AttachResourceConfigTransformer: Beginning...
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.AttachResourceConfigTransformer:
+
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.RootVariableTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.MissingProviderTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ProviderTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.DisableProviderTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ParentProviderTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.AttachProviderConfigTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.OutputTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ModuleVariableTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.viuser" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmcluster" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmtemp" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmiptest" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmgateway" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmname" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdomain" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdc" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vipassword" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdatastore" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmip" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmmask" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdns" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.viserver" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmrp" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmnetlabel" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmtz" references: []
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.CloseProviderTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.RootTransformer:
+
+root - terraform.graphNodeRoot
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.TransitiveReductionTransformer:
+
+root - terraform.graphNodeRoot
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [DEBUG] Starting graph walk: walkRefresh
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmiptest"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmgateway"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmcluster"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "root"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmtz"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.viuser"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdomain"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdc"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdns"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmnetlabel"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vipassword"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmrp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmtemp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmname"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmmask"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdatastore"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmip"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.viserver"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmdomain"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmcluster"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmdns"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmnetlabel"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmgateway"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.viuser"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmname"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmdatastore"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmip"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vipassword"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmmask"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmiptest"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.viserver"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmrp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmtemp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmtz"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "var.vmdc"
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "root", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmname"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmname': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmnetlabel"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmnetlabel': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdns"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdns': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmrp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmtemp"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmrp': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdomain"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdomain': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vipassword"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vipassword': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdatastore"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdatastore': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmip"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmip': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmtemp': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.viuser"
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmcluster"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmcluster': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.viserver"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.viserver': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmmask"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmmask': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmgateway"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmgateway': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmiptest"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmiptest': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdc"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdc': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.viuser': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmtz"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmtz': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "root"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.root': walking
+2017/05/22 18:10:09 [INFO] backend/local: apply calling Plan
+2017/05/22 18:10:09 [INFO] terraform: building graph: GraphTypePlan
+2017/05/22 18:10:09 [TRACE] ConfigTransformer: Starting for path: []
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ConfigTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.OutputTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.OrphanResourceTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+2017/05/22 18:10:09 [TRACE] AttachResourceConfigTransformer: Beginning...
+2017/05/22 18:10:09 [TRACE] AttachResourceConfigTransformer: Attach resource config request: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:09 [TRACE] Attaching resource config: &config.Resource{Mode:0, Name:"ubuntu", Type:"vsphere_virtual_machine", RawCount:(*config.RawConfig)(0xc42032ae40), RawConfig:(*config.RawConfig)(0xc420452a80), Provisioners:[]*config.Provisioner(nil), Provider:"", DependsOn:[]string(nil), Lifecycle:config.ResourceLifecycle{CreateBeforeDestroy:false, PreventDestroy:false, IgnoreChanges:[]string(nil)}}
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.AttachResourceConfigTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+2017/05/22 18:10:09 [DEBUG] Resource state not found for "vsphere_virtual_machine.ubuntu": vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.RootVariableTransformer:
+
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.MissingProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.DisableProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ParentProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [TRACE] Attach provider request: []string{} vsphere
+2017/05/22 18:10:09 [TRACE] Attaching provider config: *config.ProviderConfig{Name:"vsphere", Alias:"", RawConfig:(*config.RawConfig)(0xc42032b3e0)}
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.AttachProviderConfigTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ModuleVariableTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmcluster" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmrp" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmiptest" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmip" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "provider.vsphere" references: [var.vipassword var.viserver var.viuser]
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "vsphere_virtual_machine.ubuntu" references: [var.vmcluster var.vmdatastore var.vmdc var.vmdns var.vmdomain var.vmgateway var.vmip var.vmmask var.vmname var.vmnetlabel var.vmtemp var.vmtz]
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vipassword" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdc" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmmask" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.viuser" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmtemp" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmnetlabel" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmtz" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.viserver" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdomain" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdatastore" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmgateway" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmdns" references: []
+2017/05/22 18:10:09 [DEBUG] ReferenceTransformer: "var.vmname" references: []
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.CountBoundaryTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.CloseProviderTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  provider.vsphere - *terraform.NodeApplyableProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.CloseProvisionerTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  provider.vsphere - *terraform.NodeApplyableProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.RootTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  provider.vsphere - *terraform.NodeApplyableProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere (close) - *terraform.graphNodeCloseProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [TRACE] Graph after step *terraform.TransitiveReductionTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere (close) - *terraform.graphNodeCloseProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:09 [DEBUG] Starting graph walk: walkPlan
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.viuser"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vipassword"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmnetlabel"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmtz"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.viserver"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmcluster"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmtemp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdatastore"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdns"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmname"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "root"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdc"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "meta.count-boundary (count boundary fixup)"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmrp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmiptest"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "provider.vsphere (close)"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmmask"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmgateway"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmdomain"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "var.vmip"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added new vertex: "provider.vsphere"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "provider.vsphere" waiting on "var.viuser"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdns"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdomain"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "provider.vsphere" waiting on "var.vipassword"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmname"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "provider.vsphere" waiting on "var.viserver"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "meta.count-boundary (count boundary fixup)"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "root" waiting on "provider.vsphere (close)"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmcluster"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmgateway"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "var.vmrp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmip"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmtz"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "var.vmiptest"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdc"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmmask"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdatastore"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmnetlabel"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "provider.vsphere"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmtemp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: added edge: "provider.vsphere (close)" waiting on "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "meta.count-boundary (count boundary fixup)", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "provider.vsphere (close)", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "provider.vsphere", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "vsphere_virtual_machine.ubuntu", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: dependencies changed for "root", sending new deps
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmcluster"
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmtemp"
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdatastore"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmtemp': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdns"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdns': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdc"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdc': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmrp"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmrp': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmname"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmname': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmip"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmip': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmmask"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmmask': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmiptest"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmiptest': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmgateway"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmgateway': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmdomain"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdomain': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vipassword"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vipassword': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmcluster': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmdatastore': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.viuser"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.viuser': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmtz"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmtz': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.vmnetlabel"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.vmnetlabel': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "var.viserver"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.var.viserver': walking
+2017/05/22 18:10:09 [DEBUG] dag/walk: walking "provider.vsphere"
+2017/05/22 18:10:09 [DEBUG] vertex 'root.provider.vsphere': walking
+2017/05/22 18:10:09 [DEBUG] vertex 'root.provider.vsphere': evaluating
+2017/05/22 18:10:09 [TRACE] [walkPlan] Entering eval tree: provider.vsphere
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalInitProvider
+2017/05/22 18:10:09 [DEBUG] root: eval: terraform.EvalNoop
+2017/05/22 18:10:09 [DEBUG] root: eval: terraform.EvalNoop
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalOpFilter
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalGetProvider
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalInterpolate
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalBuildProviderConfig
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalSetProviderConfig
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalOpFilter
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:09 [DEBUG] root: eval: *terraform.EvalConfigProvider
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [INFO] VMWare vSphere Client configured for URL: vc.fr.lan
+2017/05/22 18:10:10 [TRACE] [walkPlan] Exiting eval tree: provider.vsphere
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.vsphere_virtual_machine.ubuntu': walking
+2017/05/22 18:10:10 [DEBUG] vertex 'root.vsphere_virtual_machine.ubuntu': evaluating
+2017/05/22 18:10:10 [TRACE] [walkPlan] Entering eval tree: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalInterpolate
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalCountCheckComputed
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalIf
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalCountFixZeroOneBoundary
+2017/05/22 18:10:10 [TRACE] [walkPlan] Exiting eval tree: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:10 [DEBUG] vertex 'root.vsphere_virtual_machine.ubuntu': expanding/walking dynamic subgraph
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.ResourceCountTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResourceInstance
+2017/05/22 18:10:10 [TRACE] OrphanResourceCount: Starting...
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.OrphanResourceCountTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResourceInstance
+2017/05/22 18:10:10 [DEBUG] Resource state not found for "vsphere_virtual_machine.ubuntu": vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResourceInstance
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResourceInstance
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "vsphere_virtual_machine.ubuntu" references: []
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResourceInstance
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.RootTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodePlannableResourceInstance
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.vsphere_virtual_machine.ubuntu': walking
+2017/05/22 18:10:10 [DEBUG] vertex 'root.vsphere_virtual_machine.ubuntu': evaluating
+2017/05/22 18:10:10 [TRACE] [walkPlan] Entering eval tree: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalInterpolate
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalGetProvider
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalValidateResource
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalReadState
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalDiff
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalCheckPreventDestroy
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalWriteState
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalWriteDiff
+2017/05/22 18:10:10 [TRACE] [walkPlan] Exiting eval tree: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "provider.vsphere (close)"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.provider.vsphere (close)': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "meta.count-boundary (count boundary fixup)"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.meta.count-boundary (count boundary fixup)': walking
+2017/05/22 18:10:10 [DEBUG] vertex 'root.provider.vsphere (close)': evaluating
+2017/05/22 18:10:10 [TRACE] [walkPlan] Entering eval tree: provider.vsphere (close)
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalCloseProvider
+2017/05/22 18:10:10 [TRACE] [walkPlan] Exiting eval tree: provider.vsphere (close)
+2017/05/22 18:10:10 [DEBUG] vertex 'root.meta.count-boundary (count boundary fixup)': evaluating
+2017/05/22 18:10:10 [TRACE] [walkPlan] Entering eval tree: meta.count-boundary (count boundary fixup)
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalCountFixZeroOneBoundaryGlobal
+2017/05/22 18:10:10 [TRACE] [walkPlan] Exiting eval tree: meta.count-boundary (count boundary fixup)
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "root"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.root': walking
+2017/05/22 18:10:10 [INFO] terraform: building graph: GraphTypeApply
+2017/05/22 18:10:10 [TRACE] DiffTransformer: starting
+2017/05/22 18:10:10 [TRACE] DiffTransformer: Module: CREATE: vsphere_virtual_machine.ubuntu
+  cluster:                                "" => "Virtual" (forces new resource)
+  datacenter:                             "" => "Colorado" (forces new resource)
+  detach_unknown_disks_on_delete:         "" => "false"
+  disk.#:                                 "" => "1"
+  disk.2259411149.bootable:               "" => ""
+  disk.2259411149.controller_type:        "" => "scsi"
+  disk.2259411149.datastore:              "" => "DS-LAB-NFS01"
+  disk.2259411149.iops:                   "" => ""
+  disk.2259411149.keep_on_remove:         "" => ""
+  disk.2259411149.key:                    "" => "<computed>"
+  disk.2259411149.name:                   "" => ""
+  disk.2259411149.size:                   "" => ""
+  disk.2259411149.template:               "" => "Templates/UBUNTU1604"
+  disk.2259411149.type:                   "" => "thin"
+  disk.2259411149.uuid:                   "" => "<computed>"
+  disk.2259411149.vmdk:                   "" => ""
+  dns_servers.#:                          "" => "1" (forces new resource)
+  dns_servers.0:                          "" => "10.1.3.1" (forces new resource)
+  domain:                                 "" => "fr.lan" (forces new resource)
+  enable_disk_uuid:                       "" => "false" (forces new resource)
+  linked_clone:                           "" => "false" (forces new resource)
+  memory:                                 "" => "1024"
+  memory_reservation:                     "" => "0" (forces new resource)
+  name:                                   "" => "LAB-U01" (forces new resource)
+  network_interface.#:                    "" => "1" (forces new resource)
+  network_interface.0.ip_address:         "" => "<computed>"
+  network_interface.0.ipv4_address:       "" => "10.1.3.100"
+  network_interface.0.ipv4_gateway:       "" => "10.1.3.1"
+  network_interface.0.ipv4_prefix_length: "" => "24"
+  network_interface.0.ipv6_address:       "" => "<computed>"
+  network_interface.0.ipv6_gateway:       "" => "<computed>"
+  network_interface.0.ipv6_prefix_length: "" => "<computed>"
+  network_interface.0.label:              "" => "VM Network" (forces new resource)
+  network_interface.0.mac_address:        "" => "<computed>"
+  network_interface.0.subnet_mask:        "" => "<computed>"
+  skip_customization:                     "" => "false" (forces new resource)
+  time_zone:                              "" => "America/Denver" (forces new resource)
+  uuid:                                   "" => "<computed>"
+  vcpu:                                   "" => "1"
+2017/05/22 18:10:10 [TRACE] DiffTransformer: Resource "vsphere_virtual_machine.ubuntu": *terraform.InstanceDiff{mu:sync.Mutex{state:0, sema:0x0}, Attributes:map[string]*terraform.ResourceAttrDiff{"network_interface.0.ipv6_gateway":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:true, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "disk.2259411149.controller_type":*terraform.ResourceAttrDiff{Old:"", New:"scsi", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "memory":*terraform.ResourceAttrDiff{Old:"", New:"1024", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "disk.2259411149.keep_on_remove":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "network_interface.0.ipv6_prefix_length":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:true, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "dns_servers.0":*terraform.ResourceAttrDiff{Old:"", New:"10.1.3.1", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x0}, "network_interface.0.mac_address":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:true, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "network_interface.0.label":*terraform.ResourceAttrDiff{Old:"", New:"VM Network", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x0}, "id":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:true, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x2}, "name":*terraform.ResourceAttrDiff{Old:"", New:"LAB-U01", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x0}, "datacenter":*terraform.ResourceAttrDiff{Old:"", New:"Colorado", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x0}, "disk.2259411149.size":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "disk.2259411149.name":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "time_zone":*terraform.ResourceAttrDiff{Old:"", New:"America/Denver", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x0}, "domain":*terraform.ResourceAttrDiff{Old:"", New:"fr.lan", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x0}, "network_interface.0.ipv4_gateway":*terraform.ResourceAttrDiff{Old:"", New:"10.1.3.1", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "uuid":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:true, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "network_interface.0.ipv4_prefix_length":*terraform.ResourceAttrDiff{Old:"", New:"24", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "network_interface.0.ip_address":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:true, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "disk.2259411149.type":*terraform.ResourceAttrDiff{Old:"", New:"thin", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "disk.2259411149.uuid":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:true, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "disk.#":*terraform.ResourceAttrDiff{Old:"", New:"1", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "memory_reservation":*terraform.ResourceAttrDiff{Old:"", New:"0", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x0}, "network_interface.0.ipv4_address":*terraform.ResourceAttrDiff{Old:"", New:"10.1.3.100", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "disk.2259411149.iops":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "vcpu":*terraform.ResourceAttrDiff{Old:"", New:"1", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "detach_unknown_disks_on_delete":*terraform.ResourceAttrDiff{Old:"", New:"false", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "network_interface.0.ipv6_address":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:true, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "disk.2259411149.template":*terraform.ResourceAttrDiff{Old:"", New:"Templates/UBUNTU1604", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "network_interface.0.subnet_mask":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:true, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "disk.2259411149.bootable":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "cluster":*terraform.ResourceAttrDiff{Old:"", New:"Virtual", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x0}, "linked_clone":*terraform.ResourceAttrDiff{Old:"", New:"false", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x0}, "enable_disk_uuid":*terraform.ResourceAttrDiff{Old:"", New:"false", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x0}, "network_interface.#":*terraform.ResourceAttrDiff{Old:"", New:"1", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x0}, "skip_customization":*terraform.ResourceAttrDiff{Old:"", New:"false", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x0}, "disk.2259411149.datastore":*terraform.ResourceAttrDiff{Old:"", New:"DS-LAB-NFS01", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "disk.2259411149.vmdk":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "disk.2259411149.key":*terraform.ResourceAttrDiff{Old:"", New:"", NewComputed:true, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:false, Sensitive:false, Type:0x0}, "dns_servers.#":*terraform.ResourceAttrDiff{Old:"", New:"1", NewComputed:false, NewRemoved:false, NewExtra:interface {}(nil), RequiresNew:true, Sensitive:false, Type:0x0}}, Destroy:false, DestroyDeposed:false, DestroyTainted:false, Meta:map[string]interface {}(nil)}
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.DiffTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.OrphanOutputTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+2017/05/22 18:10:10 [TRACE] AttachResourceConfigTransformer: Beginning...
+2017/05/22 18:10:10 [TRACE] AttachResourceConfigTransformer: Attach resource config request: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:10 [TRACE] Attaching resource config: &config.Resource{Mode:0, Name:"ubuntu", Type:"vsphere_virtual_machine", RawCount:(*config.RawConfig)(0xc42032ae40), RawConfig:(*config.RawConfig)(0xc420452a80), Provisioners:[]*config.Provisioner(nil), Provider:"", DependsOn:[]string(nil), Lifecycle:config.ResourceLifecycle{CreateBeforeDestroy:false, PreventDestroy:false, IgnoreChanges:[]string(nil)}}
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.AttachResourceConfigTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+2017/05/22 18:10:10 [DEBUG] Resource state not found for "vsphere_virtual_machine.ubuntu": vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.AttachStateTransformer:
+
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.MissingProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.ProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.DisableProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.ParentProviderTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:10 [TRACE] Attach provider request: []string{} vsphere
+2017/05/22 18:10:10 [TRACE] Attaching provider config: *config.ProviderConfig{Name:"vsphere", Alias:"", RawConfig:(*config.RawConfig)(0xc42032b3e0)}
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.AttachProviderConfigTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:10 [TRACE] DestroyEdgeTransformer: Beginning destroy edge transformation...
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.DestroyEdgeTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:10 [TRACE] CBDEdgeTransformer: Beginning CBD transformation...
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.CBDEdgeTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.MissingProvisionerTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.ProvisionerTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.RootVariableTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.OutputTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.ModuleVariableTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmname" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmnetlabel" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmip" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmgateway" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmtz" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmdomain" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmcluster" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmrp" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmdatastore" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmmask" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmdns" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.viuser" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vipassword" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmdc" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmtemp" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "vsphere_virtual_machine.ubuntu" references: [var.vmcluster var.vmdatastore var.vmdc var.vmdns var.vmdomain var.vmgateway var.vmip var.vmmask var.vmname var.vmnetlabel var.vmtemp var.vmtz]
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "provider.vsphere" references: [var.viserver var.viuser var.vipassword]
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.viserver" references: []
+2017/05/22 18:10:10 [DEBUG] ReferenceTransformer: "var.vmiptest" references: []
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.ReferenceTransformer:
+
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.CountBoundaryTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.TargetsTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.CloseProviderTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  provider.vsphere - *terraform.NodeApplyableProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.CloseProvisionerTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  provider.vsphere - *terraform.NodeApplyableProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.RootTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  provider.vsphere - *terraform.NodeApplyableProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere (close) - *terraform.graphNodeCloseProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:10 [TRACE] Graph after step *terraform.TransitiveReductionTransformer:
+
+meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  var.vmiptest - *terraform.NodeRootVariable
+  var.vmrp - *terraform.NodeRootVariable
+  vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+provider.vsphere - *terraform.NodeApplyableProvider
+  var.vipassword - *terraform.NodeRootVariable
+  var.viserver - *terraform.NodeRootVariable
+  var.viuser - *terraform.NodeRootVariable
+provider.vsphere (close) - *terraform.graphNodeCloseProvider
+  vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+root - terraform.graphNodeRoot
+  meta.count-boundary (count boundary fixup) - *terraform.NodeCountBoundary
+  provider.vsphere (close) - *terraform.graphNodeCloseProvider
+var.vipassword - *terraform.NodeRootVariable
+var.viserver - *terraform.NodeRootVariable
+var.viuser - *terraform.NodeRootVariable
+var.vmcluster - *terraform.NodeRootVariable
+var.vmdatastore - *terraform.NodeRootVariable
+var.vmdc - *terraform.NodeRootVariable
+var.vmdns - *terraform.NodeRootVariable
+var.vmdomain - *terraform.NodeRootVariable
+var.vmgateway - *terraform.NodeRootVariable
+var.vmip - *terraform.NodeRootVariable
+var.vmiptest - *terraform.NodeRootVariable
+var.vmmask - *terraform.NodeRootVariable
+var.vmname - *terraform.NodeRootVariable
+var.vmnetlabel - *terraform.NodeRootVariable
+var.vmrp - *terraform.NodeRootVariable
+var.vmtemp - *terraform.NodeRootVariable
+var.vmtz - *terraform.NodeRootVariable
+vsphere_virtual_machine.ubuntu - *terraform.NodeApplyableResource
+  provider.vsphere - *terraform.NodeApplyableProvider
+  var.vmcluster - *terraform.NodeRootVariable
+  var.vmdatastore - *terraform.NodeRootVariable
+  var.vmdc - *terraform.NodeRootVariable
+  var.vmdns - *terraform.NodeRootVariable
+  var.vmdomain - *terraform.NodeRootVariable
+  var.vmgateway - *terraform.NodeRootVariable
+  var.vmip - *terraform.NodeRootVariable
+  var.vmmask - *terraform.NodeRootVariable
+  var.vmname - *terraform.NodeRootVariable
+  var.vmnetlabel - *terraform.NodeRootVariable
+  var.vmtemp - *terraform.NodeRootVariable
+  var.vmtz - *terraform.NodeRootVariable
+2017/05/22 18:10:10 [DEBUG] Starting graph walk: walkApply
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.viuser"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmdc"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmtemp"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmmask"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "meta.count-boundary (count boundary fixup)"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmcluster"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmrp"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "provider.vsphere (close)"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vipassword"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmname"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmdomain"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmdns"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "provider.vsphere"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.viserver"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmiptest"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "root"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmgateway"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmtz"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmip"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmnetlabel"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added new vertex: "var.vmdatastore"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdatastore"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "provider.vsphere" waiting on "var.viserver"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "provider.vsphere" waiting on "var.vipassword"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "var.vmrp"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "provider.vsphere" waiting on "var.viuser"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmtz"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdomain"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmgateway"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdns"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "root" waiting on "provider.vsphere (close)"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmname"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmmask"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "root" waiting on "meta.count-boundary (count boundary fixup)"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmtemp"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmip"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmcluster"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "provider.vsphere"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "provider.vsphere (close)" waiting on "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "meta.count-boundary (count boundary fixup)" waiting on "var.vmiptest"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmdc"
+2017/05/22 18:10:10 [DEBUG] dag/walk: added edge: "vsphere_virtual_machine.ubuntu" waiting on "var.vmnetlabel"
+2017/05/22 18:10:10 [DEBUG] dag/walk: dependencies changed for "provider.vsphere (close)", sending new deps
+2017/05/22 18:10:10 [DEBUG] dag/walk: dependencies changed for "vsphere_virtual_machine.ubuntu", sending new deps
+2017/05/22 18:10:10 [DEBUG] dag/walk: dependencies changed for "meta.count-boundary (count boundary fixup)", sending new deps
+2017/05/22 18:10:10 [DEBUG] dag/walk: dependencies changed for "provider.vsphere", sending new deps
+2017/05/22 18:10:10 [DEBUG] dag/walk: dependencies changed for "root", sending new deps
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmname"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmname': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmmask"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmmask': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmdomain"
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmrp"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmrp': walking
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmdomain': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmgateway"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmgateway': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vipassword"
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmtz"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmtz': walking
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vipassword': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmdatastore"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmdatastore': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmip"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmip': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.viserver"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.viserver': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmdns"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmdns': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmcluster"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmcluster': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmdc"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmdc': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmiptest"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmiptest': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmnetlabel"
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.viuser"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.viuser': walking
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmnetlabel': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "var.vmtemp"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.var.vmtemp': walking
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "provider.vsphere"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.provider.vsphere': walking
+2017/05/22 18:10:10 [DEBUG] vertex 'root.provider.vsphere': evaluating
+2017/05/22 18:10:10 [TRACE] [walkApply] Entering eval tree: provider.vsphere
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalInitProvider
+2017/05/22 18:10:10 [DEBUG] root: eval: terraform.EvalNoop
+2017/05/22 18:10:10 [DEBUG] root: eval: terraform.EvalNoop
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalOpFilter
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalGetProvider
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalInterpolate
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalBuildProviderConfig
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalSetProviderConfig
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalOpFilter
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalConfigProvider
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [INFO] VMWare vSphere Client configured for URL: vc.fr.lan
+2017/05/22 18:10:10 [TRACE] [walkApply] Exiting eval tree: provider.vsphere
+2017/05/22 18:10:10 [DEBUG] dag/walk: walking "vsphere_virtual_machine.ubuntu"
+2017/05/22 18:10:10 [DEBUG] vertex 'root.vsphere_virtual_machine.ubuntu': walking
+2017/05/22 18:10:10 [DEBUG] vertex 'root.vsphere_virtual_machine.ubuntu': evaluating
+2017/05/22 18:10:10 [TRACE] [walkApply] Entering eval tree: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalSequence
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalInstanceInfo
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalReadDiff
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalIf
+2017/05/22 18:10:10 [DEBUG] root: eval: terraform.EvalNoop
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalIf
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalInterpolate
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalGetProvider
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalReadState
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalValidateResource
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalDiff
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalReadDiff
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalCompareDiff
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalGetProvider
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalReadState
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalApplyPre
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalApply
+2017/05/22 18:10:10 [DEBUG] apply: vsphere_virtual_machine.ubuntu: executing Apply
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] No meta timeoutkey found in Apply()
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] network_interface init: [{ VM Network 10.1.3.100 24 10.1.3.1  0   }]
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] disk init: [{ 0 0 thin  scsi false}]
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] template: &object.VirtualMachine{Common:object.Common{c:(*vim25.Client)(0xc420305400), r:types.ManagedObjectReference{Type:"VirtualMachine", Value:"vm-137"}}, InventoryPath:"/Colorado/vm/Templates/UBUNTU1604"}
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] resource pool: &object.ResourcePool{Common:object.Common{c:(*vim25.Client)(0xc420305400), r:types.ManagedObjectReference{Type:"ResourcePool", Value:"resgroup-100"}}, InventoryPath:"/Colorado/host/Virtual/Resources"}
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] folder: ""
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] virtual machine config spec: {{}  LAB-U01    [] []  0 0 <nil> <nil>      <nil> <nil> 0xc4203060a0 <nil> <nil> 1 1 1024 <nil> <nil> <nil> <nil> <nil> [] <nil> 0xc4207e4180 <nil> <nil> <nil> <nil> [] []  <nil> <nil> <nil> <nil> <nil> <nil> <nil>  0 <nil> <nil> <nil> <nil> <nil> <nil> [] <nil>}
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] virtual machine Extra Config spec start
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] datastore: &object.Datastore{Common:object.Common{c:(*vim25.Client)(0xc420305400), r:types.ManagedObjectReference{Type:"Datastore", Value:"datastore-124"}}, InventoryPath:"/Colorado/datastore/DS-LAB-NFS01"}
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] network device: &{VirtualVmxnet:{VirtualEthernetCard:{VirtualDevice:{DynamicData:{} Key:-1 DeviceInfo:<nil> Backing:0xc4207e5800 Connectable:<nil> SlotInfo:<nil> ControllerKey:0 UnitNumber:<nil>} AddressType:generated MacAddress: WakeOnLanEnabled:<nil> ResourceAllocation:<nil> ExternalId: UptCompatibilityEnabled:<nil>}}}
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] ipv4 gateway: 10.1.3.1
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] ipv4 address: 10.1.3.100
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] ipv4 prefix length: 24
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] ipv4 subnet mask: 255.255.255.0
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] network devices: []types.BaseVirtualDeviceConfigSpec{(*types.VirtualDeviceConfigSpec)(0xc420948500)}
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] network configs: []types.CustomizationAdapterMapping{types.CustomizationAdapterMapping{DynamicData:types.DynamicData{}, MacAddress:"", Adapter:types.CustomizationIPSettings{DynamicData:types.DynamicData{}, Ip:(*types.CustomizationFixedIp)(0xc420d3af40), SubnetMask:"255.255.255.0", Gateway:[]string{"10.1.3.1"}, IpV6Spec:(*types.CustomizationIPSettingsIpV6AddressSpec)(0xc4207e5890), DnsServerList:[]string(nil), DnsDomain:"", PrimaryWINS:"", SecondaryWINS:"", NetBIOS:""}}}
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: vsphere-provider (internal) 2017/05/22 18:10:10 [DEBUG] relocate type: [moveAllDiskBackingsAndDisallowSharing]
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: panic: runtime error: invalid memory address or nil pointer dereference
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: [signal SIGSEGV: segmentation violation code=0x1 addr=0x2a8 pc=0x4a83b88]
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: 
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: goroutine 83 [running]:
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: github.com/hashicorp/terraform/vendor/github.com/vmware/govmomi/object.VirtualMachine.Device(0xc420305400, 0xc4207fcef0, 0xe, 0xc4207fcf10, 0x6, 0xc4202169c0, 0x21, 0x9b940a8, 0xc420012448, 0x1091805, ...)
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: 	/opt/gopath/src/github.com/hashicorp/terraform/vendor/github.com/vmware/govmomi/object/virtual_machine.go:329 +0x218
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: github.com/hashicorp/terraform/builtin/providers/vsphere.buildVMRelocateSpec(0xc42080ff80, 0xc4208b42c0, 0xc420908440, 0x0, 0xc4207af2bc, 0x4, 0x0, 0x0, 0x0, 0x0, ...)
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: 	/opt/gopath/src/github.com/hashicorp/terraform/builtin/providers/vsphere/resource_vsphere_virtual_machine.go:1530 +0x182
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: github.com/hashicorp/terraform/builtin/providers/vsphere.(*virtualMachine).setupVirtualMachine(0xc42014c600, 0xc420457ea0, 0x5, 0x4f8de40)
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: 	/opt/gopath/src/github.com/hashicorp/terraform/builtin/providers/vsphere/resource_vsphere_virtual_machine.go:1925 +0x1db3
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: github.com/hashicorp/terraform/builtin/providers/vsphere.resourceVSphereVirtualMachineCreate(0xc42030c380, 0x5c1fb60, 0xc420457ea0, 0x0, 0x0)
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: 	/opt/gopath/src/github.com/hashicorp/terraform/builtin/providers/vsphere/resource_vsphere_virtual_machine.go:900 +0x17f7
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: github.com/hashicorp/terraform/helper/schema.(*Resource).Apply(0xc420742a20, 0xc420015770, 0xc4207b9aa0, 0x5c1fb60, 0xc420457ea0, 0x1, 0x28, 0xc420797e00)
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: 	/opt/gopath/src/github.com/hashicorp/terraform/helper/schema/resource.go:186 +0x48d
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: github.com/hashicorp/terraform/helper/schema.(*Provider).Apply(0xc420309030, 0xc420015720, 0xc420015770, 0xc4207b9aa0, 0x9b28e10, 0x0, 0x0)
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: 	/opt/gopath/src/github.com/hashicorp/terraform/helper/schema/provider.go:242 +0x9b
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: github.com/hashicorp/terraform/plugin.(*ResourceProviderServer).Apply(0xc420775280, 0xc4207b9500, 0xc4207af430, 0x0, 0x0)
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: 	/opt/gopath/src/github.com/hashicorp/terraform/plugin/resource_provider.go:488 +0x57
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: reflect.Value.call(0xc42001bc20, 0xc42000d6d0, 0x13, 0x5d0d1f4, 0x4, 0xc4206e4f20, 0x3, 0x3, 0x0, 0xc420565e01, ...)
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: 	/opt/go/src/reflect/value.go:434 +0x91f
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: reflect.Value.Call(0xc42001bc20, 0xc42000d6d0, 0x13, 0xc420565f20, 0x3, 0x3, 0xc420565f68, 0x1208a83, 0xc4201c7180)
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: 	/opt/go/src/reflect/value.go:302 +0xa4
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: net/rpc.(*service).call(0xc420779680, 0xc420779640, 0xc420433d50, 0xc420083f80, 0xc420775b00, 0x4e83ea0, 0xc4207b9500, 0x16, 0x4e83ee0, 0xc4207af430, ...)
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: 	/opt/go/src/net/rpc/server.go:387 +0x144
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: created by net/rpc.(*Server).ServeCodec
+2017/05/22 18:10:10 [DEBUG] plugin: terraform: 	/opt/go/src/net/rpc/server.go:481 +0x404
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalWriteState
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalApplyProvisioners
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalIf
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalWriteState
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalWriteDiff
+2017/05/22 18:10:10 [DEBUG] root: eval: *terraform.EvalApplyPost
+2017/05/22 18:10:10 [ERROR] root: eval: *terraform.EvalApplyPost, err: 1 error(s) occurred:
+
+* vsphere_virtual_machine.ubuntu: unexpected EOF
+2017/05/22 18:10:10 [ERROR] root: eval: *terraform.EvalSequence, err: 1 error(s) occurred:
+
+* vsphere_virtual_machine.ubuntu: unexpected EOF
+2017/05/22 18:10:10 [TRACE] [walkApply] Exiting eval tree: vsphere_virtual_machine.ubuntu
+2017/05/22 18:10:10 [DEBUG] dag/walk: upstream errored, not walking "provider.vsphere (close)"
+2017/05/22 18:10:10 [DEBUG] dag/walk: upstream errored, not walking "meta.count-boundary (count boundary fixup)"
+2017/05/22 18:10:10 [DEBUG] dag/walk: upstream errored, not walking "root"
+2017/05/22 18:10:10 [DEBUG] plugin: /Users/chris.roberson/bin/terraform: plugin process exited
+2017/05/22 18:10:10 [TRACE] Preserving existing state lineage "a3a02fb9-8bcc-4c5f-9779-f2ee65b2df15"
+2017/05/22 18:10:10 [TRACE] Preserving existing state lineage "a3a02fb9-8bcc-4c5f-9779-f2ee65b2df15"
+2017/05/22 18:10:10 [DEBUG] plugin: waiting for all plugin processes to complete...
+2017/05/22 18:10:10 [WARN] plugin: error closing client during Kill: connection is shut down
