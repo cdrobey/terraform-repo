@@ -8,9 +8,13 @@ variable "viserver" {
   default = "vc.fr.lan"
 }
 
+variable "vmcount" {
+  default = 1
+}
+
 // default VM name in vSphere and its hostname
 variable "vmname" {
-  default = "LAB-U01"
+  default = "LAB-U"
 }
 
 // default VM domain for guest customization
@@ -28,14 +32,9 @@ variable "vmcluster" {
   default = "Virtual"
 }
 
-// default Resource Pool
-variable "vmrp" {
-  default = "labesx01.fr.lan"
-}
-
 // default VM Template
 variable "vmtemp" {
-  default = "Templates/UBUNTU1604"
+  default = "Templates/Template-UBUNTU1604"
 }
 
 // default datastore cluster
@@ -52,7 +51,7 @@ variable "vmnetlabel" {
   default = "VM Network"
 }
 variable "vmip" {
-  default = "10.1.3.100"
+  default = "10.1.3.10"
 }
 variable "vmmask" {
   default = "24"
@@ -61,7 +60,7 @@ variable "vmgateway" {
   default = "10.1.3.1"
 }
 variable "vmdns" {
-  default = [ "10.1.3.1" ]
+  default = [ "10.1.3.1", "10.1.1.1" ]
 }
 
 // default timezone for vm

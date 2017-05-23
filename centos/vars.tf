@@ -8,9 +8,13 @@ variable "viserver" {
   default = "vc.fr.lan"
 }
 
+variable "vmcount" {
+  default = 1
+}
+
 // default VM name in vSphere and its hostname
 variable "vmname" {
-  default = "LAB-C00"
+  default = "LAB-C"
 }
 
 // default VM domain for guest customization
@@ -30,7 +34,7 @@ variable "vmcluster" {
 
 // default VM Template
 variable "vmtemp" {
-  default = "Lab/CENTOS-TPL"
+  default = "Templates/Template-CENTOS7"
 }
 
 // default datastore cluster
@@ -47,7 +51,7 @@ variable "vmnetlabel" {
   default = "VM Network"
 }
 variable "vmip" {
-  default = "10.1.3.90"
+  default = "10.1.3.9"
 }
 variable "vmmask" {
   default = "24"

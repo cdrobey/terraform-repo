@@ -1,5 +1,8 @@
 resource "vsphere_virtual_machine" "ubuntu" {
-  name   = "${var.vmname}"
+
+  count = "${var.vmcount}"
+
+  name   = "${var.vmname}${count.index}"
   vcpu   = 1
   memory = 1024
   domain = "${var.vmdomain}"
@@ -9,13 +12,12 @@ resource "vsphere_virtual_machine" "ubuntu" {
 
   network_interface {
     label = "${var.vmnetlabel}"
-    ipv4_address = "${var.vmip}"
+    ipv4_address = "${var.vmip}${count.index}"
     ipv4_prefix_length = "${var.vmmask}"
     ipv4_gateway = "${var.vmgateway}"
   }
 
   dns_servers = "${var.vmdns}"
-
 
   disk {
     template = "${var.vmtemp}"
@@ -24,5 +26,4 @@ resource "vsphere_virtual_machine" "ubuntu" {
   }
 
   time_zone = "${var.vmtz}"
-
 }
