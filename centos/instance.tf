@@ -12,9 +12,9 @@ resource "vsphere_virtual_machine" "centos" {
 
   network_interface {
     label = "${var.vmnetlabel}"
-    ipv4_address = "${var.vmip}${count.index}"
-    ipv4_prefix_length = "${var.vmmask}"
-    ipv4_gateway = "${var.vmgateway}"
+  //  ipv4_address = "${var.vmip}${count.index}"
+   // ipv4_prefix_length = "${var.vmmask}"
+    //ipv4_gateway = "${var.vmgateway}"
   }
 
   dns_servers = "${var.vmdns}"
