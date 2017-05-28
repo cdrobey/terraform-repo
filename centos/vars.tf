@@ -14,7 +14,7 @@ variable "vmcount" {
 
 // default VM name in vSphere and its hostname
 variable "vmname" {
-  default = "LAB-C"
+  default = "DEV-C"
 }
 
 // default VM domain for guest customization
