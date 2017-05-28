@@ -27,18 +27,18 @@ resource "vsphere_virtual_machine" "centos" {
 
   time_zone = "${var.vmtz}"
 
-  connection {
-    type     = "ssh"
-    user     = "centos"
-    password = "${var.root_password}"
-  }
 
-provisioner "remote-exec" {
-  inline = [<<EOF
 
-    echo "I'm worked" > /tmp/test.out
+  provisioner "remote-exec" {
+        inline = [
+          "curl -k https://labpm.fr.lan:8140/packages/current/install.bash | sudo bash"
+        ]
+        connection {
+            type = "ssh"
+            user = "centos"
+            private_key = "${file("~/.ssh/id_rsa")}"
+        }
 
-  EOF
-  ]
-}
+    }
+
 }
