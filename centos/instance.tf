@@ -24,15 +24,13 @@ resource "vsphere_virtual_machine" "centos" {
 
   time_zone = "${var.vmtz}"
 
-
-
   provisioner "remote-exec" {
         inline = [
           "curl -k https://labpm.fr.lan:8140/packages/current/install.bash | sudo bash"
         ]
         connection {
             type = "ssh"
-            user = "centos"
+            user = "deploy"
             private_key = "${file("~/.ssh/id_rsa")}"
         }
 
