@@ -1,33 +1,40 @@
+variable "puppet_master_name" {
+  description = "The fqdn of the puppet master"
+  default = "puppet"
+}
+
+variable "puppet_master_location" {
+  default = "infrastructure"
+}
+
+variable "puppet_master_ip" {
+  description = "The IP address of the puppet master"
+  default = "192.168.1.10"
+}
+
 variable "name" {
   description = "The name of the service you are running"
 }
 
 variable "role" {
-  description = "The puppet role this particular machine will use"
+  description = "The name of the role for the service"
 }
 
 variable "location" {
   description = "The location of this node - will be used to complete fqdn"
-}
-
-variable "puppet_master_name" {
-  description = "The fqdn of the puppet master"
-}
-
-variable "puppet_master_ip" {
-  description = "The IP address of the puppet master"
+  default = "infrastructure"
 }
 
 variable "openstack_keypair" {
   type        = "string"
   description = "The keypair to be used."
-  default     = "chris_roberson"
+  default     = "slice_terraform"
 }
 
 variable "tenant_network" {
   type        = "string"
   description = "The network to be used."
-  default     = "chicago_network"
+  default     = "infrastructure_network"
 }
 
 
@@ -39,9 +46,11 @@ data "template_file" "init_node" {
     template = "${file("bootstrap/bootstrap_agent.tpl")}"
     vars {
         role            = "${var.role}"
-        name            = "${var.name}.${var.location}.lab"
+        name            = "${var.name}"
+        location        = "${var.location}"
         master_name     = "${var.puppet_master_name}"
-        masterip        = "${var.puppet_master_ip}"
+        master_location = "${var.puppet_master_location}"
+        master_ip       = "${var.puppet_master_ip}"
     }
 }
 
@@ -58,10 +67,5 @@ resource "openstack_compute_instance_v2" "linux_node" {
     floating_ip = "${openstack_compute_floatingip_v2.floating_ip.address}"
     access_network = true
   }
-
   user_data = "${data.template_file.init_node.rendered}"
-}
-
-output "${var.name} ip address" {
-  value = "${openstack_compute_floatingip_v2.floating_ip.address}"
 }

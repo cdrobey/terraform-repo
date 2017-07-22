@@ -23,7 +23,7 @@ variable "control_repo" {
 variable "openstack_keypair" {
   type        = "string"
   description = "The keypair to be used."
-  default     = "slice"
+  default     = "slice_terraform"
 }
 
 variable "tenant_network" {
@@ -36,6 +36,7 @@ variable "tenant_network" {
 resource "openstack_compute_floatingip_v2" "puppetip" {
   pool = "ext-net-pdx1-opdx1"
 }
+
 
 data "template_file" "init_puppetmaster" {
     template = "${file("bootstrap/bootstrap_puppetmaster.tpl")}"

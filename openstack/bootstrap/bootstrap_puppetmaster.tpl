@@ -6,7 +6,8 @@
 #
 # 1. This script should be able to set up r10k as seperate user
 # 2. This script should set up puppetserver to run as seperate user
-SERVER_NAME=${hostname}.${location}.lab
+HOST_NAME=${hostname}
+HOST_FQDN=${hostname}.${location}.lab
 CONTROL_REPO=${control_repo}
 read -r -d '' PRIV_KEY << EOM
 ${ssh_pri_key}
@@ -14,7 +15,7 @@ EOM
 read -r -d '' PUBLIC_KEY << EOM
 ${ssh_pub_key}
 EOM
-DOWNLOAD_VERSION=$${DOWNLOAD_VERSION:-2017.2.2}
+DOWNLOAD_VERSION=$${DOWNLOAD_VERSION:-2016.5.1}
 DOWNLOAD_DIST=$${DOWNLOAD_DIST:-el}
 DOWNLOAD_RELEASE=$${DOWNLOAD_RELEASE:-7}
 DOWNLOAD_ARCH=$${DOWNLOAD_ARCH:-x86_64}
@@ -30,22 +31,33 @@ function setup_prereqs {
   mkdir -p /etc/puppetlabs/puppet
   ln -s /etc/puppetlabs/code/environments/production/scripts/reconfigure_host.sh /usr/local/bin/reconfigurehost
 cat > /etc/hosts << EOM
-127.0.0.1   ${hostname}.${location}.lab ${hostname} localhost localhost.localdomain localhost4 localhost4.localdomain4
+127.0.0.1   $HOST_NAME $HOST_FQDN localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
 EOM
 }
 
+function setup_users {
+  echo "Adding user puppetpov"
+  useradd -m -p '$6$oDTfITCj$/RDXWiYpkTSUcJjfMfEdPsncaHWGW2FC8PoW39MgELECnwhcBmtxx00E4EnTwkhr1s4eaWz6aANuhE3w4cjE81' puppetpov
+  usermod --password '$6$oDTfITCj$/RDXWiYpkTSUcJjfMfEdPsncaHWGW2FC8PoW39MgELECnwhcBmtxx00E4EnTwkhr1s4eaWz6aANuhE3w4cjE81' root
+}
+
 #Generate SSH Keys
 function generate_keys {
+  mkdir /home/puppetpov/.ssh
+  chown puppetpov:puppetpov /home/puppetpov
+  ssh-keygen -t rsa -b 4096 -N "" -f /home/puppetpov/.ssh/id_rsa
   cat > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa << PRIVATE
 $PRIV_KEY
 PRIVATE
+
   cat > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub << PUBLIC
 $PUBLIC_KEY
 PUBLIC
   chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
   chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa
+  chown puppetpov:puppetpov /home/puppetpov/.ssh/*
 }
 
 #Download PE
