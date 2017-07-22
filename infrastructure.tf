@@ -8,14 +8,18 @@ variable "puppet_master_ip" {
   default = "192.168.1.10"
 }
 
+
 module "base_network" {
   source = "./networking"
 }
 
-module "puppet_master" {
-  source = "./puppet_master"
+module "linuxnode01" {
+  source = "./linux_node"
 
-  control_repo         = "${var.puppet_control_repo}"
-  ssh_pri_key          = "${var.ssh_private_key}"
-  ssh_pub_key          = "${var.ssh_public_key}"
+  name = "linuxnode01"
+  role = "generic_website"
+  location = "chicago"
+  tenant_network = "chicago_network"
+  puppet_master_name = "${var.puppet_master_name}"
+  puppet_master_ip = "${var.puppet_master_ip}"
 }

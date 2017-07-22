@@ -23,7 +23,7 @@ variable "control_repo" {
 variable "openstack_keypair" {
   type        = "string"
   description = "The keypair to be used."
-  default     = "james_jones"
+  default     = "slice"
 }
 
 variable "tenant_network" {
@@ -42,9 +42,9 @@ data "template_file" "init_puppetmaster" {
     vars {
         control_repo         = "${var.control_repo}"
         location             = "${var.location}"
-        ssh_pri_key          = "${var.ssh_pri_key}"
-        ssh_pub_key          = "${var.ssh_pub_key}"
-        hostname             = "puppet"
+        ssh_pri_key          = "${file("${var.ssh_pri_key}")}"
+        ssh_pub_key          = "${file("${var.ssh_pub_key}")}"
+        hostname             = "${var.name}"
     }
 }
 
