@@ -21,13 +21,13 @@ variable "puppet_master_ip" {
 variable "openstack_keypair" {
   type        = "string"
   description = "The keypair to be used."
-  default     = "james_jones"
+  default     = "chris_roberson"
 }
 
 variable "tenant_network" {
   type        = "string"
   description = "The network to be used."
-  default     = "infrastructure_network"
+  default     = "chicago_network"
 }
 
 
