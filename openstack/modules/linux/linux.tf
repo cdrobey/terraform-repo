@@ -78,7 +78,7 @@ resource "openstack_compute_instance_v2" "linux_node" {
     }
   }
 
-  provisioner "remote-exec" {
+/*  provisioner "remote-exec" {
     inline = [
       "sudo chmod +x /tmp/bootstrap.sh && sudo /tmp/bootstrap.sh"
     ]
@@ -87,5 +87,5 @@ resource "openstack_compute_instance_v2" "linux_node" {
         user = "centos"
             private_key = "${file("~/.ssh/slice_terraform")}"
         }
-    }
+    }*/
   }

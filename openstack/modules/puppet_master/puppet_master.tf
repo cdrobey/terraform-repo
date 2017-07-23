@@ -74,7 +74,7 @@ resource "openstack_compute_instance_v2" "puppet" {
     }
   }
 
-  provisioner "remote-exec" {
+/*  provisioner "remote-exec" {
     inline = [
       "sudo chmod +x /tmp/bootstrap.sh && sudo /tmp/bootstrap.sh"
     ]
@@ -83,5 +83,5 @@ resource "openstack_compute_instance_v2" "puppet" {
         user = "centos"
             private_key = "${file("~/.ssh/slice_terraform")}"
         }
-    }
+    }*/
 }

@@ -1,22 +1,21 @@
+module "devwindows01" {
+  source = "../modules/windows"
 
-module "base_network" {
-  source = "./networking"
+  name = "devwindows01"
+  role = "windows"
+  location = "chicago"
+  tenant_network = "chicago_network"
+  puppet_master_name = "puppet"
+  puppet_master_ip = "192.168.1.2"
 }
 
-module "puppet_master" {
-  source = "./puppet_master"
+module "prodwindows01" {
+  source = "../modules/windows"
 
-  control_repo         = "https://github/cdrobey/puppet-repo"
-  ssh_pri_key          = "~/.ssh/github"
-  ssh_pub_key          = "~/.ssh/github.pub"
-}
-
-
-module "linuxnode01" {
-  source = "./linux_node"
-
-  name = "linuxnode01"
-  role = "linux"
+  name = "prodwindows01"
+  role = "windows"
   location = "portland"
   tenant_network = "portland_network"
+  puppet_master_name = "puppet"
+  puppet_master_ip = "192.168.1.2"
 }

@@ -8,19 +8,13 @@
 # 2. This script should set up puppetserver to run as seperate user
 HOST_NAME=${hostname}
 HOST_FQDN=${hostname}.${location}.lab
-CONTROL_REPO=${control_repo}
-read -r -d '' PRIV_KEY << EOM
-${ssh_pri_key}
-EOM
-read -r -d '' PUBLIC_KEY << EOM
-${ssh_pub_key}
-EOM
+
 DOWNLOAD_VERSION=$${DOWNLOAD_VERSION:-2017.2.2}
 DOWNLOAD_DIST=$${DOWNLOAD_DIST:-el}
 DOWNLOAD_RELEASE=$${DOWNLOAD_RELEASE:-7}
 DOWNLOAD_ARCH=$${DOWNLOAD_ARCH:-x86_64}
 DOWNLOAD_RC=$${DOWNLOAD_RC:-1}
-GIT_REMOTE=$${GIT_REMOTE:-"$${CONTROL_REPO}"}
+GIT_REMOTE=$${GIT_REMOTE:-"${control_repo}"}
 
 set -x
 
@@ -37,27 +31,27 @@ cat > /etc/hosts << EOM
 EOM
 }
 
-function setup_users {
-  echo "Adding user puppetpov"
-  useradd -m -p '$6$oDTfITCj$/RDXWiYpkTSUcJjfMfEdPsncaHWGW2FC8PoW39MgELECnwhcBmtxx00E4EnTwkhr1s4eaWz6aANuhE3w4cjE81' puppetpov
-  usermod --password '$6$oDTfITCj$/RDXWiYpkTSUcJjfMfEdPsncaHWGW2FC8PoW39MgELECnwhcBmtxx00E4EnTwkhr1s4eaWz6aANuhE3w4cjE81' root
-}
-
 #Generate SSH Keys
 function generate_keys {
-  mkdir /home/puppetpov/.ssh
-  chown puppetpov:puppetpov /home/puppetpov
-  ssh-keygen -t rsa -b 4096 -N "" -f /home/puppetpov/.ssh/id_rsa
+  read -r -d '' PRIV_KEY << EOM
+  ${ssh_pri_key}
+EOM
+
+
   cat > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa << PRIVATE
 $PRIV_KEY
 PRIVATE
+
+
+read -r -d '' PUBLIC_KEY << EOM
+${ssh_pub_key}
+EOM
 
   cat > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub << PUBLIC
 $PUBLIC_KEY
 PUBLIC
   chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
   chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa
-  chown puppetpov:puppetpov /home/puppetpov/.ssh/*
 }
 
 #Download PE
@@ -124,17 +118,9 @@ function add_pe_users {
   /opt/puppetlabs/bin/puppet-access login deploy --lifetime=1y << TEXT
 puppetlabs
 TEXT
-}
 
-#Deploy Code
-function deploy_code_pe {
-  #create license key for bootstrap
-  curl --progress-bar \
-    -L \
-    -o "/etc/puppetlabs/license.key" \
-    -C - \
-    https://raw.githubusercontent.com/puppetlabs-seteam/puppet-module-role/master/files/license.key
-  /opt/puppetlabs/bin/puppet-code deploy production -w
+/opt/puppetlabs/bin/puppet-code deploy production -w
+
 }
 
 function setup_hiera_pe {
@@ -156,12 +142,10 @@ function binary_cleanup {
 
 
 setup_prereqs
-setup_users
 generate_keys
 download_pe
 install_pe
 add_pe_users
-deploy_code_pe
 sleep 15
 setup_hiera_pe
 run_puppet

@@ -18,30 +18,32 @@ variable "puppet_master_ip" {
   description = "The IP address of the puppet master"
 }
 
-resource "openstack_compute_floatingip_v2" "floating_ip" {
-  pool = "ext-net-pdx1-opdx1"
-}
+
 
 variable "openstack_keypair" {
   type        = "string"
   description = "The keypair to be used."
-  default     = "james_jones"
+  default     = "slice_terraform"
 }
 
 variable "tenant_network" {
   type        = "string"
   description = "The network to be used."
-  default     = "network0"
+  default     = "infrastructure"
 }
 
 data "template_file" "init_node" {
-    template = "${file("bootstrap/bootstrap_windows_agent.tpl")}"
+    template = "${file("../bootstrap/bootstrap_windows_agent.tpl")}"
     vars {
         role            = "${var.role}"
         dnssuffix       = "${var.location}.lab"
         master_name     = "${var.puppet_master_name}"
         masterip        = "${var.puppet_master_ip}"
     }
+}
+
+resource "openstack_compute_floatingip_v2" "floating_ip" {
+  pool = "ext-net-pdx1-opdx1"
 }
 
 resource "openstack_compute_instance_v2" "windows_node" {
@@ -57,10 +59,28 @@ resource "openstack_compute_instance_v2" "windows_node" {
     floating_ip = "${openstack_compute_floatingip_v2.floating_ip.address}"
     access_network = true
   }
+/*
+  provisioner "file" {
+    content     = "${data.template_file.init_node.rendered}"
+    destination = "C:\\scripts\bootstrap.ps1"
 
-  user_data = "${data.template_file.init_node.rendered}"
-}
+    connection {
+        type = "winrm"
+        user = "Administrator"
+        password = ""
+        agent = "false"
+    }
+  }
 
-output "${var.name} ip address" {
-  value = "${openstack_compute_floatingip_v2.floating_ip.address}"
+  provisioner "remote-exec" {
+    inline = [
+      "powershell.exe -version 4 -ExecutionPolicy Bypass -File C:\\scripts\bootstrap.ps1"
+    ]
+    connection {
+        type = "winrm"
+        user = "Administrator"
+        password = ""
+        agent = "false"
+    }
+    */
 }
