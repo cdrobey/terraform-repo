@@ -1,0 +1,9 @@
+variable "openstack_user_name" {}
+variable "openstack_tenant_name" {}
+variable "openstack_password" {}
+variable "openstack_auth_url" {}
+variable "control_repo" {}
+variable "git_pri_key" {}
+variable "git_pub_key" {}
+variable "ssh_pri_key" {}
+variable "ssh_pub_key" {}

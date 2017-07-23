@@ -8,12 +8,13 @@
 # 2. This script should set up puppetserver to run as seperate user
 HOST_NAME=${hostname}
 HOST_FQDN=${hostname}.${location}.lab
-CONTROL_REPO=${control_repo}
+HOST_IP=${ipaddress}
+CONTROL_REPO=${cr_url}
 read -r -d '' PRIV_KEY << EOM
-${ssh_pri_key}
+${cr_pri_key}
 EOM
 read -r -d '' PUBLIC_KEY << EOM
-${ssh_pub_key}
+${cr_pub_key}
 EOM
 DOWNLOAD_VERSION=$${DOWNLOAD_VERSION:-2017.2.2}
 DOWNLOAD_DIST=$${DOWNLOAD_DIST:-el}
@@ -31,8 +32,9 @@ function setup_prereqs {
   mkdir -p /etc/puppetlabs/puppet
   ln -s /etc/puppetlabs/code/environments/production/scripts/reconfigure_host.sh /usr/local/bin/reconfigurehost
 cat > /etc/hosts << EOM
-127.0.0.1   $HOST_NAME $HOST_FQDN localhost localhost.localdomain localhost4 localhost4.localdomain4
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+$${HOST_IP} $${HOST_NAME} $${HOST_FQDN} 
 
 EOM
 }

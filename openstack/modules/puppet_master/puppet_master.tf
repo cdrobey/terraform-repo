@@ -8,11 +8,11 @@ variable "location" {
   default = "infrastructure"
 }
 
-variable "ssh_pri_key" {
+variable "git_pri_key" {
   description = "The private key for code manager"
 }
 
-variable "ssh_pub_key" {
+variable "git_pub_key" {
   description = "The public key for code manager"
 }
 
@@ -39,12 +39,12 @@ resource "openstack_compute_floatingip_v2" "puppetip" {
 
 
 data "template_file" "init_puppetmaster" {
-    template = "${file("bootstrap/bootstrap_puppetmaster.tpl")}"
+    template = "${file("../bootstrap/bootstrap_puppetmaster.tpl")}"
     vars {
         control_repo         = "${var.control_repo}"
         location             = "${var.location}"
-        ssh_pri_key          = "${file("${var.ssh_pri_key}")}"
-        ssh_pub_key          = "${file("${var.ssh_pub_key}")}"
+        ssh_pri_key          = "${file("${var.git_pri_key}")}"
+        ssh_pub_key          = "${file("${var.git_pub_key}")}"
         hostname             = "${var.name}"
     }
 }
@@ -63,5 +63,25 @@ resource "openstack_compute_instance_v2" "puppet" {
     access_network = true
   }
 
-  user_data = "${data.template_file.init_puppetmaster.rendered}"
+  provisioner "file" {
+    content     = "${data.template_file.init_puppetmaster.rendered}"
+    destination = "/tmp/bootstrap.sh"
+
+    connection {
+        type = "ssh"
+        user = "centos"
+        private_key = "${file("~/.ssh/slice_terraform")}"
+    }
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo chmod +x /tmp/bootstrap.sh && sudo /tmp/bootstrap.sh"
+    ]
+    connection {
+        type = "ssh"
+        user = "centos"
+            private_key = "${file("~/.ssh/slice_terraform")}"
+        }
+    }
 }

@@ -9,7 +9,7 @@ variable "puppet_master_location" {
 
 variable "puppet_master_ip" {
   description = "The IP address of the puppet master"
-  default = "192.168.1.10"
+  default = "192.168.1.2"
 }
 
 variable "name" {
@@ -43,7 +43,7 @@ resource "openstack_compute_floatingip_v2" "floating_ip" {
 }
 
 data "template_file" "init_node" {
-    template = "${file("bootstrap/bootstrap_agent.tpl")}"
+    template = "${file("../bootstrap/bootstrap_agent.tpl")}"
     vars {
         role            = "${var.role}"
         name            = "${var.name}"
@@ -67,5 +67,25 @@ resource "openstack_compute_instance_v2" "linux_node" {
     floating_ip = "${openstack_compute_floatingip_v2.floating_ip.address}"
     access_network = true
   }
-  user_data = "${data.template_file.init_node.rendered}"
-}
+  provisioner "file" {
+    content     = "${data.template_file.init_node.rendered}"
+    destination = "/tmp/bootstrap.sh"
+
+    connection {
+        type = "ssh"
+        user = "centos"
+        private_key = "${file("~/.ssh/slice_terraform")}"
+    }
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo chmod +x /tmp/bootstrap.sh && sudo /tmp/bootstrap.sh"
+    ]
+    connection {
+        type = "ssh"
+        user = "centos"
+            private_key = "${file("~/.ssh/slice_terraform")}"
+        }
+    }
+  }
