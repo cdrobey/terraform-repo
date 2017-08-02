@@ -36,6 +36,9 @@ variable "tenant_network" {
   description = "The network to be used."
   default     = "infrastructure_network"
 }
+variable "tenant_fip" {
+  default = "192.168.1.10"
+}
 
 
 resource "openstack_compute_floatingip_v2" "floating_ip" {
@@ -61,13 +64,25 @@ resource "openstack_compute_instance_v2" "linux_node" {
   flavor_name       = "g1.medium"
   key_pair          = "${var.openstack_keypair}"
   security_groups   = ["default", "sg0"]
+  floating_ip = "${openstack_compute_floatingip_v2.floating_ip.address}"
+
 
   network {
     name = "${var.tenant_network}"
-    floating_ip = "${openstack_compute_floatingip_v2.floating_ip.address}"
+    uuid = "${openstack_networking_network_v2.${var.tenant_network}.id}"
+    fixed_ip = "${var.tenant_fip}"
     access_network = true
   }
-  provisioner "file" {
+
+  /*resource "openstack_compute_floatingip_associate_v2" "floating_ip" {
+    floating_ip = "${openstack_networking_floatingip_v2.floating_ip.address}"
+    instance_id = "${openstack_compute_instance_v2.multi-net.id}"
+    fixed_ip = "${openstack_compute_instance_v2.multi-net.network.1.fixed_ip_v4}"
+  }*/
+
+
+
+/*  provisioner "file" {
     content     = "${data.template_file.init_node.rendered}"
     destination = "/tmp/bootstrap.sh"
 

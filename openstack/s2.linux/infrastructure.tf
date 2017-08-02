@@ -5,6 +5,7 @@ module "devlinuxnode01" {
   role = "linux"
   location = "portland"
   tenant_network = "portland_network"
+  tenant_fip = "192.168.2.30"
 }
 
 module "prodlinuxnode02" {
@@ -14,4 +15,6 @@ module "prodlinuxnode02" {
   role = "linux"
   location = "chicago"
   tenant_network = "chicago_network"
+  tenant_fip = "192.168.3.30"
+
 }
