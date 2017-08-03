@@ -1,30 +1,13 @@
 #!/bin/bash
-
-HOST_NAME=${name}
-HOST_FQDN=${name}.${location}.lab
+#
+# Template parameters
+#   - $master_ip
+#
 MASTER_NAME=${master_name}
-MASTER_FQDN=${master_name}.${master_location}.lab
+MASTER_FQDN=${master_fqdn}
 MASTER_IP=${master_ip}
 
-function setup_networking {
-  echo "127.0.0.1 $$HOST_NAME $$HOST_FQDN localhost.localdomain localhost" > /etc/hosts
-  echo "$$MASTER_IP $$MASTER_NAME $$MASTER_FQDN" >> /etc/hosts
-}
-
-function install_prereqs {
-  yum -y install curl
-}
-
-function install_pe_puppetagent {
-  mkdir -p /etc/puppetlabs/puppet
-  cat > /etc/puppetlabs/puppet/csr_attributes.yaml << YAML
-extension_requests:
-    pp_role:  ${role}
-YAML
-  curl -k https://"$${MASTER_FQDN}":8140/packages/current/install.bash | bash
-  service puppet start
-}
-
-setup_networking
-install_prereqs
-install_pe_puppetagent
+echo $${MASTER_IP} $${MASTER_NAME} $${MASTER_FQDN}  >> /etc/hosts
+hostname $(curl http://169.254.169.254/latest/meta-data/local-hostname)
+echo $(curl -s http://169.254.169.254/latest/meta-data/local-ipv4) $(hostname) >> /etc/hosts
+curl -k https://$${MASTER_FQDN}:8140/packages/current/install.bash | bash

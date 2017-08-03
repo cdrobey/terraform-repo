@@ -1,28 +1,21 @@
-variable "puppet_master_name" {
-  description = "The fqdn of the puppet master"
-  default = "puppet"
-}
-
-variable "puppet_master_location" {
-  default = "infrastructure"
-}
-
-variable "puppet_master_ip" {
-  description = "The IP address of the puppet master"
-  default = "192.168.1.2"
-}
-
 variable "name" {
   description = "The name of the service you are running"
 }
 
-variable "role" {
-  description = "The name of the role for the service"
+variable "domain" {
+  description = "The domain of this node - will be used to complete fqdn"
 }
 
-variable "location" {
-  description = "The location of this node - will be used to complete fqdn"
-  default = "infrastructure"
+variable "puppet_master_name" {
+  description = "The hostname puppet master"
+}
+
+variable "puppet_master_domain" {
+  description = "The fqdn of the puppet master"
+}
+
+variable "puppet_master_ip" {
+  description = "The IP address of the puppet master"
 }
 
 variable "openstack_keypair" {
@@ -36,9 +29,6 @@ variable "tenant_network" {
   description = "The network to be used."
   default     = "infrastructure_network"
 }
-variable "tenant_fip" {
-  default = "192.168.1.10"
-}
 
 
 resource "openstack_compute_floatingip_v2" "floating_ip" {
@@ -48,59 +38,29 @@ resource "openstack_compute_floatingip_v2" "floating_ip" {
 data "template_file" "init_node" {
     template = "${file("../bootstrap/bootstrap_agent.tpl")}"
     vars {
-        role            = "${var.role}"
-        name            = "${var.name}"
-        location        = "${var.location}"
         master_name     = "${var.puppet_master_name}"
-        master_location = "${var.puppet_master_location}"
-        master_ip       = "${var.puppet_master_ip}"
+        master_fqdn     = "${var.puppet_master_name}.${var.puppet_master_domain}"
+        master_ip        = "${var.puppet_master_ip}"
     }
 }
 
 resource "openstack_compute_instance_v2" "linux_node" {
-  name              = "${var.name}.${var.location}.lab"
+  name              = "${var.name}.${var.domain}"
   image_name        = "centos_7_x86_64"
   availability_zone = "opdx1"
   flavor_name       = "g1.medium"
   key_pair          = "${var.openstack_keypair}"
   security_groups   = ["default", "sg0"]
-  floating_ip = "${openstack_compute_floatingip_v2.floating_ip.address}"
-
 
   network {
     name = "${var.tenant_network}"
-    uuid = "${openstack_networking_network_v2.${var.tenant_network}.id}"
-    fixed_ip = "${var.tenant_fip}"
+    floating_ip = "${openstack_compute_floatingip_v2.floating_ip.address}"
     access_network = true
   }
 
-  /*resource "openstack_compute_floatingip_associate_v2" "floating_ip" {
-    floating_ip = "${openstack_networking_floatingip_v2.floating_ip.address}"
-    instance_id = "${openstack_compute_instance_v2.multi-net.id}"
-    fixed_ip = "${openstack_compute_instance_v2.multi-net.network.1.fixed_ip_v4}"
-  }*/
+  user_data = "${data.template_file.init_node.rendered}"
+}
 
-
-
-/*  provisioner "file" {
-    content     = "${data.template_file.init_node.rendered}"
-    destination = "/tmp/bootstrap.sh"
-
-    connection {
-        type = "ssh"
-        user = "centos"
-        private_key = "${file("~/.ssh/slice_terraform")}"
-    }
-  }
-
-/*  provisioner "remote-exec" {
-    inline = [
-      "sudo chmod +x /tmp/bootstrap.sh && sudo /tmp/bootstrap.sh"
-    ]
-    connection {
-        type = "ssh"
-        user = "centos"
-            private_key = "${file("~/.ssh/slice_terraform")}"
-        }
-    }*/
-  }
+output "${var.name} ip address" {
+  value = "${openstack_compute_floatingip_v2.floating_ip.address}"
+}
