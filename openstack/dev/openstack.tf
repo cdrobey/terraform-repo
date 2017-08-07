@@ -5,7 +5,7 @@
 #--------------------------------------------------------------
 # Module: Build Openstack Demonstration Site
 #--------------------------------------------------------------
-module "base_network" {
+module "site" {
   source = "../modules/site"
 
   router         = "${var.router}"
@@ -22,7 +22,7 @@ module "puppet_master" {
 
   name              = "${var.puppet_master_name}"
   domain            = "${var.puppet_master_domain}"
-  tenant_network    = "${var.network0}"
+  tenant_network    = "${module.site.site_network}"
   git_pri_key       = "${var.git_pri_key}"
   git_pub_key       = "${var.git_pub_key}"
   git_url           = "${var.git_url}"
@@ -40,6 +40,6 @@ module "linux01" {
   master_name       = "${var.puppet_master_name}"
   master_domain     = "${var.puppet_master_domain}"
   master_ip         = "${module.puppet_master.puppet_master_ip}"
-  tenant_network    = "${var.network0}"
+  tenant_network    = "${module.site.site_network}"
   openstack_keypair = "${var.openstack_keypair}"
 }
