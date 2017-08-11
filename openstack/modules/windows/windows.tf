@@ -20,8 +20,8 @@ resource "openstack_compute_floatingip_v2" "windows" {
   pool = "ext-net-pdx1-opdx1"
 }
 
-/*data "template_file" "windows" {
-    template = "${file("../bootstrap/bootstrap_pa.tpl")}"
+data "template_file" "windows" {
+    template = "${file("../bootstrap/bootstrap_win_pa.tpl")}"
     vars {
         windows_name  = "${var.windows_name}"
         windows_fqdn  = "${var.windows_name}.${var.windows_domain}"
@@ -30,7 +30,7 @@ resource "openstack_compute_floatingip_v2" "windows" {
         master_fqdn   = "${var.master_name}.${var.master_domain}"
         master_ip     = "${var.master_ip}"
     }
-}*/
+}
 
 resource "openstack_compute_instance_v2" "windows" {
   name              = "${var.windows_name}.${var.windows_domain}"
@@ -47,7 +47,7 @@ resource "openstack_compute_instance_v2" "windows" {
     access_network = true
   }
 
-  /*user_data = "${data.template_file.windows.rendered}"*/
+  user_data = "${data.template_file.windows.rendered}"
 }
 
 output "windows_ip" {
