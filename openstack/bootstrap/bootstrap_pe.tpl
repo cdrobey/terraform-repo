@@ -38,7 +38,7 @@ function setup_host_name {
 # Initiate Puppet Run.
 #--------------------------------------------------------------
 function run_puppet {
-  echo "======================= Executing install_pe ======================="
+  echo "======================= Executing run_puppet ======================="
 
   cd /
   puppet agent -t
@@ -50,7 +50,7 @@ function run_puppet {
 function pre_install_pe {
   echo "======================= Executing pre_install_pa ======================="
 
-  yum -y install wget pciutils
+  yum -y install wget pciutils gem
   wget https://s3.amazonaws.com/pe-builds/released/2017.2.2/puppet-enterprise-2017.2.2-el-7-x86_64.tar.gz
   tar -xzf puppet-enterprise-2017.2.2-el-7-x86_64.tar.gz -C /tmp/
   mkdir -p /etc/puppetlabs/puppet/
@@ -94,6 +94,16 @@ puppetlabs
 TEXT
 
   puppet-code -t $${HOME}/.puppetlabs/token deploy production -w
+
+
+  #--------------------------------------------------------------
+  # Configure and apply the node manager module to complete
+  # install of puppet master role.  Assuming you have role
+  # role::master defined in your code manager repo.
+  #--------------------------------------------------------------
+  gem install --no-ri --no-rdoc puppetclassify
+  puppet apply --exec 'include role::master'
+  puppet agent --onetime --no-daemonize --color=false --verbose
 }
 
 #--------------------------------------------------------------
@@ -108,7 +118,6 @@ function install_pe {
 "puppet_enterprise::profile::master::code_manager_auto_configure": true
 "puppet_enterprise::profile::master::r10k_remote": "${git_url}"
 "puppet_enterprise::profile::master::r10k_private_key": "/etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa"
-"pe_repo::platform::windows_x86_64": "true"
 FILE
   /tmp/puppet-enterprise-2017.2.2-el-7-x86_64/puppet-enterprise-installer -c /tmp/pe.conf
   chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-*

@@ -14,6 +14,11 @@ Bootstrapping the Puppet Master must included enabling the repositories for vari
 
 Code Manager Setup:  https://docs.puppet.com/pe/latest/cmgmt_managing_code.html
 
+Commands:
+puppet-access login --service-url https://puppet:4433/rbac-api --lifetime 180d
+puppet-code deploy production --wait
+
+
 Github (Example Repository): https://github.com/puppetlabs/control-repo
 
 @cdrobey
