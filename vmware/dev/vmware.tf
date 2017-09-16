@@ -3,17 +3,19 @@
 #--------------------------------------------------------------
 
 #--------------------------------------------------------------
-# Module: Build Openstack Demonstration Site
+# Module: Build Vsphere Demonstration Site
 #--------------------------------------------------------------
 module "site" {
   source = "../modules/site"
 
-  router         = "${var.router}"
-  network0       = "${var.network0}"
-  subnet0        = "${var.subnet0}"
-  network0_cidr  = "${var.network0_cidr}"
+  datacenter = "${var.datacenter}"
+  cluster    = "${var.cluster}"
+  hosts      = "${var.hosts}"
+  network0   = "${var.network0}"
+  datastore0 = "${var.datastore0}"
 }
 
+/*
 #--------------------------------------------------------------
 # Module: Build Puppet Master Server
 #--------------------------------------------------------------
@@ -45,7 +47,7 @@ module "linux01" {
 }
 
 #--------------------------------------------------------------
-# Module: Build LINUX Server
+# Module: Build Windows Server
 #--------------------------------------------------------------
 module "windows01" {
   source = "../modules/windows"
@@ -58,3 +60,4 @@ module "windows01" {
   tenant_network    = "${module.site.site_network}"
   openstack_keypair = "${var.openstack_keypair}"
 }
+*/
