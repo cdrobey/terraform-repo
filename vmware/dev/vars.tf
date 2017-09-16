@@ -1,19 +1,20 @@
 #--------------------------------------------------------------
 # Global Variables
 #--------------------------------------------------------------
-variable "openstack_user_name"    {}
-variable "openstack_tenant_name"  {}
-variable "openstack_password"     {}
-variable "openstack_auth_url"     {}
-variable "openstack_keypair"      {}
+variable "vsphere_user_name"    {}
+variable "vsphere_tenant_name"  {}
+variable "vsphere_password"     {}
+variable "vsphere_auth_url"     {}
+variable "vsphere_keypair"      {}
 
 #--------------------------------------------------------------
 # Site Variables
 #--------------------------------------------------------------
-variable router         { default = "router0" }
-variable network0       { default = "demo.os" }
-variable subnet0        { default = "demo_network" }
-variable network0_cidr  { default = "192.168.1.0/24" }
+variable datacenter { default = "demo.os" }
+variable cluster    { default = "demo_cluster" }
+variable hosts      { default = [ "lab-vesx01", "lab-vesx02" ] }
+variable network0   { default = "demo.os" }
+variable datastore0 { default = "demo-nfs" }
 
 #--------------------------------------------------------------
 # Puppet Master Provisioning Variables
@@ -35,6 +36,6 @@ variable linux_network  { default = "demo_network" }
 #--------------------------------------------------------------
 # Windows Server Provisioning Variables
 #--------------------------------------------------------------
-variable windows_name       { default = "windows" }
+variable windows_name     { default = "windows" }
 variable windows_domain   { default = "demo.os" }
 variable windows_network  { default = "demo_network" }
