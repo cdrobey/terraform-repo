@@ -7,8 +7,9 @@
 #--------------------------------------------------------------
 variable "name"               {}
 variable "domain"             {}
-variable "openstack_keypair"  {}
-variable "tenant_network"     {}
+variable "datacenter"         {}
+variable "network"            {}
+variable "datastore"          {}
 variable "git_pri_key"        {}
 variable "git_pub_key"        {}
 variable "git_url"            {}
@@ -16,41 +17,48 @@ variable "git_url"            {}
 #--------------------------------------------------------------
 # Resources: Build Puppet Master Configuration
 #--------------------------------------------------------------
-
-resource "openstack_compute_floatingip_v2" "puppet_master" {
-  pool = "ext-net-pdx1-opdx1"
-}
-
-data "template_file" "puppet_master" {
+data "template_file" "init" {
     template = "${file("../bootstrap/bootstrap_pe.tpl")}"
     vars {
         master_name = "${var.name}"
         master_fqdn = "${var.name}.${var.domain}"
-        master_ip   = "${openstack_compute_floatingip_v2.puppet_master.address}"
         git_pri_key = "${file("${var.git_pri_key}")}"
         git_pub_key = "${file("${var.git_pub_key}")}"
         git_url     = "${var.git_url}"
     }
 }
 
-resource "openstack_compute_instance_v2" "puppet_master" {
-  name              = "${var.name}.${var.domain}"
-  image_name        = "centos_7_x86_64"
-  availability_zone = "opdx1"
-  flavor_name       = "m1.large"
-  key_pair          = "${var.openstack_keypair}"
-  security_groups   = ["default", "sg0"]
+resource "vsphere_virtual_machine" "centos" {
+  datacenter = "${var.datacenter}"
+  name   = "${var.name}.${var.domain}"
+
+  vcpu          = 1
+  memory        = 1024
+  dns_suffixes  = [ "fr.lab" ]
+  dns_servers   = [ "10.1.3.1" ] 
+  time_zone     = "MST7MDT"
 
 
-  network {
-    name           = "${var.tenant_network}"
-    floating_ip    = "${openstack_compute_floatingip_v2.puppet_master.address}"
-    access_network = true
+  network_interface {
+    label = "${var.network}"
   }
 
-  user_data = "${data.template_file.puppet_master.rendered}"
-}
 
-output "puppet_master_ip" {
-  value = "${openstack_compute_floatingip_v2.puppet_master.address}"
+  disk {
+    template  = "Template/TPL-CENTOS7"
+    type      = "thin"
+    datastore = "${var.datastore}"
+  }
+
+
+  provisioner "remote-exec" {
+    inline = <<EOF
+${data.template_file.init.rendered}
+EOF
+    connection {
+      type = "ssh"
+      user = "deploy"
+      private_key = "${file("~/.ssh/fr")}"
+    }
+  }
 }

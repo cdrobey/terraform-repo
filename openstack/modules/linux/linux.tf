@@ -37,7 +37,7 @@ resource "openstack_compute_instance_v2" "linux" {
   name              = "${var.linux_name}.${var.linux_domain}"
   image_name        = "centos_7_x86_64"
   availability_zone = "opdx1"
-  flavor_name       = "m1.large"
+  flavor_name       = "g1.small"
   key_pair          = "${var.openstack_keypair}"
   security_groups   = ["default", "sg0"]
 

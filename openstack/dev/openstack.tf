@@ -35,7 +35,7 @@ module "puppet_master" {
 module "linux01" {
   source = "../modules/linux"
 
-  linux_name        = "${var.linux_name}"
+  linux_name        = "linux01"
   linux_domain      = "${var.linux_domain}"
   master_name       = "${var.puppet_master_name}"
   master_domain     = "${var.puppet_master_domain}"
@@ -46,6 +46,66 @@ module "linux01" {
 
 #--------------------------------------------------------------
 # Module: Build LINUX Server
+#--------------------------------------------------------------
+module "linux02" {
+  source = "../modules/linux"
+
+  linux_name        = "linux02"
+  linux_domain      = "${var.linux_domain}"
+  master_name       = "${var.puppet_master_name}"
+  master_domain     = "${var.puppet_master_domain}"
+  master_ip         = "${module.puppet_master.puppet_master_ip}"
+  tenant_network    = "${module.site.site_network}"
+  openstack_keypair = "${var.openstack_keypair}"
+}
+
+#--------------------------------------------------------------
+# Module: Build LINUX Server
+#--------------------------------------------------------------
+module "linux03" {
+  source = "../modules/linux"
+
+  linux_name        = "linux03"
+  linux_domain      = "${var.linux_domain}"
+  master_name       = "${var.puppet_master_name}"
+  master_domain     = "${var.puppet_master_domain}"
+  master_ip         = "${module.puppet_master.puppet_master_ip}"
+  tenant_network    = "${module.site.site_network}"
+  openstack_keypair = "${var.openstack_keypair}"
+}
+
+#--------------------------------------------------------------
+# Module: Build LINUX Server
+#--------------------------------------------------------------
+module "linux04" {
+  source = "../modules/linux"
+
+  linux_name        = "linux04"
+  linux_domain      = "${var.linux_domain}"
+  master_name       = "${var.puppet_master_name}"
+  master_domain     = "${var.puppet_master_domain}"
+  master_ip         = "${module.puppet_master.puppet_master_ip}"
+  tenant_network    = "${module.site.site_network}"
+  openstack_keypair = "${var.openstack_keypair}"
+}
+
+#--------------------------------------------------------------
+# Module: Build LINUX Server
+#--------------------------------------------------------------
+module "linux05" {
+  source = "../modules/linux"
+
+  linux_name        = "linux05"
+  linux_domain      = "${var.linux_domain}"
+  master_name       = "${var.puppet_master_name}"
+  master_domain     = "${var.puppet_master_domain}"
+  master_ip         = "${module.puppet_master.puppet_master_ip}"
+  tenant_network    = "${module.site.site_network}"
+  openstack_keypair = "${var.openstack_keypair}"
+}
+
+#--------------------------------------------------------------
+# Module: Build Windows Server
 #--------------------------------------------------------------
 module "windows01" {
   source = "../modules/windows"

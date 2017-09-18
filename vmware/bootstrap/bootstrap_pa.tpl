@@ -33,8 +33,8 @@ function setup_host_name {
   echo "======================= Executing setup_host_name ======================="
   echo ${linux_fqdn} > /etc/hostname
   hostname -F /etc/hostname
-  echo ${linux_ip} ${linux_name} ${linux_fqdn}  >> /etc/hosts
-	echo ${master_ip} ${master_name} ${master_fqdn}  >> /etc/hosts
+  #echo $${linux_ip} ${linux_name} ${linux_fqdn}  >> /etc/hosts
+	#echo $${master_ip} ${master_name} ${master_fqdn}  >> /etc/hosts
 }
 
 #--------------------------------------------------------------

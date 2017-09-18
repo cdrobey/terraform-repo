@@ -5,38 +5,63 @@
 #--------------------------------------------------------------
 # Site Variables
 #--------------------------------------------------------------
-variable router         {}
-variable network0       {}
-variable subnet0        {}
-variable network0_cidr  {}
+variable datacenter      {}
+variable cluster         {}
+variable hosts           { default = [] }
+variable network0        {}
+variable network0_switch {}
+variable datastore0      {}
 
 #--------------------------------------------------------------
-# Resources: Build Network Configuration
+# Resources: VMWare Configuration
 #--------------------------------------------------------------
-resource "openstack_networking_router_v2" "router" {
-  name = "${var.router}"
-  external_gateway = "1c66e248-4fcb-405a-be75-821f85fc3ddb"
-  admin_state_up = "true"
+data "vsphere_datacenter" "datacenter" {
+  name = "${var.datacenter}"
 }
 
-resource "openstack_networking_network_v2" "network" {
-  name = "${var.network0}"
-  admin_state_up = "true"
+#--------------------------------------------------------------
+# Resources: Build Infrastructure for labvesx01
+#--------------------------------------------------------------
+data "vsphere_host" "host0" {
+  name          = "${var.hosts[0]}"
+  datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
 }
 
-resource "openstack_networking_subnet_v2" "subnet" {
-  name = "${var.subnet0}"
-  network_id = "${openstack_networking_network_v2.network.id}"
-  cidr = "${var.network0_cidr}"
-  ip_version = 4
-  dns_nameservers = ["10.240.0.10", "10.240.1.10"]
+resource "vsphere_host_port_group" "portgroup0" {
+  name                = "${var.network0}"
+  host_system_id      = "${data.vsphere_host.host0.id}"
+  virtual_switch_name = "${var.network0_switch}"
 }
 
-resource "openstack_networking_router_interface_v2" "router_int" {
-  router_id = "${openstack_networking_router_v2.router.id}"
-  subnet_id = "${openstack_networking_subnet_v2.subnet.id}"
+#--------------------------------------------------------------
+# Resources: Build Infrastructure for labvesx02
+#--------------------------------------------------------------
+data "vsphere_host" "host1" {
+  name          = "${var.hosts[1]}"
+  datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
 }
 
-output "site_network" {
-  value = "${openstack_networking_network_v2.network.name}"
+resource "vsphere_host_port_group" "portgroup1" {
+  name                = "${var.network0}"
+  host_system_id      = "${data.vsphere_host.host1.id}"
+  virtual_switch_name = "${var.network0_switch}"
+}
+
+
+#--------------------------------------------------------------
+# Resources: Mount NFS Storage for ESX Servers
+#--------------------------------------------------------------
+data "vsphere_host" "hosts" {
+  count         = "${length(var.hosts)}"
+  name          = "${var.hosts[count.index]}"
+  datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
+}
+
+resource "vsphere_nas_datastore" "datastore" {
+  name            = "${var.datastore0}"
+  host_system_ids = ["${data.vsphere_host.hosts.*.id}"]
+
+  type         = "NFS"
+  remote_hosts = ["labdsm.fr.lab"]
+  remote_path  = "/volume1/nfs01"
 }

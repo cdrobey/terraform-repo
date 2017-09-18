@@ -5,51 +5,52 @@
 #--------------------------------------------------------------
 # Linux Variables
 #--------------------------------------------------------------
-variable "linux_name"         {}
-variable "linux_domain"       {}
-variable "linux_dc"           {}
-variable "linux_cluster"      {}
-variable "linux_domain"       {}
-variable "linux_ds"           {}
-variable "master_name"        {}
-variable "master_domain"      {}
-variable "master_ip"          {}
-variable "openstack_keypair"  {}
-variable "tenant_network"     {}
+variable "linux_name"       {}
+variable "linux_domain"     {}
+variable "linux_datacenter" {}
+variable "linux_datastore"  {}
+variable "linux_network"    {}
+variable "master_name"      {}
+variable "master_domain"    {}
 
 #--------------------------------------------------------------
 # Resources: Build Linux Configuration
 #--------------------------------------------------------------
-
-data "template_file" "linux" {
+data "template_file" "init" {
     template = "${file("../bootstrap/bootstrap_pa.tpl")}"
     vars {
         linux_name  = "${var.linux_name}"
         linux_fqdn  = "${var.linux_name}.${var.linux_domain}"
-        linux_ip    = "${openstack_compute_floatingip_v2.linux.address}"
         master_name = "${var.master_name}"
         master_fqdn = "${var.master_name}.${var.master_domain}"
-        master_ip   = "${var.master_ip}"
     }
 }
 
 resource "vsphere_virtual_machine" "centos" {
-  domain = "${var.linux_domain}"
-  datacenter = "${var.linux_dc}"
-  cluster = "${var.linux_cluster}"
+  datacenter = "${var.linux_datacenter}"
   name   = "${var.linux_name}.${var.linux_domain}"
 
   vcpu   = 1
   memory = 1024
 
   network_interface {
-    label = "${var.tenant_network}"
+    label = "${var.linux_network}"
   }
 
   disk {
-    template = "centos_7_x86_64"
+    template = "Template/TPL-CENTOS7"
     type = "thin"
-    datastore = "${var.linux_ds}"
+    datastore = "${var.linux_datastore}"
   }
-  user_data = "${data.template_file.linux.rendered}"
+
+  provisioner "remote-exec" {
+    inline = <<EOF
+${data.template_file.init.rendered}
+EOF
+    connection {
+      type = "ssh"
+      user = "deploy"
+      private_key = "${file("~/.ssh/fr")}"
+    }
+  }
 }

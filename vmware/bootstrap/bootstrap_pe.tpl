@@ -14,7 +14,7 @@ set -x
 #--------------------------------------------------------------
 PATH=$PATH:/opt/puppetlabs/bin
 HOME=/root
-WORKDIR="/root"
+WORKDIR="/tmp"
 LOGFILE="$${WORKDIR}/bootstrap$$$$.log"
 
 #--------------------------------------------------------------
@@ -31,7 +31,6 @@ function setup_host_name {
   echo "======================= Executing setup_host_name ======================="
   echo ${master_fqdn} > /etc/hostname
   hostname -F /etc/hostname
-	echo ${master_ip} ${master_name} ${master_fqdn}  >> /etc/hosts
 }
 
 #--------------------------------------------------------------

@@ -1,6 +1,9 @@
-provider "openstack" {
-  user_name   = "${var.openstack_user_name}"
-  tenant_name = "${var.openstack_tenant_name}"
-  password    = "${var.openstack_password}"
-  auth_url    = "${var.openstack_auth_url}"
+#--------------------------------------------------------------
+# Provider Variables
+#--------------------------------------------------------------
+provider "vsphere" {
+  user                 = "${var.vsphere_user_name}"
+  password             = "${var.vsphere_password}"
+  vsphere_server       = "${var.vsphere_server}"
+  allow_unverified_ssl = true
 }
