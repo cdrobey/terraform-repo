@@ -33,8 +33,6 @@ function setup_host_name {
   echo "======================= Executing setup_host_name ======================="
   echo ${linux_fqdn} > /etc/hostname
   hostname -F /etc/hostname
-  #echo $${linux_ip} ${linux_name} ${linux_fqdn}  >> /etc/hosts
-	#echo $${master_ip} ${master_name} ${master_fqdn}  >> /etc/hosts
 }
 
 #--------------------------------------------------------------
@@ -48,7 +46,7 @@ function pre_install_pa {
 # Peform post-agent installation tasks.
 #--------------------------------------------------------------
 function post_install_pa {
-  echo "=======================" Executing pre_install_pa ======================="
+  echo "======================= Executing pre_install_pa ======================="
 }
 
 #--------------------------------------------------------------
@@ -56,7 +54,7 @@ function post_install_pa {
 # agent.
 #--------------------------------------------------------------
 function install_pa {
-  echo "=======================" Executing install_pa ======================="
+  echo "======================= Executing install_pa ======================="
 
   INTERVAL=1080   # Set interval (duration) in seconds.
   SECONDS=0   # Reset $SECONDS; counting of seconds will (re)start from 0(-ish).

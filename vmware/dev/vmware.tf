@@ -5,7 +5,7 @@
 #--------------------------------------------------------------
 # Module: Build Vsphere Demonstration Site
 #--------------------------------------------------------------
-module "site" {
+/*module "site" {
   source = "../modules/site"
 
   datacenter      = "${var.datacenter}"
@@ -15,7 +15,7 @@ module "site" {
   network0_switch = "${var.network0_switch}"
   datastore0      = "${var.datastore0}"
 }
-
+*/
 #--------------------------------------------------------------
 # Module: Build Puppet Master Server
 #--------------------------------------------------------------
@@ -32,21 +32,22 @@ module "puppet_master" {
   git_url     = "${var.git_url}"
 
 }
-/*
+
 #--------------------------------------------------------------
 # Module: Build LINUX Server
 #--------------------------------------------------------------
 module "linux01" {
   source = "../modules/linux"
 
-  linux_name        = "${var.linux_name}"
-  linux_domain      = "${var.linux_domain}"
-  linux_datacenter  = "${var.datacenter}"
-  linux_datastore   = "${var.datastore0}"
-  linux_network     = "${var.network0}"
-  master_name       = "${var.puppet_master_name}"
-  master_domain     = "${var.puppet_master_domain}"
+  name          = "${var.linux_name}"
+  domain        = "${var.linux_domain}"
+  datacenter    = "${var.datacenter}"
+  datastore     = "${var.datastore0}"
+  network       = "${var.network0}"
+  master_name   = "${var.puppet_master_name}"
+  master_domain = "${var.puppet_master_domain}"
 }
+/*
 #--------------------------------------------------------------
 # Module: Build Windows Server
 #--------------------------------------------------------------

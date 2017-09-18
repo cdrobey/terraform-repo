@@ -5,11 +5,11 @@
 #--------------------------------------------------------------
 # Linux Variables
 #--------------------------------------------------------------
-variable "linux_name"       {}
-variable "linux_domain"     {}
-variable "linux_datacenter" {}
-variable "linux_datastore"  {}
-variable "linux_network"    {}
+variable "name"       {}
+variable "domain"     {}
+variable "datacenter" {}
+variable "datastore"  {}
+variable "network"    {}
 variable "master_name"      {}
 variable "master_domain"    {}
 
@@ -19,38 +19,41 @@ variable "master_domain"    {}
 data "template_file" "init" {
     template = "${file("../bootstrap/bootstrap_pa.tpl")}"
     vars {
-        linux_name  = "${var.linux_name}"
-        linux_fqdn  = "${var.linux_name}.${var.linux_domain}"
+        name        = "${var.name}"
+        fqdn        = "${var.name}.${var.domain}"
         master_name = "${var.master_name}"
         master_fqdn = "${var.master_name}.${var.master_domain}"
     }
 }
 
 resource "vsphere_virtual_machine" "centos" {
-  datacenter = "${var.linux_datacenter}"
-  name   = "${var.linux_name}.${var.linux_domain}"
-
-  vcpu   = 1
-  memory = 1024
+  datacenter    = "${var.datacenter}"
+  name          = "${var.name}.${var.domain}"
+  vcpu          = 1
+  memory        = 1024
+  dns_suffixes  = [ "fr.lab" ]
+  dns_servers   = [ "10.1.3.1" ] 
+  time_zone     = "MST7MDT"
 
   network_interface {
-    label = "${var.linux_network}"
+    label = "${var.network}"
   }
 
   disk {
-    template = "Template/TPL-CENTOS7"
-    type = "thin"
-    datastore = "${var.linux_datastore}"
+    template  = "Template/TPL-CENTOS7"
+    type      = "thin"
+    datastore = "${var.datastore}"
+  }
+
+  connection {
+    type        = "ssh"
+    user        = "root"
+    private_key = "${file("~/.ssh/fr")}"
   }
 
   provisioner "remote-exec" {
     inline = <<EOF
-${data.template_file.init.rendered}
+    ${data.template_file.init.rendered}
 EOF
-    connection {
-      type = "ssh"
-      user = "deploy"
-      private_key = "${file("~/.ssh/fr")}"
-    }
   }
 }

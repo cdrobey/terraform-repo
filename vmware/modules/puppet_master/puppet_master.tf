@@ -32,8 +32,8 @@ resource "vsphere_virtual_machine" "centos" {
   datacenter = "${var.datacenter}"
   name   = "${var.name}.${var.domain}"
 
-  vcpu          = 1
-  memory        = 1024
+  vcpu          = 4
+  memory        = 8192
   dns_suffixes  = [ "fr.lab" ]
   dns_servers   = [ "10.1.3.1" ] 
   time_zone     = "MST7MDT"
@@ -43,22 +43,21 @@ resource "vsphere_virtual_machine" "centos" {
     label = "${var.network}"
   }
 
-
   disk {
     template  = "Template/TPL-CENTOS7"
     type      = "thin"
     datastore = "${var.datastore}"
   }
 
+  connection {
+    type = "ssh"
+    user = "root"
+    private_key = "${file("~/.ssh/fr")}"
+  }
 
   provisioner "remote-exec" {
     inline = <<EOF
-${data.template_file.init.rendered}
+    ${data.template_file.init.rendered}
 EOF
-    connection {
-      type = "ssh"
-      user = "deploy"
-      private_key = "${file("~/.ssh/fr")}"
-    }
   }
 }
