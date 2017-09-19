@@ -1,7 +1,7 @@
 #!/bin/bash
 #--------------------------------------------------------------
-# This scripts bootstraps a linux node by installing a puppet
-# agent.
+# This scripts bootstraps a linux node with  an installation
+# of Puppet Enterprise.
 #--------------------------------------------------------------
 set -x
 
@@ -16,7 +16,7 @@ set -x
 PATH=$PATH:/opt/puppetlabs/bin
 HOME=/root
 PEINSTALL=/tmp/pe_install.sh
-WORKDIR="/root"
+WORKDIR="/tmp"
 LOGFILE="$${WORKDIR}/bootstrap$$$$.log"
 
 #--------------------------------------------------------------

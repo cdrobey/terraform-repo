@@ -22,14 +22,16 @@
 module "puppet_master" {
   source = "../modules/puppet_master"
 
-  name        = "${var.puppet_master_name}"
-  domain      = "${var.puppet_master_domain}"
-  datacenter  = "${var.puppet_master_datacenter}"
-  network     = "${var.puppet_master_network}"
-  datastore   = "${var.puppet_master_datastore}"
-  git_pri_key = "${var.git_pri_key}"
-  git_pub_key = "${var.git_pub_key}"
-  git_url     = "${var.git_url}"
+  name         = "${var.puppet_master_name}"
+  domain       = "${var.puppet_master_domain}"
+  datacenter   = "${var.puppet_master_datacenter}"
+  network      = "${var.puppet_master_network}"
+  datastore    = "${var.puppet_master_datastore}"
+  dns_servers  = "${var.dns_servers}"   
+  time_zone    = "${var.time_zone}"   
+  git_pri_key  = "${var.git_pri_key}"
+  git_pub_key  = "${var.git_pub_key}"
+  git_url      = "${var.git_url}"
 
 }
 
@@ -43,15 +45,16 @@ module "linux01" {
   domain        = "${var.linux_domain}"
   datacenter    = "${var.datacenter}"
   datastore     = "${var.datastore0}"
+  dns_servers   = "${var.dns_servers}"   
+  time_zone     = "${var.time_zone}" 
   network       = "${var.network0}"
   master_name   = "${var.puppet_master_name}"
   master_domain = "${var.puppet_master_domain}"
 }
-/*
 #--------------------------------------------------------------
 # Module: Build Windows Server
 #--------------------------------------------------------------
-module "windows01" {
+/*module "windows01" {
   source = "../modules/windows"
 
   windows_name      = "${var.windows_name}"

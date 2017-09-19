@@ -14,7 +14,7 @@ set -x
 #   - LOGFILE:    Execution Log for bootstrap on client hosts
 #--------------------------------------------------------------
 PATH=$PATH:/opt/puppetlabs/bin
-HOME=/root
+HOME=/tmp
 PEINSTALL=/tmp/pe_install.sh
 WORKDIR="/root"
 LOGFILE="$${WORKDIR}/bootstrap$$$$.log"

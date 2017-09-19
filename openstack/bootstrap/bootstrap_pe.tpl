@@ -14,7 +14,7 @@ set -x
 #--------------------------------------------------------------
 PATH=$PATH:/opt/puppetlabs/bin
 HOME=/root
-WORKDIR="/root"
+WORKDIR="/tmp"
 LOGFILE="$${WORKDIR}/bootstrap$$$$.log"
 
 #--------------------------------------------------------------

@@ -5,14 +5,16 @@
 #--------------------------------------------------------------
 # Puppet Master Variables
 #--------------------------------------------------------------
-variable "name"               {}
-variable "domain"             {}
-variable "datacenter"         {}
-variable "network"            {}
-variable "datastore"          {}
-variable "git_pri_key"        {}
-variable "git_pub_key"        {}
-variable "git_url"            {}
+variable "name"         {}
+variable "domain"       {}
+variable "datacenter"   {}
+variable "network"      {}
+variable "datastore"    {}
+variable "dns_servers"  { type = "list" }
+variable "time_zone"    {}
+variable "git_pri_key"  {}
+variable "git_pub_key"  {}
+variable "git_url"      {}
 
 #--------------------------------------------------------------
 # Resources: Build Puppet Master Configuration
@@ -28,15 +30,14 @@ data "template_file" "init" {
     }
 }
 
-resource "vsphere_virtual_machine" "centos" {
+resource "vsphere_virtual_machine" "pupper_master" {
   datacenter = "${var.datacenter}"
   name   = "${var.name}.${var.domain}"
-
+  domain        = "${var.domain}"
   vcpu          = 4
   memory        = 8192
-  dns_suffixes  = [ "fr.lab" ]
-  dns_servers   = [ "10.1.3.1" ] 
-  time_zone     = "MST7MDT"
+  dns_servers   = "${var.dns_servers}"
+  time_zone     = "${var.time_zone}"
 
 
   network_interface {
