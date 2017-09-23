@@ -13,6 +13,7 @@ variable "network"       {}
 variable "master_name"   {}
 variable "master_domain" {}
 variable "dns_servers"   { type = "list" }
+variable "dns_suffixes"  { type = "list"}
 variable "time_zone"     {}
 
 #--------------------------------------------------------------
@@ -35,6 +36,7 @@ resource "vsphere_virtual_machine" "linux" {
   vcpu          = 1
   memory        = 1024
   dns_servers   = "${var.dns_servers}"
+  dns_suffixes  = "${var.dns_suffixes}"
   time_zone     = "${var.time_zone}"  
 
   network_interface {

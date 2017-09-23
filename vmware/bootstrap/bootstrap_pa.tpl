@@ -16,7 +16,7 @@ set -x
 PATH=$PATH:/opt/puppetlabs/bin
 HOME=/tmp
 PEINSTALL=/tmp/pe_install.sh
-WORKDIR="/root"
+WORKDIR="/tmp"
 LOGFILE="$${WORKDIR}/bootstrap$$$$.log"
 
 #--------------------------------------------------------------

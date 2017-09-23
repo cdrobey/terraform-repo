@@ -46,6 +46,7 @@ module "linux01" {
   datacenter    = "${var.datacenter}"
   datastore     = "${var.datastore0}"
   dns_servers   = "${var.dns_servers}"   
+  dns_suffixes  = "${var.dns_suffixes}"   
   time_zone     = "${var.time_zone}" 
   network       = "${var.network0}"
   master_name   = "${var.puppet_master_name}"

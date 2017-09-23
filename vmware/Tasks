@@ -1,0 +1,46 @@
+Things to do for VMware
+
+* Create domain, dc, and cluster
+* Setup standard switch
+* Mount datasets
+
+
+
+Virtual Hardware Configuration
+* Physical ESX Server
+  - ESX 6.5
+  - VSS with dedicated portgroup for nested VMs
+  - Enable Promiscous Mode/Forged Transmits/Mac Address Changes for Port Group
+  - Download dvifilter and install it on the physical ESX Host (
+    http://www.virtuallyghetto.com/2014/08/new-vmware-fling-to-improve-networkcpu-performance-when-using-promiscuous-mode-for-nested-esxi.html
+    https://labs.vmware.com/flings/esxi-mac-learning-dvfilter#instructions
+    Two vibs are need to complete the installation and you verify the install with "/sbin/summarize-dvifilter
+      vmware-esx-dvfilter-maclearn-1.0.vib
+      esx-dvfilter-maclearn-6.5.0.vib
+* Cloned Nested VM Image
+  - Create Cloned VM Image
+    Ensure CPU => 4, RAM => 12GB, Disk => 2GB, NICS => 3
+  - Add two Advanced Virtual Machine Settings to each vNIC
+    ethernet#.filter4.name = dvfilter-maclearn
+    ethernet#.filter4.onFailure = failOpen
+  - Enable "Expose Hardware assisted virtualization" under CPU
+  - Clone the first VESX System
+    Create vSwitch1 with all system function other than management (192.168.1.0/24)
+    Export Host Profile to create baseline switch configuration
+  - Clone templates for 2nd and 3rd System
+    Apply Host Profile
+* Xpenology - NFS01 Mount
+  - Create nfs01 file system
+  - Export nfs01 with root w/r
+* VCSA Load and Configuration
+  - 2 Hosts => labvesx01/02
+  - Virtual ESX with 4 CPU/16GB RAM/40GB disk
+  - Enable CPU Virtualization
+  - Check NIC
+  - Connect ISO vmware disk
+  - Create DC =>  "Lab-DC"
+  - Create Cluster => "Lab-Cluster"
+* Puppet Master Configuration
+  - Disable firewalld or agents will fail to connect
+  - Add role::master to PE Master Classification Group
+

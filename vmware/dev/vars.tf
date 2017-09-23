@@ -16,6 +16,7 @@ variable network0_switch { default = "vSwitch0" }
 variable network0        { default = "EAN"}
 variable datastore0      { default = "LAB-NFS01" }
 variable dns_servers     { default = [ "10.1.3.1", "10.1.1.1"] }
+variable dns_suffixes    { default = [ "fr.lan"] }
 variable time_zone       { default = "MST7MDT" }     
 
 #--------------------------------------------------------------
