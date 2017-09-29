@@ -118,3 +118,31 @@ module "windows01" {
   tenant_network    = "${module.site.site_network}"
   openstack_keypair = "${var.openstack_keypair}"
 }
+#--------------------------------------------------------------
+# Module: Build Windows Server
+#--------------------------------------------------------------
+module "devwin01" {
+  source = "../modules/windows"
+
+  windows_name      = "devwin01"
+  windows_domain    = "${var.windows_domain}"
+  master_name       = "${var.puppet_master_name}"
+  master_domain     = "${var.puppet_master_domain}"
+  master_ip         = "${module.puppet_master.puppet_master_ip}"
+  tenant_network    = "${module.site.site_network}"
+  openstack_keypair = "${var.openstack_keypair}"
+}
+#--------------------------------------------------------------
+# Module: Build Windows Server
+#--------------------------------------------------------------
+module "prdwin01" {
+  source = "../modules/windows"
+
+  windows_name      = "prdwin01"
+  windows_domain    = "${var.windows_domain}"
+  master_name       = "${var.puppet_master_name}"
+  master_domain     = "${var.puppet_master_domain}"
+  master_ip         = "${module.puppet_master.puppet_master_ip}"
+  tenant_network    = "${module.site.site_network}"
+  openstack_keypair = "${var.openstack_keypair}"
+}
