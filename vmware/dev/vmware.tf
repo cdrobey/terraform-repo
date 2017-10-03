@@ -55,15 +55,17 @@ module "linux01" {
 #--------------------------------------------------------------
 # Module: Build Windows Server
 #--------------------------------------------------------------
-/*module "windows01" {
+module "windows01" {
   source = "../modules/windows"
 
-  windows_name      = "${var.windows_name}"
-  windows_domain    = "${var.windows_domain}"
-  master_name       = "${var.puppet_master_name}"
-  master_domain     = "${var.puppet_master_domain}"
-  master_ip         = "${module.puppet_master.puppet_master_ip}"
-  tenant_network    = "${module.site.site_network}"
-  openstack_keypair = "${var.openstack_keypair}"
+  name          = "${var.windows_name}"
+  domain        = "${var.windows_domain}"
+  datacenter    = "${var.datacenter}"
+  datastore     = "${var.datastore0}"
+  dns_servers   = "${var.dns_servers}"   
+  dns_suffixes  = "${var.dns_suffixes}"   
+  time_zone     = "${var.time_zone}" 
+  network       = "${var.network0}"
+  master_name   = "${var.puppet_master_name}"
+  master_domain = "${var.puppet_master_domain}"
 }
-*/

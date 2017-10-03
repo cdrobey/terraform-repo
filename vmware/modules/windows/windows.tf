@@ -1,55 +1,64 @@
 #--------------------------------------------------------------
-# This module creates the windows server resources
+# This module creates the win server resources
 #--------------------------------------------------------------
 
 #--------------------------------------------------------------
-# Windows Variables
+# win Variables
 #--------------------------------------------------------------
-variable "windows_name"       {}
-variable "windows_domain"     {}
-variable "master_name"        {}
-variable "master_domain"      {}
-variable "master_ip"          {}
-variable "openstack_keypair"  {}
-variable "tenant_network"     {}
+variable "name"          {}
+variable "domain"        {}
+variable "datacenter"    {}
+variable "datastore"     {}
+variable "network"       {}
+variable "master_name"   {}
+variable "master_domain" {}
+variable "dns_servers"   { type = "list" }
+variable "dns_suffixes"  { type = "list"}
+variable "time_zone"     {}
 
 #--------------------------------------------------------------
-# Resources: Build Windows Configuration
+# Resources: Build win Configuration
 #--------------------------------------------------------------
-resource "openstack_compute_floatingip_v2" "windows" {
-  pool = "ext-net-pdx1-opdx1"
-}
-
-data "template_file" "windows" {
+/*data "template_file" "init" {
     template = "${file("../bootstrap/bootstrap_win_pa.tpl")}"
     vars {
-        windows_name  = "${var.windows_name}"
-        windows_fqdn  = "${var.windows_name}.${var.windows_domain}"
-        windows_ip    = "${openstack_compute_floatingip_v2.windows.address}"
-        master_name   = "${var.master_name}"
-        master_fqdn   = "${var.master_name}.${var.master_domain}"
-        master_ip     = "${var.master_ip}"
+        win_name    = "${var.name}"
+        win_fqdn    = "${var.name}.${var.domain}"
+        master_name = "${var.master_name}"
+        master_fqdn = "${var.master_name}.${var.master_domain}"
     }
 }
+*/
 
-resource "openstack_compute_instance_v2" "windows" {
-  name              = "${var.windows_name}.${var.windows_domain}"
-  image_name        = "windows_2012_r2_std_eval_x86_64"
-  availability_zone = "opdx1"
-  flavor_name       = "g1.large"
-  key_pair          = "${var.openstack_keypair}"
-  security_groups   = ["default", "sg0"]
+resource "vsphere_virtual_machine" "w2016" {
+  datacenter    = "${var.datacenter}"
+  name          = "${var.name}.${var.domain}"
+  domain        = "${var.domain}"
+  vcpu          = 2
+  memory        = 4096
+  dns_servers   = "${var.dns_servers}"
+  dns_suffixes  = "${var.dns_suffixes}"
+  time_zone     = "${var.time_zone}"  
 
-
-  network {
-    name           = "${var.tenant_network}"
-    floating_ip    = "${openstack_compute_floatingip_v2.windows.address}"
-    access_network = true
+  network_interface {
+    label = "${var.network}"
   }
 
-  user_data = "${data.template_file.windows.rendered}"
-}
+  disk {
+    template  = "Template/TPL-W2016"
+    type      = "thin"
+    datastore = "${var.datastore}"
+  }
+/*
+  connection {
+    type        = "ssh"
+    user        = "root"
+    private_key = "${file("~/.ssh/fr")}"
+  }
 
-output "windows_ip" {
-  value = "${openstack_compute_floatingip_v2.windows.address}"
+  provisioner "remote-exec" {
+    inline = <<EOF
+    ${data.template_file.init.rendered}
+EOF
+  }*/
 }
