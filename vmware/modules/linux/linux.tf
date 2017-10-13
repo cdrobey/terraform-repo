@@ -20,7 +20,7 @@ variable "time_zone"     {}
 # Resources: Build Linux Configuration
 #--------------------------------------------------------------
 data "template_file" "init" {
-    template = "${file("../bootstrap/bootstrap_pa.tpl")}"
+    template = "${file("../bootstrap/bootstrap_linux_pa.tpl")}"
     vars {
         linux_name  = "${var.name}"
         linux_fqdn  = "${var.name}.${var.domain}"
