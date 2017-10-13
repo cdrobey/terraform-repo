@@ -16,8 +16,8 @@ PATH=$PATH:/opt/puppetlabs/bin
 HOME=/root
 WORKDIR="/tmp"
 LOGFILE="$${WORKDIR}/bootstrap$$$$.log"
-PFILE="puppet-enterprise-2017.3.0-el-7-x86_64.tar.gz"
-PURL="https://s3.amazonaws.com/pe-builds/released/2017.3.0/$${PFILE}"
+PFILE="puppet-enterprise-2017.3.0-el-7-x86_64"
+PURL="https://s3.amazonaws.com/pe-builds/released/2017.3.0/$${PFILE}.tar.gz"
 
 #--------------------------------------------------------------
 # Redirect all stdout and stderr to logfile,
@@ -53,7 +53,7 @@ function pre_install_pe {
 
   yum -y install wget pciutils gem
   wget $$PURL
-  tar -xzf $$PFILE -C /tmp/
+  tar -xzf $$PFILE.tar.gz -C /tmp/
   mkdir -p /etc/puppetlabs/puppet/
   echo "*" > /etc/puppetlabs/puppet/autosign.conf
   cat > /etc/puppetlabs/puppet/csr_attributes.yaml << YAML
@@ -119,7 +119,7 @@ function install_pe {
 "puppet_enterprise::profile::master::r10k_remote": "${git_url}"
 "puppet_enterprise::profile::master::r10k_private_key": "/etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa"
 FILE
-  /tmp/puppet-enterprise-2017.2.2-el-7-x86_64/puppet-enterprise-installer -c /tmp/pe.conf
+  /tmp/$${PFILE}/puppet-enterprise-installer -c /tmp/pe.conf
   chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-*
 }
 

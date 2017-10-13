@@ -32,6 +32,7 @@ data "template_file" "init" {
 resource "vsphere_virtual_machine" "linux" {
   datacenter    = "${var.datacenter}"
   name          = "${var.name}.${var.domain}"
+  hostname      = "${var.name}"
   domain        = "${var.domain}"
   vcpu          = 1
   memory        = 1024

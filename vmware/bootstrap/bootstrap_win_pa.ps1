@@ -1,4 +1,4 @@
-#--------------------------------------------------------------
+﻿#--------------------------------------------------------------
 # This scripts bootstraps a windows node by installing a puppet
 # agent.  Original code taken from the Heat bootstrap.
 #--------------------------------------------------------------
@@ -12,10 +12,11 @@
 #   - WORKDIR:    TMP directory for script
 #   - LOGFILE:    Execution Log for bootstrap on client hosts
 #--------------------------------------------------------------
-$$HOME="C:\temp"
-$$PEINSTALL="pe_install.ps1"
-$$WORKDIR="C:\temp"
-$$LOGFILE="bootstrap.log"
+$HOME="C:\temp"
+$PEINSTALL="pe_install.ps1"
+$WORKDIR="C:\temp"
+$LOGFILE="bootstrap.log"
+$MASTER_FQDN="labpuppet.fr.lan"
 
 #--------------------------------------------------------------
 # Redirect all stdout and stderr to logfile,
@@ -26,11 +27,7 @@ $$LOGFILE="bootstrap.log"
 # Configure hostname and setup host file.
 #--------------------------------------------------------------
 function setup_host_name {
-  echo "======================= Executing setup_host_name ======================="
-  $$HOST_ENTRY = "${windows_ip} ${windows_name} ${windows_fqdn}"
-  $$HOST_ENTRY | Out-File -FilePath C:\Windows\Systteem32\Drivers\etc\hosts -Append -Encoding ascii
-  $$HOST_ENTRY = "${master_ip} ${master_name} ${master_fqdn}"
-  $$HOST_ENTRY | Out-File -FilePath C:\Windows\System32\Drivers\etc\hosts -Append -Encoding ascii
+  Write-Host "======================= Executing setup_host_name ======================="
 }
 
 #--------------------------------------------------------------
@@ -54,19 +51,19 @@ function post_install_pa {
 function install_pa {
   Write-Host "======================= Executing install_pa ======================="
 
-  $$CERTNAME = Invoke-RestMethod -Uri http://169.254.169.254/latest/meta-data/local-hostname
+  $CERTNAME = Invoke-RestMethod -Uri http://169.254.169.254/latest/meta-data/local-hostname
 
-  :loop while ($$true) {
-    $$request = [System.Net.WebRequest]::Create(http://${master_fqdn}:81/deployed.txt)
-    $$response = $$request.GetResponse()
-    switch ($$response.StatusCode.value__)
+  :loop while ($true) {
+    $request = [System.Net.WebRequest]::Create(http://${MASTER_FQDN}:81/deployed.txt)
+    $response = $request.GetResponse()
+    switch ($response.StatusCode.value__)
     {
       200
         {
-          [System.Net.ServicePointManager]::ServerCertificateValidationCallback = { $$true }
-          $$webClient = New-Object System.Net.WebClient
-          $$webClient.DownloadFile("https://${master_fqdn}:8140/packages/current/windows-x86_64/puppet-agent-x64.msi, '$$PEINSTALL')
-          .\$$PEINSTALL "main:certname=$${CERTNAME}"
+          [System.Net.ServicePointManager]::ServerCertificateValidationCallback = { $true }
+          $webClient = New-Object System.Net.WebClient
+          $webClient.DownloadFile("https://${MASTER_FQDN}:8140/packages/current/windows-x86_64/puppet-agent-x64.msi, '$PEINSTALL')
+          .\$PEINSTALL "main:certname=${CERTNAME}"
           Write-Host "Installation has completed."
           break loop
         }

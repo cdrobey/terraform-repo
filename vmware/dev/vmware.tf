@@ -55,7 +55,7 @@ module "linux01" {
 #--------------------------------------------------------------
 # Module: Build Windows Server
 #--------------------------------------------------------------
-module "windows01" {
+/*module "windows01" {
   source = "../modules/windows"
 
   name          = "${var.windows_name}"
@@ -68,4 +68,4 @@ module "windows01" {
   network       = "${var.network0}"
   master_name   = "${var.puppet_master_name}"
   master_domain = "${var.puppet_master_domain}"
-}
+}*/

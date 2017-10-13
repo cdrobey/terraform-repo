@@ -33,19 +33,20 @@ variable "time_zone"     {}
 resource "vsphere_virtual_machine" "w2016" {
   datacenter    = "${var.datacenter}"
   name          = "${var.name}.${var.domain}"
+  hostname      = "${var.name}"
   domain        = "${var.domain}"
   vcpu          = 2
   memory        = 4096
   dns_servers   = "${var.dns_servers}"
   dns_suffixes  = "${var.dns_suffixes}"
-  time_zone     = "${var.time_zone}"  
+  #time_zone     = "${var.time_zone}"  
 
   network_interface {
     label = "${var.network}"
   }
 
   disk {
-    template  = "Template/TPL-W2016"
+    template  = "Template/TPL-WIN16"
     type      = "thin"
     datastore = "${var.datastore}"
   }
