@@ -111,9 +111,9 @@ TEXT
   # install of puppet master role.  Assuming you have role
   # role::master defined in your code manager repo.
   #--------------------------------------------------------------
-  #puppet module install WhatsARanjit-node_manager --version 0.4.2
-  #puppet apply --exec "include profile::master::node_manager"
-  #puppet agent --onetime --no-daemonize --color=false --verbose
+  puppet module install WhatsARanjit-node_manager --version 0.4.2
+  puppet apply --exec "include profile::master::node_manager"
+  puppet agent --onetime --no-daemonize --color=false --verbose
 }
 #--------------------------------------------------------------
 # Peform master installation tasks.
