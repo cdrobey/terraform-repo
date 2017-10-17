@@ -12,11 +12,12 @@ set -x
 #   - WORKDIR:    TMP directory for script
 #   - LOGFILE:    Execution Log for bootstrap on client hosts
 #--------------------------------------------------------------
-PATH=$PATH:/opt/puppetlabs/bin
+PATH=$${PATH}:/opt/puppetlabs/bin
 HOME=/root
 WORKDIR="/tmp"
 LOGFILE="$${WORKDIR}/bootstrap$$$$.log"
-PFILE="puppet-enterprise-2017.3.0-el-7-x86_64.tar.gz"
+PVER=2017.3.0
+PFILE="puppet-enterprise-$${PVER}-el-7-x86_64.tar.gz"
 PURL="https://s3.amazonaws.com/pe-builds/released/2017.3.0/$${PFILE}"
 
 #--------------------------------------------------------------
@@ -60,7 +61,6 @@ function pre_install_pe {
 extension_requests:
     pp_role:  puppetmaster
 YAML
-
 }
 
 #--------------------------------------------------------------
@@ -70,10 +70,20 @@ function post_install_pe {
   echo "======================= Executing post_install_pe ======================="
 
   mkdir -p /etc/puppetlabs/puppetserver/ssh
-  echo ${git_pri_key} > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa
+
+  cat > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa << FILE
+${git_pri_key}
+FILE
   chmod 400 /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa
-  echo ${git_pub_key} > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
+  chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa
+
+
+  cat > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub << FILE
+${git_pub_key}
+FILE
   chmod 400 /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
+  chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
+
 
   puppet module install pltraining-rbac
   cat > /tmp/user.pp << FILE
@@ -85,7 +95,6 @@ rbac_user { 'deploy':
     password     => 'puppetlabs',
     roles        => [ 'Code Deployers' ],
 }
-
 FILE
   puppet apply /tmp/user.pp
   rm /tmp/user.pp
@@ -102,9 +111,9 @@ TEXT
   # install of puppet master role.  Assuming you have role
   # role::master defined in your code manager repo.
   #--------------------------------------------------------------
-  puppet module install WhatsARanjit-node_manager --version 0.4.2
-  puppet apply --exec "include profile::master::node_manager"
-  puppet agent --onetime --no-daemonize --color=false --verbose
+  #puppet module install WhatsARanjit-node_manager --version 0.4.2
+  #puppet apply --exec "include profile::master::node_manager"
+  #puppet agent --onetime --no-daemonize --color=false --verbose
 }
 #--------------------------------------------------------------
 # Peform master installation tasks.
@@ -119,7 +128,7 @@ function install_pe {
 "puppet_enterprise::profile::master::r10k_remote": "${git_url}"
 "puppet_enterprise::profile::master::r10k_private_key": "/etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa"
 FILE
-  /tmp/puppet-enterprise-2017.2.2-el-7-x86_64/puppet-enterprise-installer -c /tmp/pe.conf
+  /tmp/puppet-enterprise-$${PVER}-el-7-x86_64/puppet-enterprise-installer -c /tmp/pe.conf
   chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-*
 }
 
