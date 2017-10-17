@@ -41,6 +41,6 @@ variable linux_network  { default = "VM Network" }
 #--------------------------------------------------------------
 # Windows Server Provisioning Variables
 #--------------------------------------------------------------
-variable windows_name     { default = "labwindows" }
-variable windows_domain   { default = "fr.lan" }
-variable windows_network  { default = "VM Network" }
+variable windows_name    { default = "labwindows" }
+variable windows_domain  { default = "fr.lan" }
+variable windows_network { default = "VM Network" }

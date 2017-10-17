@@ -61,5 +61,6 @@ resource "vsphere_virtual_machine" "w2016" {
     inline = <<EOF
     ${data.template_file.init.rendered}
 EOF
-  }*/
+  }
+*/
 }
