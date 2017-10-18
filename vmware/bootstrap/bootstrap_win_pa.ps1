@@ -12,7 +12,7 @@
 #   - WORKDIR:    TMP directory for script
 #   - LOGFILE:    Execution Log for bootstrap on client hosts
 #--------------------------------------------------------------
-$PEINSTALL_FILE="pe_install.ps1"
+$PEINSTALL_FILE="c:\pe_install.ps1"
 $PEINSTALL_URL="https://labpuppet:8140/packages/current/install.ps1"
 
 #--------------------------------------------------------------
@@ -36,10 +36,19 @@ function post_install_pa {
 function install_pa {
   Write-Host "======================= Executing install_pa ======================="
 
-  [Net.ServicePointManager]::ServerCertificateValidationCallback = {$true} 
-  $webclient = New-Object system.net.webclient
-  $webclient.DownloadFile($PEINSTALL_URL,$PEINSTALL_FILE)
-  invoke-expression $PEINSTALL_FILE
+  :loop while ($true) {  
+    [Net.ServicePointManager]::ServerCertificateValidationCallback = {$true} 
+    $webclient = New-Object system.net.webclient
+    $webclient.DownloadFile($PEINSTALL_URL,$PEINSTALL_FILE)
+    if(Test-Path $PEINSTALL_FILE){
+      Write-Verbose "Starting Installation"
+      invoke-expression $PEINSTALL_FILE   
+      break loop 
+    }
+    else {
+      Write-Verbose "Waiting on PuppetMaster"
+    }
+  }
 }
 
 #--------------------------------------------------------------
@@ -47,13 +56,15 @@ function install_pa {
 #--------------------------------------------------------------
 function run_puppet {
   Write-Host "======================= Executing install_pa ======================="
-  puppet agent -t
+  #puppet agent -t
 }
 
 #--------------------------------------------------------------
 # Main Script
 #--------------------------------------------------------------
-pre_install_pa
+
+
 install_pa
-post_install_pa
-run_puppet
+
+}
+
