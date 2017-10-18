@@ -1,9 +1,8 @@
-#!/bin/bash
 #--------------------------------------------------------------
-# This scripts bootstraps a linux node by installing a puppet
-# agent.
+# This scripts bootstraps a windows node by installing a puppet
+# agent.  Original code taken from the Heat bootstrap.
 #--------------------------------------------------------------
-set -x
+# Set Verbose Mode
 
 #--------------------------------------------------------------
 # Global Variables:
@@ -13,42 +12,22 @@ set -x
 #   - WORKDIR:    TMP directory for script
 #   - LOGFILE:    Execution Log for bootstrap on client hosts
 #--------------------------------------------------------------
-PATH=$PATH:/opt/puppetlabs/bin
-HOME=/tmp
-PEINSTALL=/tmp/pe_install.sh
-WORKDIR="/tmp"
-LOGFILE="${WORKDIR}/bootstrap$$.log"
-linux_fqdn="lablinux.fr.lan"
-puppet_master="labpuppet.fr.lan"
-
-#--------------------------------------------------------------
-# Redirect all stdout and stderr to logfile,
-#--------------------------------------------------------------
-echo "======================= Executing setup_logging ======================="
-cd "${WORKDIR}"
-exec > "${LOGFILE}" 2>&1
-
-#--------------------------------------------------------------
-# Configure hostname and setup host file.
-#--------------------------------------------------------------
-function setup_host_name {
-  echo "======================= Executing setup_host_name ======================="
-  echo ${linux_fqdn} > /etc/hostname
-  hostname -F /etc/hostname
-}
+$PEINSTALL_FILE="c:\pe_install.ps1"
+$PEINSTALL_URL="https://labpuppet:8140/packages/current/install.ps1"
+$PECHECK_URL="http://labpuppet:80"
 
 #--------------------------------------------------------------
 # Peform pre-agent installation tasks.
 #--------------------------------------------------------------
 function pre_install_pa {
-  echo "======================= Executing pre_install_pa ======================="
+  Write-Host "======================= Executing pre_install_pa ======================="
 }
 
 #--------------------------------------------------------------
 # Peform post-agent installation tasks.
 #--------------------------------------------------------------
 function post_install_pa {
-  echo "======================= Executing pre_install_pa ======================="
+  Write-Host "======================= Executing pre_install_pa ======================="
 }
 
 #--------------------------------------------------------------
@@ -56,36 +35,37 @@ function post_install_pa {
 # agent.
 #--------------------------------------------------------------
 function install_pa {
-  echo "======================= Executing install_pa ======================="
+  Write-Host "======================= Executing install_pa ======================="
 
-  INTERVAL=1080   # Set interval (duration) in seconds.
-  SECONDS=0   # Reset $SECONDS; counting of seconds will (re)start from 0(-ish).
-
-  cd /tmp
-
-  while (( $SECONDS < $INTERVAL )); do    # Loop until interval has elapsed.
-    curl -k https://${master_fqdn}:8140/packages/current/install.bash -o "${PEINSTALL}" && break
-    sleep 30
-  done
-  chmod +x "${PEINSTALL}"
-  "${PEINSTALL}"
+ 
+	:loop while ($true) {
+	
+	
+		[Net.ServicePointManager]::ServerCertificateValidationCallback = {$true} 
+		$webclient = New-Object system.net.webclient
+		$webclient.DownloadFile($PEINSTALL_URL,$PEINSTALL_FILE)
+		if (Test-Path $PEINSTALL_FILE) {
+			invoke-expression $PEINSTALL_FILE
+			Write-Verbose "Installation Complete."
+			break loop
+		}
+		else {
+			Write-Verbose "Waiting...."
+			sleep 30
+		}
+	}
 }
 
 #--------------------------------------------------------------
 # Initiate Puppet Run.
 #--------------------------------------------------------------
 function run_puppet {
-  echo "======================= Executing install_pa ======================="
-  cd /
-  puppet agent -t
+  Write-Host "======================= Executing install_pa ======================="
+  #puppet agent -t
 }
 
 #--------------------------------------------------------------
 # Main Script
 #--------------------------------------------------------------
-setup_host_name
-pre_install_pa
+
 install_pa
-post_install_pa
-run_puppet
-exit 0
