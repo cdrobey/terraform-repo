@@ -47,6 +47,7 @@ function install_pa {
     }
     else {
       Write-Verbose "Waiting on PuppetMaster"
+	  sleep 30
     }
   }
 }
@@ -63,4 +64,3 @@ function run_puppet {
 # Main Script
 #--------------------------------------------------------------
 install_pa
-
