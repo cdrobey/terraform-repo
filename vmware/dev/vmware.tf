@@ -68,4 +68,6 @@ module "windows01" {
   network       = "${var.network0}"
   master_name   = "${var.puppet_master_name}"
   master_domain = "${var.puppet_master_domain}"
+  user_name     = "${var.windows_user_name}"
+  password      = "${var.windows_password}"
 }

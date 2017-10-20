@@ -5,6 +5,8 @@ variable "vsphere_user_name" {}
 variable "vsphere_password"  {}
 variable "vsphere_server"    {}
 variable "vsphere_sshkey"    {}
+variable "windows_user_name" {}
+variable "windows_password"  {}
 
 #--------------------------------------------------------------
 # Site Variables
