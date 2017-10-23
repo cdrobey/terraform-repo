@@ -18,18 +18,9 @@ variable "time_zone"     {}
 variable "user_name"     {}
 variable "password"      {}
 
-
 #--------------------------------------------------------------
 # Resources: Build win Configuration
 #--------------------------------------------------------------
-data "template_file" "init" {
-    template = "${file("../bootstrap/bootstrap_win_pa.tpl")}"
-    vars {
-      master_name = "${var.master_name}"
-      master_fqdn = "${var.master_name}.${var.master_domain}"
-    }
-}
-
 resource "vsphere_virtual_machine" "w2016" {
   datacenter    = "${var.datacenter}"
   name          = "${var.name}.${var.domain}"
@@ -50,15 +41,25 @@ resource "vsphere_virtual_machine" "w2016" {
     datastore = "${var.datastore}"
   }
 
-  connection {
-    type     = "winrm"
-    user     = "${var.user_name}"
-    password = "${var.password}"
+  provisioner "file" {
+    source      = "${path.module}/bootstrap/"
+    destination = "C:\\Temp"
+    connection  = {
+      type        = "winrm"
+      user        = "${var.user_name}"
+      password    = "${var.password}"
+    }
   }
 
   provisioner "remote-exec" {
-    inline = <<EOF
-    ${data.template_file.init.rendered}
-EOF
+    connection = {
+      type        = "winrm"
+      user        = "${var.user_name}"
+      password    = "${var.password}"
+    }
+    inline = [
+      "powershell.exe Set-ExecutionPolicy RemoteSigned -force",
+      "powershell.exe -version 4 -ExecutionPolicy Bypass -File C:\\Temp\\bootstrap_win_pa.ps1"
+    ]
   }
 }

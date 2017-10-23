@@ -1,3 +1,4 @@
+<powershell>
 #--------------------------------------------------------------
 # This scripts bootstraps a windows node by installing a puppet
 # agent.  Original code taken from the Heat bootstrap.
@@ -12,8 +13,18 @@
 #   - WORKDIR:    TMP directory for script
 #   - LOGFILE:    Execution Log for bootstrap on client hosts
 #--------------------------------------------------------------
+$$WORKINGDIR="c:\temp"
+$$LOGFILE="c:\temp\terraform.txt"
 $$PEINSTALL_FILE="c:\pe_install.ps1"
 $$PEINSTALL_URL="https://labpuppet:8140/packages/current/install.ps1"
+
+
+#--------------------------------------------------------------
+# Redirect all stdout and stderr to logfile,
+#--------------------------------------------------------------
+Write-Host "======================= Executing setup_logging ======================="
+Start-Transcript -Path "$$LOGFILE" -NoClobber
+
 
 #--------------------------------------------------------------
 # Peform pre-agent installation tasks.
@@ -66,3 +77,6 @@ pre_install_pa
 install_pa
 post_install_pa
 run_puppet
+
+Start-Transcript
+</powershell>
