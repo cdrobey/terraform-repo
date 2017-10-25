@@ -36,6 +36,24 @@ module "puppet_master" {
 }
 
 #--------------------------------------------------------------
+# Module: Build Jenkins Server
+#--------------------------------------------------------------
+module "jenkins" {
+  source = "../modules/linux"
+
+  name          = "${var.jenkins_name}"
+  domain        = "${var.jenkins_domain}"
+  datacenter    = "${var.datacenter}"
+  datastore     = "${var.datastore0}"
+  dns_servers   = "${var.dns_servers}"   
+  dns_suffixes  = "${var.dns_suffixes}"   
+  time_zone     = "${var.time_zone}" 
+  network       = "${var.network0}"
+  master_name   = "${var.puppet_master_name}"
+  master_domain = "${var.puppet_master_domain}"
+}
+
+#--------------------------------------------------------------
 # Module: Build LINUX Server
 #--------------------------------------------------------------
 module "linux01" {

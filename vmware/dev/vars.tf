@@ -34,6 +34,13 @@ variable git_pub_key              { default = "~/.ssh/github.pub" }
 variable git_url                  { default = "https://github.com/cdrobey/puppet-repo" }
 
 #--------------------------------------------------------------
+# Jenkins Server Provisioning Variables
+#--------------------------------------------------------------
+variable jenkins_name     { default = "labjenkins" }
+variable jenkins_domain   { default = "fr.lan" }
+variable jenkins_network  { default = "VM Network" }
+
+#--------------------------------------------------------------
 # LINUX Server Provisioning Variables
 #--------------------------------------------------------------
 variable linux_name     { default = "lablinux" }
