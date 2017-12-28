@@ -24,7 +24,7 @@ LOGFILE="${WORKDIR}/bootstrap$$$$.log"
 # Redirect all stdout and stderr to logfile,
 #--------------------------------------------------------------
 echo "======================= Executing setup_logging ======================="
-cd "${WORKDIR}"
+cd "${WORKDIR}" || exit 1
 exec > "${LOGFILE}" 2>&1
 
 #--------------------------------------------------------------
@@ -51,9 +51,9 @@ function install_pa {
   INTERVAL=1800   # Set interval (duration) in seconds.
   SECONDS=0   # Reset $SECONDS; counting of seconds will (re)start from 0(-ish).
 
-  cd /tmp
+  cd /tmp || exit 1
 
-  while (( $SECONDS < $INTERVAL )); do    # Loop until interval has elapsed.
+  while (( SECONDS < INTERVAL )); do    # Loop until interval has elapsed.
     curl -k ${PEINSTALL_URL} -o "${PEINSTALL}" && break
     sleep 30
   done
@@ -66,7 +66,7 @@ function install_pa {
 #--------------------------------------------------------------
 function run_puppet {
   echo "======================= Executing install_pa ======================="
-  cd /
+  cd / || exit 1
   puppet agent -t
 }
 
@@ -77,4 +77,3 @@ pre_install_pa
 install_pa
 post_install_pa
 run_puppet
-exit 0
