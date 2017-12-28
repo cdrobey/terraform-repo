@@ -6,4 +6,6 @@ provider "vsphere" {
   password             = "${var.vsphere_password}"
   vsphere_server       = "${var.vsphere_server}"
   allow_unverified_ssl = true
+  version              = "~> 0.4.0"
+
 }

@@ -59,6 +59,9 @@ resource "vsphere_virtual_machine" "w2016" {
     }
     inline = [
       "powershell.exe Set-ExecutionPolicy RemoteSigned -force",
+      "echo ${var.pp_role} > C:\\Temp\\csr.txt",
+      "echo ${var.pp_application} >> C:\\Temp\\csr.txt",
+      "echo ${var.pp_environment} >> C:\\Temp\\csr.txt",
       "powershell.exe -version 4 -ExecutionPolicy Bypass -File C:\\Temp\\bootstrap_win_pa.ps1"
     ]
   }
