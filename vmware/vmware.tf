@@ -69,14 +69,14 @@ module "linux02" {
   network       = "${var.network0}"
   master_name   = "${var.puppet_master_name}"
   master_domain = "${var.puppet_master_domain}"
-}
+}*/
 #--------------------------------------------------------------
 # Module: Build Windows Server
 #--------------------------------------------------------------
 module "windows01" {
-  source = "../modules/windows"
+  source = "modules/windows"
 
-  name          = "${var.windows_name}"
+  name          = "${var.windows_name}01"
   domain        = "${var.windows_domain}"
   datacenter    = "${var.datacenter}"
   datastore     = "${var.datastore0}"
@@ -84,12 +84,10 @@ module "windows01" {
   dns_suffixes  = "${var.dns_suffixes}"   
   time_zone     = "${var.time_zone}" 
   network       = "${var.network0}"
-  master_name   = "${var.puppet_master_name}"
-  master_domain = "${var.puppet_master_domain}"
   user_name     = "${var.windows_user_name}"
   password      = "${var.windows_password}"
 }
-
+/*
 module "windows02" {
   source = "../modules/windows"
 

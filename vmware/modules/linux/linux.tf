@@ -54,7 +54,7 @@ resource "vsphere_virtual_machine" "linux" {
 
   provisioner "remote-exec" {
     inline = [
-      "cd /tmp && sh bootstrap.sh ${var.pp_role} ${var.pp_environment} ${var.pp_application}"
+      "cd /tmp && sh bootstrap.sh ${var.pp_role} ${var.pp_application} ${var.pp_environment}"
     ]
   }
 }

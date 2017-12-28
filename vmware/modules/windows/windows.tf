@@ -10,13 +10,14 @@ variable "domain"        {}
 variable "datacenter"    {}
 variable "datastore"     {}
 variable "network"       {}
-variable "master_name"   {}
-variable "master_domain" {}
 variable "dns_servers"   { type = "list" }
 variable "dns_suffixes"  { type = "list"}
 variable "time_zone"     {}
 variable "user_name"     {}
 variable "password"      {}
+variable "pp_role"        { default = "base"}
+variable "pp_application" { default = "windows"}
+variable "pp_environment" { default = "production"}
 
 #--------------------------------------------------------------
 # Resources: Build win Configuration
@@ -42,8 +43,8 @@ resource "vsphere_virtual_machine" "w2016" {
   }
 
   provisioner "file" {
-    source      = "${path.module}/bootstrap/"
-    destination = "C:\\Temp"
+    source      = "${path.module}/bootstrap/bootstrap_win_pa.ps1"
+    destination = "C:\\Temp\bootstrap_win_pa.ps1"
     connection  = {
       type        = "winrm"
       user        = "${var.user_name}"
@@ -59,10 +60,7 @@ resource "vsphere_virtual_machine" "w2016" {
     }
     inline = [
       "powershell.exe Set-ExecutionPolicy RemoteSigned -force",
-      "echo ${var.pp_role} > C:\\Temp\\csr.txt",
-      "echo ${var.pp_application} >> C:\\Temp\\csr.txt",
-      "echo ${var.pp_environment} >> C:\\Temp\\csr.txt",
-      "powershell.exe -version 4 -ExecutionPolicy Bypass -File C:\\Temp\\bootstrap_win_pa.ps1"
+      "powershell.exe -version 4 -ExecutionPolicy Bypass -File C:\\Temp\\bootstrap_win_pa.ps1 ${var.pp_role} ${var.pp_environment} ${var.pp_environment}"
     ]
   }
 }

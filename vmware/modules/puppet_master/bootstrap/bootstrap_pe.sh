@@ -11,15 +11,14 @@ set -x
 #   - HOME:       Home Directory of script account
 #   - WORKDIR:    TMP directory for script
 #   - LOGFILE:    Execution Log for bootstrap on client hosts
-#   - PFILE:      Puppet install file
-#   - PURL:       URL to retrieve Puppet install file
 #--------------------------------------------------------------
-PATH=$PATH:/opt/puppetlabs/bin
+PATH=${PATH}:/opt/puppetlabs/bin
 HOME=/root
 WORKDIR="/tmp"
 LOGFILE="${WORKDIR}/bootstrap$$.log"
-PFILE="puppet-enterprise-2017.3.0-el-7-x86_64"
-PURL="https://s3.amazonaws.com/pe-builds/released/2017.3.0/${PFILE}.tar.gz"
+PVER=2017.3.2
+PFILE="puppet-enterprise-${PVER}-el-7-x86_64.tar.gz"
+PURL="https://s3.amazonaws.com/pe-builds/released/${PVER}/${PFILE}"
 
 #--------------------------------------------------------------
 # Redirect all stdout and stderr to logfile,
@@ -27,15 +26,6 @@ PURL="https://s3.amazonaws.com/pe-builds/released/2017.3.0/${PFILE}.tar.gz"
 echo "======================= Executing setup_logging ======================="
 cd "${WORKDIR}"
 exec > "${LOGFILE}" 2>&1
-
-#--------------------------------------------------------------
-# Configure hostname and setup host file.
-#--------------------------------------------------------------
-function setup_host_name {
-  echo "======================= Executing setup_host_name ======================="
-  echo ${master_fqdn} > /etc/hostname
-  hostname -F /etc/hostname
-}
 
 #--------------------------------------------------------------
 # Initiate Puppet Run.
@@ -54,15 +44,14 @@ function pre_install_pe {
   echo "======================= Executing pre_install_pa ======================="
 
   yum -y install wget pciutils gem
-  wget $PURL
-  tar -xzf $PFILE.tar.gz -C /tmp/
+  wget ${PURL}
+  tar -xzf ${PFILE} -C /tmp/
   mkdir -p /etc/puppetlabs/puppet/
   echo "*" > /etc/puppetlabs/puppet/autosign.conf
   cat > /etc/puppetlabs/puppet/csr_attributes.yaml << YAML
 extension_requests:
     pp_role:  puppetmaster
 YAML
-
 }
 
 #--------------------------------------------------------------
@@ -72,10 +61,20 @@ function post_install_pe {
   echo "======================= Executing post_install_pe ======================="
 
   mkdir -p /etc/puppetlabs/puppetserver/ssh
-  echo ${git_pri_key} > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa
+
+  cat > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa << FILE
+${git_pri_key}
+FILE
   chmod 400 /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa
-  echo ${git_pub_key} > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
+  chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa
+
+
+  cat > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub << FILE
+${git_pub_key}
+FILE
   chmod 400 /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
+  chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
+
 
   puppet module install pltraining-rbac
   cat > /tmp/user.pp << FILE
@@ -87,7 +86,6 @@ rbac_user { 'deploy':
     password     => 'puppetlabs',
     roles        => [ 'Code Deployers' ],
 }
-
 FILE
   puppet apply /tmp/user.pp
   rm /tmp/user.pp
@@ -97,11 +95,16 @@ puppetlabs
 TEXT
 
   puppet-code -t ${HOME}/.puppetlabs/token deploy production -w
+  puppet agent -t
 
-
-  puppet module install WhatsARanjit-node_manager --version 0.4.2
+  #--------------------------------------------------------------
+  # Configure and apply the node manager module to complete
+  # install of puppet master role.  Assuming you have role
+  # role::master defined in your code manager repo.
+  #--------------------------------------------------------------
+  puppet module install WhatsARanjit-node_manager --version 0.5.0
   puppet apply --exec "include profile::master::node_manager"
-  puppet agent --onetime --no-daemonize --color=false --verbose
+#  puppet agent --onetime --no-daemonize --color=false --verbose
 }
 #--------------------------------------------------------------
 # Peform master installation tasks.
@@ -116,7 +119,7 @@ function install_pe {
 "puppet_enterprise::profile::master::r10k_remote": "${git_url}"
 "puppet_enterprise::profile::master::r10k_private_key": "/etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa"
 FILE
-  /tmp/${PFILE}/puppet-enterprise-installer -c /tmp/pe.conf
+  /tmp/puppet-enterprise-${PVER}-el-7-x86_64/puppet-enterprise-installer -c /tmp/pe.conf
   chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-*
 }
 
