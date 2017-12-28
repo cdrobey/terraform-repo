@@ -15,6 +15,8 @@ variable "time_zone"    {}
 variable "git_pri_key"  {}
 variable "git_pub_key"  {}
 variable "git_url"      {}
+variable "eyaml_pri_key"  {}
+variable "eyaml_pub_key"  {}
 
 #--------------------------------------------------------------
 # Resources: Build Puppet Master Configuration
@@ -22,11 +24,13 @@ variable "git_url"      {}
 data "template_file" "init" {
     template = "${file("modules/puppet_master/bootstrap/bootstrap_pe.tpl")}"
     vars {
-        master_name = "${var.name}"
-        master_fqdn = "${var.name}.${var.domain}"
-        git_pri_key = "${file("${var.git_pri_key}")}"
-        git_pub_key = "${file("${var.git_pub_key}")}"
-        git_url     = "${var.git_url}"
+        master_name   = "${var.name}"
+        master_fqdn   = "${var.name}.${var.domain}"
+        git_pri_key   = "${file("${var.git_pri_key}")}"
+        git_pub_key   = "${file("${var.git_pub_key}")}"
+        git_url       = "${var.git_url}"
+        eyaml_pri_key = "${file("${var.eyaml_pri_key}")}"
+        eyaml_pub_key = "${file("${var.eyaml_pub_key}")}"    
     }
 }
 

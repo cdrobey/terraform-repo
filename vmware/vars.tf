@@ -29,6 +29,8 @@ variable puppet_master_domain     { default = "fr.lan" }
 variable git_pri_key              { default = "~/.ssh/github" }
 variable git_pub_key              { default = "~/.ssh/github.pub" }
 variable git_url                  { default = "https://github.com/cdrobey/puppet-repo" }
+variable eyaml_pri_key            { default = "~/.eyaml/private_key.pkcs7.pem" }
+variable eyaml_pub_key            { default = "~/.eyaml/public_key.pkcs7.pem" }
 
 #--------------------------------------------------------------
 # Jenkins Server Provisioning Variables
