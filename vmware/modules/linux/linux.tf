@@ -5,16 +5,17 @@
 #--------------------------------------------------------------
 # Linux Variables
 #--------------------------------------------------------------
-variable "name"          {}
-variable "domain"        {}
-variable "datacenter"    {}
-variable "datastore"     {}
-variable "network"       {}
-variable "master_name"   {}
-variable "master_domain" {}
-variable "dns_servers"   { type = "list" }
-variable "dns_suffixes"  { type = "list"}
-variable "time_zone"     {}
+variable "name"           {}
+variable "domain"         {}
+variable "datacenter"     {}
+variable "datastore"      {}
+variable "network"        {}
+variable "dns_servers"    { type = "list" }
+variable "dns_suffixes"   { type = "list"}
+variable "time_zone"      {}
+variable "pp_role"        { default = "base"}
+variable "pp_application" { default = "linux"}
+variable "pp_environment" { default = "production"}
 
 #--------------------------------------------------------------
 # Resources: Build Linux Configuration
@@ -47,17 +48,13 @@ resource "vsphere_virtual_machine" "linux" {
   }
 
   provisioner "file" {
-    source      = "${path.module}/bootstrap/"
-    destination = "C:\\Temp"
+    source      = "${path.module}/bootstrap/bootstrap_linux_pa.sh"
+    destination = "/tmp/bootstrap.sh"
   }
 
   provisioner "remote-exec" {
     inline = [
-      "powershell.exe Set-ExecutionPolicy RemoteSigned -force",
-      "echo ${var.pp_role} > C:\\Temp\\csr.txt",
-      "echo ${var.pp_application} >> C:\\Temp\\csr.txt",
-      "echo ${var.pp_environment} >> C:\\Temp\\csr.txt",
-      "powershell.exe -version 4 -ExecutionPolicy Bypass -File C:\\Temp\\bootstrap_win_pa.ps1"
+      "cd /tmp && sh bootstrap.sh ${var.pp_role} ${var.pp_environment} ${var.pp_application}"
     ]
   }
 }

@@ -14,6 +14,9 @@
 #--------------------------------------------------------------
 $PEINSTALL_FILE="c:\pe_install.ps1"
 $PEINSTALL_URL="https://labpuppet:8140/packages/current/install.ps1"
+$PP_ROLE=$args[1]
+$PP_ENVIRONMENT=$args[2]
+$PP_APPLICATION=$args[3]
 
 #--------------------------------------------------------------
 # Peform pre-agent installation tasks.

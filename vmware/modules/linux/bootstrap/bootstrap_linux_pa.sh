@@ -15,10 +15,13 @@ set -x
 #--------------------------------------------------------------
 PATH=$PATH:/opt/puppetlabs/bin
 HOME=/tmp
-PEINSTALL=/tmp/pe_install.sh
+PEINSTALL_FILE=/tmp/pe_install.sh
 PEINSTALL_URL="https://labpuppet:8140/packages/current/install.bash"
 WORKDIR="/tmp"
-LOGFILE="${WORKDIR}/bootstrap$$$$.log"
+LOGFILE="${WORKDIR}/bootstrap$$.log"
+PP_ROLE=$1
+PP_APPLICATION=$2
+PP_ENVIRONMENT=$3
 
 #--------------------------------------------------------------
 # Redirect all stdout and stderr to logfile,
@@ -32,6 +35,15 @@ exec > "${LOGFILE}" 2>&1
 #--------------------------------------------------------------
 function pre_install_pa {
   echo "======================= Executing pre_install_pa ======================="
+  if [ ! -d /etc/puppetlabs/puppet ]; then
+    mkdir -p /etc/puppetlabs/puppet
+  fi
+  cat > /etc/puppetlabs/puppet/csr_attributes.yaml << YAML
+extension_requests:
+    pp_role: ${PP_ROLE}
+    pp_application: ${PP_APPLICATION}
+    pp_environment: ${PP_ENVIRONMENT}
+YAML
 }
 
 #--------------------------------------------------------------
@@ -39,6 +51,7 @@ function pre_install_pa {
 #--------------------------------------------------------------
 function post_install_pa {
   echo "======================= Executing pre_install_pa ======================="
+
 }
 
 #--------------------------------------------------------------
@@ -54,11 +67,11 @@ function install_pa {
   cd /tmp || exit 1
 
   while (( SECONDS < INTERVAL )); do    # Loop until interval has elapsed.
-    curl -k ${PEINSTALL_URL} -o "${PEINSTALL}" && break
+    curl -k ${PEINSTALL_URL} -o "${PEINSTALL_FILE}" && break
     sleep 30
   done
-  chmod +x "${PEINSTALL}"
-  "${PEINSTALL}"
+  chmod +x "${PEINSTALL_FILE}"
+  "${PEINSTALL_FILE}"
 }
 
 #--------------------------------------------------------------
@@ -77,3 +90,4 @@ pre_install_pa
 install_pa
 post_install_pa
 run_puppet
+exit 0
