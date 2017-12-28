@@ -44,7 +44,7 @@ resource "vsphere_virtual_machine" "w2016" {
 
   provisioner "file" {
     source      = "${path.module}/bootstrap/bootstrap_win_pa.ps1"
-    destination = "C:\\Temp\bootstrap_win_pa.ps1"
+    destination = "C:\\bootstrap_win_pa.ps1"
     connection  = {
       type        = "winrm"
       user        = "${var.user_name}"
@@ -60,7 +60,7 @@ resource "vsphere_virtual_machine" "w2016" {
     }
     inline = [
       "powershell.exe Set-ExecutionPolicy RemoteSigned -force",
-      "powershell.exe -version 4 -ExecutionPolicy Bypass -File C:\\Temp\\bootstrap_win_pa.ps1 ${var.pp_role} ${var.pp_environment} ${var.pp_environment}"
+      "powershell.exe -version 4 -ExecutionPolicy Bypass -File C:\\bootstrap_win_pa.ps1 ${var.pp_role} ${var.pp_application} ${var.pp_environment}"
     ]
   }
 }

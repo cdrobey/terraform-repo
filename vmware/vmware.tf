@@ -55,21 +55,22 @@ module "linux01" {
   time_zone     = "${var.time_zone}" 
   network       = "${var.network0}"
 }
-/*
-module "linux02" {
-  source = "../modules/linux"
 
-  name          = "${var.linux_name}02"
-  domain        = "${var.linux_domain}"
-  datacenter    = "${var.datacenter}"
-  datastore     = "${var.datastore0}"
-  dns_servers   = "${var.dns_servers}"   
-  dns_suffixes  = "${var.dns_suffixes}"   
-  time_zone     = "${var.time_zone}" 
-  network       = "${var.network0}"
-  master_name   = "${var.puppet_master_name}"
-  master_domain = "${var.puppet_master_domain}"
-}*/
+module "linux02" {
+  source = "modules/linux"
+
+  name           = "${var.linux_name}02"
+  domain         = "${var.linux_domain}"
+  datacenter     = "${var.datacenter}"
+  datastore      = "${var.datastore0}"
+  dns_servers    = "${var.dns_servers}"   
+  dns_suffixes   = "${var.dns_suffixes}"   
+  time_zone      = "${var.time_zone}" 
+  network        = "${var.network0}"
+  pp_role        = "apache"
+  pp_application = "webserver"
+  pp_environment = "production"
+}
 #--------------------------------------------------------------
 # Module: Build Windows Server
 #--------------------------------------------------------------
@@ -87,11 +88,10 @@ module "windows01" {
   user_name     = "${var.windows_user_name}"
   password      = "${var.windows_password}"
 }
-/*
 module "windows02" {
-  source = "../modules/windows"
+  source = "modules/windows"
 
-  name          = "${var.windows_name}d01"
+  name          = "${var.windows_name}02"
   domain        = "${var.windows_domain}"
   datacenter    = "${var.datacenter}"
   datastore     = "${var.datastore0}"
@@ -99,9 +99,9 @@ module "windows02" {
   dns_suffixes  = "${var.dns_suffixes}"   
   time_zone     = "${var.time_zone}" 
   network       = "${var.network0}"
-  master_name   = "${var.puppet_master_name}"
-  master_domain = "${var.puppet_master_domain}"
   user_name     = "${var.windows_user_name}"
   password      = "${var.windows_password}"
+  pp_role        = "iis"
+  pp_application = "webserver"
+  pp_environment = "production"
 }
-*/
