@@ -19,12 +19,13 @@ LOGFILE="${WORKDIR}/bootstrap$$.log"
 PVER=2017.3.2
 PFILE="puppet-enterprise-${PVER}-el-7-x86_64.tar.gz"
 PURL="https://s3.amazonaws.com/pe-builds/released/${PVER}/${PFILE}"
+GITURL=""
 
 #--------------------------------------------------------------
 # Redirect all stdout and stderr to logfile,
 #--------------------------------------------------------------
 echo "======================= Executing setup_logging ======================="
-cd "${WORKDIR}"
+cd "${WORKDIR}" || exit 1
 exec > "${LOGFILE}" 2>&1
 
 #--------------------------------------------------------------
@@ -33,7 +34,7 @@ exec > "${LOGFILE}" 2>&1
 function run_puppet {
   echo "======================= Executing run_puppet ======================="
 
-  cd /
+  cd / || exit 1
   puppet agent -t
 }
 
@@ -62,18 +63,18 @@ function post_install_pe {
 
   mkdir -p /etc/puppetlabs/puppetserver/ssh
 
-  cat > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa << FILE
-${git_pri_key}
-FILE
-  chmod 400 /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa
-  chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa
+ # cat > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa << FILE
+#${git_pri_key}
+#FILE
+ # chmod 400 /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa
+  #chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa
 
 
-  cat > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub << FILE
-${git_pub_key}
-FILE
-  chmod 400 /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
-  chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
+  #cat > /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub << FILE
+#${git_pub_key}
+#FILE
+ # chmod 400 /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
+  #chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
 
 
   puppet module install pltraining-rbac
@@ -116,7 +117,7 @@ function install_pe {
 "console_admin_password": "puppetlabs"
 "puppet_enterprise::puppet_master_host": "%{::trusted.certname}"
 "puppet_enterprise::profile::master::code_manager_auto_configure": true
-"puppet_enterprise::profile::master::r10k_remote": "${git_url}"
+"puppet_enterprise::profile::master::r10k_remote": "${GITURL}"
 "puppet_enterprise::profile::master::r10k_private_key": "/etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa"
 FILE
   /tmp/puppet-enterprise-${PVER}-el-7-x86_64/puppet-enterprise-installer -c /tmp/pe.conf
