@@ -63,4 +63,7 @@ function run_puppet {
 #--------------------------------------------------------------
 # Main Script
 #--------------------------------------------------------------
+pre_install_pa
 install_pa
+post_install_pa
+run_puppet

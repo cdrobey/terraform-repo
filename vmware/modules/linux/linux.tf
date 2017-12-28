@@ -19,16 +19,6 @@ variable "time_zone"     {}
 #--------------------------------------------------------------
 # Resources: Build Linux Configuration
 #--------------------------------------------------------------
-data "template_file" "init" {
-    template = "${file("../bootstrap/bootstrap_linux_pa.tpl")}"
-    vars {
-        linux_name  = "${var.name}"
-        linux_fqdn  = "${var.name}.${var.domain}"
-        master_name = "${var.master_name}"
-        master_fqdn = "${var.master_name}.${var.master_domain}"
-    }
-}
-
 resource "vsphere_virtual_machine" "linux" {
   datacenter    = "${var.datacenter}"
   name          = "${var.name}.${var.domain}"
@@ -56,9 +46,18 @@ resource "vsphere_virtual_machine" "linux" {
     private_key = "${file("~/.ssh/fr")}"
   }
 
+  provisioner "file" {
+    source      = "${path.module}/bootstrap/"
+    destination = "C:\\Temp"
+  }
+
   provisioner "remote-exec" {
-    inline = <<EOF
-    ${data.template_file.init.rendered}
-EOF
+    inline = [
+      "powershell.exe Set-ExecutionPolicy RemoteSigned -force",
+      "echo ${var.pp_role} > C:\\Temp\\csr.txt",
+      "echo ${var.pp_application} >> C:\\Temp\\csr.txt",
+      "echo ${var.pp_environment} >> C:\\Temp\\csr.txt",
+      "powershell.exe -version 4 -ExecutionPolicy Bypass -File C:\\Temp\\bootstrap_win_pa.ps1"
+    ]
   }
 }
