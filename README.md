@@ -81,9 +81,9 @@ variable windows_domain  { default = "fr.lan" }
 
 To build the environment requires you to perform a set of terraform commands.  Terraform downloads the needed providers and begins the build on the environment.  Terraform recently released a new vmware provider with signficant changes.  I attempted to convert the code, but run into a bug.  To initiate the start of the environmet use the following commands:
 
-'''console
+```console
 terraform init
 terraform get
 terraform plan
 terraform apply
-'''
+```
