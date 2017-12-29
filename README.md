@@ -48,7 +48,6 @@ vsphere_user_name = "viuser@domain.local"
 vsphere_password  = "Password!23"
 vsphere_server    = "vcsa.lab.internal"
 vsphere_sshkey    = "~/.ssh/lab_id_rsa"
-
 windows_user_name = "winadminuser"
 windows_password  = "Password123"
 '''
@@ -82,7 +81,7 @@ variable windows_domain  { default = "fr.lan" }
 
 To build the environment requires you to perform a set of terraform commands.  Terraform downloads the needed providers and begins the build on the environment.  Terraform recently released a new vmware provider with signficant changes.  I attempted to convert the code, but run into a bug.
 
-To initiate the start of the environmet use the following commands in "../vmware":
+To initiate the start of the environmet use the following commands:
 
 '''console
 terraform init
