@@ -41,7 +41,7 @@ The script supports deploying six VM with the demonstration environment.  A Pupp
 
 ## Configuration
 
-This section describes the location of the hidden provider files with secured credential for the vmware provider.  The ***vmware/terraform.tfvars*** file requires details of the vcenter environment and needs windows credentials to connect to the Windows generated VMs using WINRM.  The terraform WINRM interfaces uses clear-text passwords for authentication.  The path to a private ssh key allows the terraform installation of the Puppet Master, Jenkins, and Puppet Agent installation.
+This section describes the location of the hidden provider files with secured credential for the vmware provider.  The **vmware/terraform.tfvars** file requires details of the vcenter environment and needs windows credentials to connect to the Windows generated VMs using WINRM.  The terraform WINRM interfaces uses clear-text passwords for authentication.  The path to a private ssh key allows the terraform installation of the Puppet Master, Jenkins, and Puppet Agent installation.
 
 '''console
 vsphere_user_name = "viuser@domain.local"
@@ -53,7 +53,7 @@ windows_user_name = "winadminuser"
 windows_password  = "Password123"
 '''
 
-This section describes the site variables used to define the overall configuration for the demonstration environment.  The configuration details are placed in the file ***var.tf***.  The specification includes the details of target vmware environment needed to lay-down the VMs for the demonstration enivornment.
+This section describes the site variables used to define the overall configuration for the demonstration environment.  The configuration details are placed in the file **var.tf**.  The specification includes the details of target vmware environment needed to lay-down the VMs for the demonstration enivornment.
 
 ```console
 variable datacenter      { default = "Datacenter" }
@@ -69,9 +69,9 @@ variable time_zone       { default = "MST7MDT" }
 
 This section defines the Puppet Master configuration environment.  The Puppet Environment builds a monolithic master using a series of Puppet Enterprise features.  The puppet_master bootstrap script configures code manager against an assigned puppet code repository.
 
-As the greenfield VMs install their agent and connect to the Puppet Master, the code repository provides the baseline configuration policy.  Classification of the client VMs uses both the PE external node classifier, and the ***site.pp***.  All VMs integrate trusted facts, pp_role, pp_application, and pp_environment, to instantiate an inital environment.  The dynamic classification allows changes to the greenfield VMs at time of installation.
+As the greenfield VMs install their agent and connect to the Puppet Master, the code repository provides the baseline configuration policy.  Classification of the client VMs uses both the PE external node classifier, and the **site.pp**.  All VMs integrate trusted facts, pp_role, pp_application, and pp_environment, to instantiate an inital environment.  The dynamic classification allows changes to the greenfield VMs at time of installation.
 
-Additionally, the Puppet Master bootstrap configures hiera eyaml for encryption of data.  During demonstration eyaml allows accounts to be created on target VMs without using cleartext passwords.  Prior to starting the enviroment execution, you must create the keys needs.  After gem installation on your local workstation, ***gem install hiera-eyaml***, the encryption certificates used for hiera must be created using the following:  ***eyaml createkeys***.
+Additionally, the Puppet Master bootstrap configures hiera eyaml for encryption of data.  During demonstration eyaml allows accounts to be created on target VMs without using cleartext passwords.  Prior to starting the enviroment execution, you must create the keys needs.  After gem installation on your local workstation, **gem install hiera-eyaml**, the encryption certificates used for hiera must be created using the following:  **eyaml createkeys**.
 
 '''console
 variable puppet_master_name       { default = "labpuppet" }
