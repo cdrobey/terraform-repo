@@ -43,7 +43,7 @@ The script supports deploying six VM with the demonstration environment.  A Pupp
 
 This section describes the location of the hidden provider files with secured credential for the vmware provider.  The **vmware/terraform.tfvars** file requires details of the vcenter environment and needs windows credentials to connect to the Windows generated VMs using WINRM.  The terraform WINRM interfaces uses clear-text passwords for authentication.  The path to a private ssh key allows the terraform installation of the Puppet Master, Jenkins, and Puppet Agent installation.
 
-'''
+'''console
 vsphere_user_name = "viuser@domain.local"
 vsphere_password  = "Password!23"
 vsphere_server    = "vcsa.lab.internal"
@@ -79,9 +79,7 @@ variable windows_domain  { default = "fr.lan" }
 
 ## Execution
 
-To build the environment requires you to perform a set of terraform commands.  Terraform downloads the needed providers and begins the build on the environment.  Terraform recently released a new vmware provider with signficant changes.  I attempted to convert the code, but run into a bug.
-
-To initiate the start of the environmet use the following commands:
+To build the environment requires you to perform a set of terraform commands.  Terraform downloads the needed providers and begins the build on the environment.  Terraform recently released a new vmware provider with signficant changes.  I attempted to convert the code, but run into a bug.  To initiate the start of the environmet use the following commands:
 
 '''console
 terraform init
