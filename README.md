@@ -6,18 +6,14 @@
 * [Changelog](#changelog)
 * [Requirements](#requirements)
 * [Supported Deployments](#supported-deployments)
-* [Scripts](#scripts)
 * [Configuration](#configuration)
-* [Logging](#logging)
-* [Verification](#verification)
-* [Acknowledgement](#acknowledgement)
+* [Execution](#execution)
 
 ## Description
 
 This repository leverages Terraform and Puppet Enterprise to build a platform for customer demostrations.  I use the Terraform code to build out a set of VMs that setup a Puppet Console and Jenkins Servers.  The servers utilize a [puppet code repository] (https://github.com/cdrobey/puppet-repo) that support a set of baseline and application configurations for Puppet.
 
 The scripting requires a set of VM templates for Centos and Windows 2016 to perform a deployment.  THe initial environment supports the Terraform vsphere provider.  The provider requires an ESX environment managed by vCenter.  I use a nested VM environment on a single server for deployment built using a [customized git repository] (https://github.com/cdrobey/nestedlab-repo).
-
 
 ## Changelog
 
