@@ -43,14 +43,14 @@ The script supports deploying six VM with the demonstration environment.  A Pupp
 
 This section describes the location of the hidden provider files with secured credential for the vmware provider.  The **vmware/terraform.tfvars** file requires details of the vcenter environment and needs windows credentials to connect to the Windows generated VMs using WINRM.  The terraform WINRM interfaces uses clear-text passwords for authentication.  The path to a private ssh key allows the terraform installation of the Puppet Master, Jenkins, and Puppet Agent installation.
 
-'''console
+```console
 vsphere_user_name = "viuser@domain.local"
 vsphere_password  = "Password!23"
 vsphere_server    = "vcsa.lab.internal"
 vsphere_sshkey    = "~/.ssh/lab_id_rsa"
 windows_user_name = "winadminuser"
 windows_password  = "Password123"
-'''
+```
 
 This section describes the site variables used to define the overall configuration for the demonstration environment.  The configuration details are placed in the file **var.tf**.  The specification includes the details of target vmware environment needed to lay-down the VMs for the demonstration enivornment.
 
