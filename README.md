@@ -67,13 +67,6 @@ variable dns_suffixes    { default = [ "fr.lan"] }
 variable time_zone       { default = "MST7MDT" }
 ```
 
-This section defines the Puppet Master configuration environment.  The Puppet Environment builds a monolithic master using a series of Puppet Enterprise features.  The puppet_master bootstrap script configures code manager against an assigned puppet code repository.
-
-'''console
-'''
-
-This section describes the resources allocated to Jenkins server and client VMs. Depending on the deployment type, you may need to increase the resources to support the quantity of OSs.  The hostname and domain are needed values for each VM.  The name becomes the FQDN becomes the register system name within vCenter.
-
 ```console
 variable jenkins_name     { default = "labjenkins" }
 variable jenkins_domain   { default = "fr.lan" }
