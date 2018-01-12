@@ -8,25 +8,25 @@
 module "puppet_master" {
   source = "modules/puppet_master"
 
-  name         = "${var.puppet_master_name}"
-  domain       = "${var.puppet_master_domain}"
-  datacenter   = "${var.datacenter}"
-  network      = "${var.network0}"
-  datastore    = "${var.datastore0}"
-  dns_servers  = "${var.dns_servers}"   
-  time_zone    = "${var.time_zone}"   
-  git_pri_key  = "${var.git_pri_key}"
-  git_pub_key  = "${var.git_pub_key}"
-  git_url      = "${var.git_url}"
-
+  name          = "${var.puppet_master_name}"
+  domain        = "${var.puppet_master_domain}"
+  datacenter    = "${var.datacenter}"
+  network       = "${var.network0}"
+  datastore     = "${var.datastore0}"
+  dns_servers   = "${var.dns_servers}"   
+  time_zone     = "${var.time_zone}"   
+  git_pri_key   = "${var.git_pri_key}"
+  git_pub_key   = "${var.git_pub_key}"
+  git_url       = "${var.git_url}"
+  eyaml_pri_key = "${var.eyaml_pri_key}"
+  eyaml_pub_key = "${var.eyaml_pub_key}"
 }
 
-/*
 #--------------------------------------------------------------
 # Module: Build Jenkins Server
 #--------------------------------------------------------------
 module "jenkins" {
-  source = "../modules/linux"
+  source = "modules/linux"
 
   name          = "${var.jenkins_name}"
   domain        = "${var.jenkins_domain}"
@@ -36,10 +36,11 @@ module "jenkins" {
   dns_suffixes  = "${var.dns_suffixes}"   
   time_zone     = "${var.time_zone}" 
   network       = "${var.network0}"
-  master_name   = "${var.puppet_master_name}"
-  master_domain = "${var.puppet_master_domain}"
+  pp_role        = "jenkins"
+  pp_application = "ci"
+  pp_environment = "production"
 }
-*/
+
 #--------------------------------------------------------------
 # Module: Build LINUX Server
 #--------------------------------------------------------------

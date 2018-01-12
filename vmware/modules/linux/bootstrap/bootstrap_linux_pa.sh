@@ -72,6 +72,11 @@ function install_pa {
   done
   chmod +x "${PEINSTALL_FILE}"
   "${PEINSTALL_FILE}"
+#--------------------------------------------------------------
+# Alternative approach for building custom faces from Nate
+# McCurdy.  Wait until next round of testing.
+#--------------------------------------------------------------
+#"${PEINSTALL_FILE} --puppet-service-ensure stopped extension_requests:pp_role=${PP_ROLE} extension_requests:pp_application=${PP_APPLICATION} extension_requests:pp_environment=${PP_ENVIRONMENT}"
 }
 
 #--------------------------------------------------------------

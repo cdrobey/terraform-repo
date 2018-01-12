@@ -5,16 +5,16 @@
 #--------------------------------------------------------------
 # Puppet Master Variables
 #--------------------------------------------------------------
-variable "name"         {}
-variable "domain"       {}
-variable "datacenter"   {}
-variable "network"      {}
-variable "datastore"    {}
-variable "dns_servers"  { type = "list" }
-variable "time_zone"    {}
-variable "git_pri_key"  {}
-variable "git_pub_key"  {}
-variable "git_url"      {}
+variable "name"           {}
+variable "domain"         {}
+variable "datacenter"     {}
+variable "network"        {}
+variable "datastore"      {}
+variable "dns_servers"    { type = "list" }
+variable "time_zone"      {}
+variable "git_pri_key"    {}
+variable "git_pub_key"    {}
+variable "git_url"        {}
 variable "eyaml_pri_key"  {}
 variable "eyaml_pub_key"  {}
 
@@ -30,7 +30,9 @@ data "template_file" "init" {
         git_pub_key   = "${file("${var.git_pub_key}")}"
         git_url       = "${var.git_url}"
         eyaml_pri_key = "${file("${var.eyaml_pri_key}")}"
-        eyaml_pub_key = "${file("${var.eyaml_pub_key}")}"    
+        eyaml_pub_key = "${file("${var.eyaml_pub_key}")}"
+
+
     }
 }
 

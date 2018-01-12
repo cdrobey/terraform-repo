@@ -13,7 +13,6 @@ variable "windows_password"  {}
 #--------------------------------------------------------------
 variable datacenter      { default = "Datacenter" }
 variable cluster         { default = "Cluster" }
-variable hosts           { default = [ "labvesx01.fr.lan", "labvesx02.fr.lan"] }
 variable network0_switch { default = "vSwitch0" }
 variable network0        { default = "VM Network"}
 variable datastore0      { default = "vdslabnasnfs01" }
