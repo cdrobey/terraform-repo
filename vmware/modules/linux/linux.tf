@@ -10,6 +10,8 @@ variable "domain"         {}
 variable "datacenter"     {}
 variable "datastore"      {}
 variable "network"        {}
+variable "cpu"            { default = 1 }
+variable "memory"         { default = 1024 }
 variable "dns_servers"    { type = "list" }
 variable "dns_suffixes"   { type = "list"}
 variable "time_zone"      {}
@@ -25,8 +27,8 @@ resource "vsphere_virtual_machine" "linux" {
   name          = "${var.name}.${var.domain}"
   hostname      = "${var.name}"
   domain        = "${var.domain}"
-  vcpu          = 1
-  memory        = 1024
+  vcpu          = "${var.cpu}"
+  memory        = "${var.memory}"
   dns_servers   = "${var.dns_servers}"
   dns_suffixes  = "${var.dns_suffixes}"
   time_zone     = "${var.time_zone}"  

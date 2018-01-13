@@ -28,17 +28,19 @@ module "puppet_master" {
 module "jenkins" {
   source = "modules/linux"
 
-  name          = "${var.jenkins_name}"
-  domain        = "${var.jenkins_domain}"
-  datacenter    = "${var.datacenter}"
-  datastore     = "${var.datastore0}"
-  dns_servers   = "${var.dns_servers}"   
-  dns_suffixes  = "${var.dns_suffixes}"   
-  time_zone     = "${var.time_zone}" 
-  network       = "${var.network0}"
-  pp_role        = "jenkins"
-  pp_application = "ci"
-  pp_environment = "production"
+  name            = "${var.jenkins_name}"
+  domain          = "${var.jenkins_domain}"
+  datacenter      = "${var.datacenter}"
+  datastore       = "${var.datastore0}"
+  dns_servers     = "${var.dns_servers}"   
+  dns_suffixes    = "${var.dns_suffixes}"   
+  time_zone       = "${var.time_zone}" 
+  network         = "${var.network0}"
+  cpu             = 1
+  memory          = 4096
+  pp_role         = "jenkins"
+  pp_application  = "ci"
+  pp_environment  = "production"
 }
 
 #--------------------------------------------------------------
