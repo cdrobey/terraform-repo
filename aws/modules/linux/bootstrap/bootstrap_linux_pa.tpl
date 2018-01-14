@@ -16,19 +16,19 @@ set -x
 PATH=$PATH:/opt/puppetlabs/bin
 HOME=/tmp
 PEINSTALL_FILE=/tmp/pe_install.sh
-PEINSTALL_URL="https://labpuppet:8140/packages/current/install.bash"
+PEINSTALL_URL="https://${puppet_name}:8140/packages/current/install.bash"
 WORKDIR="/tmp"
-LOGFILE="${WORKDIR}/bootstrap$$.log"
-PP_ROLE=$1
-PP_APPLICATION=$2
-PP_ENVIRONMENT=$3
+LOGFILE="$${WORKDIR}/bootstrap$$$$.log"
+PP_ROLE=${pp_role}
+PP_APPLICATION=${pp_application}
+PP_ENVIRONMENT=${pp_environment}
 
 #--------------------------------------------------------------
 # Redirect all stdout and stderr to logfile,
 #--------------------------------------------------------------
 echo "======================= Executing setup_logging ======================="
-cd "${WORKDIR}" || exit 1
-exec > "${LOGFILE}" 2>&1
+cd "$${WORKDIR}" || exit 1
+exec > "$${LOGFILE}" 2>&1
 
 #--------------------------------------------------------------
 # Peform pre-agent installation tasks.
@@ -40,9 +40,9 @@ function pre_install_pa {
   fi
   cat > /etc/puppetlabs/puppet/csr_attributes.yaml << YAML
 extension_requests:
-    pp_role: ${PP_ROLE}
-    pp_application: ${PP_APPLICATION}
-    pp_environment: ${PP_ENVIRONMENT}
+    pp_role: $${PP_ROLE}
+    pp_application: $${PP_APPLICATION}
+    pp_environment: $${PP_ENVIRONMENT}
 YAML
 }
 
@@ -51,7 +51,6 @@ YAML
 #--------------------------------------------------------------
 function post_install_pa {
   echo "======================= Executing pre_install_pa ======================="
-
 }
 
 #--------------------------------------------------------------
@@ -61,22 +60,19 @@ function post_install_pa {
 function install_pa {
   echo "======================= Executing install_pa ======================="
 
-  INTERVAL=1800   # Set interval (duration) in seconds.
-  SECONDS=0   # Reset $SECONDS; counting of seconds will (re)start from 0(-ish).
-
   cd /tmp || exit 1
 
-  while (( SECONDS < INTERVAL )); do    # Loop until interval has elapsed.
-    curl -k ${PEINSTALL_URL} -o "${PEINSTALL_FILE}" && break
+  while :; do
+    curl -k $${PEINSTALL_URL} -o "$${PEINSTALL_FILE}" && break
     sleep 30
   done
-  chmod +x "${PEINSTALL_FILE}"
-  "${PEINSTALL_FILE}"
+  chmod +x "$${PEINSTALL_FILE}"
+  "$${PEINSTALL_FILE}"
 #--------------------------------------------------------------
 # Alternative approach for building custom faces from Nate
 # McCurdy.  Wait until next round of testing.
 #--------------------------------------------------------------
-#"${PEINSTALL_FILE} --puppet-service-ensure stopped extension_requests:pp_role=${PP_ROLE} extension_requests:pp_application=${PP_APPLICATION} extension_requests:pp_environment=${PP_ENVIRONMENT}"
+#"$${PEINSTALL_FILE} --puppet-service-ensure stopped extension_requests:pp_role=$${PP_ROLE} extension_requests:pp_application=$${PP_APPLICATION} extension_requests:pp_environment=$${PP_ENVIRONMENT}"
 }
 
 #--------------------------------------------------------------

@@ -1,62 +1,29 @@
 #--------------------------------------------------------------
-# This module creates the linux server resources
+# Resources: Module Instance Build
 #--------------------------------------------------------------
+data "template_file" "init" {
+    template = "${file("modules/linux/bootstrap/bootstrap_linux_pa.tpl")}"
+    vars {
+        puppet_name     = "${var.puppet_name}"
+        pp_role         = "${var.pp_role}"
+        pp_application  = "${var.pp_application}"
+        pp_environment  = "${var.pp_environment}"
+    }
+}
 
-#--------------------------------------------------------------
-# Linux Variables
-#--------------------------------------------------------------
-variable "name"           {}
-variable "domain"         {}
-variable "datacenter"     {}
-variable "datastore"      {}
-variable "network"        {}
-variable "cpu"            { default = 1 }
-variable "memory"         { default = 1024 }
-variable "dns_servers"    { type = "list" }
-variable "dns_suffixes"   { type = "list"}
-variable "time_zone"      {}
-variable "pp_role"        { default = "base"}
-variable "pp_application" { default = "linux"}
-variable "pp_environment" { default = "production"}
+resource "aws_instance" "cdrobey-linux" {
 
-#--------------------------------------------------------------
-# Resources: Build Linux Configuration
-#--------------------------------------------------------------
-resource "vsphere_virtual_machine" "linux" {
-  datacenter    = "${var.datacenter}"
-  name          = "${var.name}.${var.domain}"
-  hostname      = "${var.name}"
-  domain        = "${var.domain}"
-  vcpu          = "${var.cpu}"
-  memory        = "${var.memory}"
-  dns_servers   = "${var.dns_servers}"
-  dns_suffixes  = "${var.dns_suffixes}"
-  time_zone     = "${var.time_zone}"  
+  ami                         = "${var.ami}"
+  instance_type               = "t2.micro"
+  associate_public_ip_address = "true"
+  subnet_id                   = "${var.subnet_id}"
+  key_name                    = "${var.sshkey}"
 
-  network_interface {
-    label = "${var.network}"
+  tags {
+    Name = "${var.name}"
+    department = "tse"
+    project = "Demo"
+    created_by = "chris.roberson"
   }
-
-  disk {
-    template  = "Template/TPL-CENTOS7"
-    type      = "thin"
-    datastore = "${var.datastore}"
-  }
-
-  connection {
-    type        = "ssh"
-    user        = "root"
-    private_key = "${file("~/.ssh/fr")}"
-  }
-
-  provisioner "file" {
-    source      = "${path.module}/bootstrap/bootstrap_linux_pa.sh"
-    destination = "/tmp/bootstrap.sh"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "cd /tmp && sh bootstrap.sh ${var.pp_role} ${var.pp_application} ${var.pp_environment}"
-    ]
-  }
+  user_data = "${data.template_file.init.rendered}"
 }

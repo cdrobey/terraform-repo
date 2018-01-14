@@ -5,72 +5,161 @@
 #--------------------------------------------------------------
 # Site Variables
 #--------------------------------------------------------------
-variable region      {}
-variable network0        { default = {"10.1.0.0/16"}}
-variable cidr0           { default = {"10.1.1.0/24"}} 
+variable domain           { default = "demo.vm" }
+variable network0_cidr    { default = "10.1.0.0/16" }
+variable network0_subnet0 { default = "10.1.1.0/24" } 
 
-# Specify the provider and access details
-provider "aws" {
-  region = "${var.region}"
+resource "aws_vpc" "awssite" {
+    cidr_block = "${var.network0_cidr}"
+    enable_dns_support = true
+    enable_dns_hostnames = true
+    tags {
+      Name = "cdrobey-vpc"
+      department = "tse"
+      project = "Demo"
+      created_by = "chris.roberson"
+    }
 }
-
-# Create a VPC to launch our instances into
-resource "aws_vpc" "default" {
-  cidr_block = "${var.network0}"
-}
-
-# Create an internet gateway to give our subnet access to the outside world
-resource "aws_internet_gateway" "default" {
-  vpc_id = "${aws_vpc.default.id}"
-}
-
-# Grant the VPC internet access on its main route table
-resource "aws_route" "internet_access" {
-  route_table_id         = "${aws_vpc.default.main_route_table_id}"
-  destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = "${aws_internet_gateway.default.id}"
-}
-
-# Create a subnet to launch our instances into
-resource "aws_subnet" "default" {
-  vpc_id                  = "${aws_vpc.default.id}"
-  cidr_block              = "${var.cidr0}"
-  map_public_ip_on_launch = true
-}
-
-# Our default security group to access
-# the instances over SSH and HTTP
-resource "aws_security_group" "default" {
-  name        = "${var.sg}"
-  description = "Puppet & Jenkins Demo"
-  vpc_id      = "${aws_vpc.default.id}"
-
-  # SSH access from anywhere
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+resource "aws_subnet" "network0_subnet0" {
+  vpc_id = "${aws_vpc.awssite.id}"
+  cidr_block = "${var.network0_subnet0}"
+  tags {
+      Name = "cdrobey-subnet0"
+      department = "tse"
+      project = "Demo"
+      created_by = "chris.roberson"
   }
+}
 
-  # HTTP access from the VPC
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/16"]
-  }
+resource "aws_internet_gateway" "igw" {
+  vpc_id = "${aws_vpc.awssite.id}"
+  tags {
+    Name = "cdrobey-igw"
+    department = "tse"
+    project = "Demo"
+    created_by = "chris.roberson"
+  } 
+}
 
-  # outbound internet access
+resource "aws_default_network_acl" "defaultnetworkacl" {
+  default_network_acl_id = "${aws_vpc.awssite.default_network_acl_id}"
+
   egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    protocol = "-1"
+    rule_no = 2
+    action = "allow"
+    cidr_block =  "0.0.0.0/0"
+    from_port = 0
+    to_port = 0
+  }
+  ingress {
+    protocol = "-1"
+    rule_no = 1
+    action = "allow"
+    cidr_block =  "0.0.0.0/0"
+    from_port = 0
+    to_port = 0
+  }
+  tags {
+    Name = "cdrobey-acl"
+    department = "tse"
+    project = "Demo"
+    created_by = "chris.roberson"
   }
 }
-resource "aws_key_pair" "auth" {
-  key_name   = "${var.key_name}"
-  public_key = "${file(var.public_key_path)}"
+resource "aws_default_route_table" "defaultroute" {
+  default_route_table_id = "${aws_vpc.awssite.default_route_table_id}"
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = "${aws_internet_gateway.igw.id}"
+  }
+  tags {
+    Name = "cdrobey-route"
+    department = "tse"
+    project = "Demo"
+    created_by = "chris.roberson"
+  }
+}
+resource "aws_default_security_group" "defaultsg" {
+  vpc_id = "${aws_vpc.awssite.id}"
+
+  ingress {
+    from_port = "80"
+    to_port = "80"
+    protocol = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = "22"
+    to_port     = "22"
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = "443"
+    to_port     = "443"
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = "4433"
+    to_port     = "4433"
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+    ingress {
+    from_port   = "8081"
+    to_port     = "8081"
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+    ingress {
+    from_port   = "8140"
+    to_port     = "8143"
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+    ingress {
+    from_port   = "8170"
+    to_port     = "8170"
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+    ingress {
+    from_port   = "61613"
+    to_port     = "61613"
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags {
+    Name = "cdrobey-sg"
+    department = "tse"
+    project = "Demo"
+    created_by = "chris.roberson"
+  }
+}
+resource "aws_vpc_dhcp_options" "defaultdhcp" {
+  domain_name          = "puppet.lab"
+  domain_name_servers  = [ "AmazonProvidedDNS" ]
+  tags {
+    Name = "cdrobey-dhcp"
+    department = "tse"
+    project = "Demo"
+    created_by = "chris.roberson"
+  }
 }
 
+resource "aws_vpc_dhcp_options_association" "defaultresolver" {
+  vpc_id = "${aws_vpc.awssite.id}"
+  dhcp_options_id = "${aws_vpc_dhcp_options.defaultdhcp.id}"
+}
+
+output "subnet_id" {
+  value = "${aws_subnet.network0_subnet0.id}"
+}

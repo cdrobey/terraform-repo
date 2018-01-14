@@ -25,15 +25,13 @@ PURL="https://s3.amazonaws.com/pe-builds/released/2017.3.0/$${PFILE}"
 #--------------------------------------------------------------
 echo "======================= Executing setup_logging ======================="
 cd "$${WORKDIR}"
-exec > "$${LOGFILE}" 2>&1
+exec > $${LOGFILE} 2>&1
 
 #--------------------------------------------------------------
 # Configure hostname and setup host file.
 #--------------------------------------------------------------
 function setup_host_name {
   echo "======================= Executing setup_host_name ======================="
-  echo ${master_fqdn} > /etc/hostname
-  hostname -F /etc/hostname
 }
 
 #--------------------------------------------------------------
