@@ -34,7 +34,3 @@ resource "aws_instance" "puppet" {
   }
   user_data = "${data.template_file.init.rendered}"
 }
-
-output "puppet_name" {
-  value = "${aws_instance.puppet.private_dns}"
-}
