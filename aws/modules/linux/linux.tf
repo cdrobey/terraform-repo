@@ -11,7 +11,7 @@ data "template_file" "init" {
     }
 }
 
-resource "aws_instance" "cdrobey-linux" {
+resource "aws_instance" "linux" {
 
   ami                         = "${var.ami}"
   instance_type               = "t2.micro"
