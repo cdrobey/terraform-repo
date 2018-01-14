@@ -2,13 +2,6 @@
 # This module creates all site resources
 #--------------------------------------------------------------
 
-#--------------------------------------------------------------
-# Site Variables
-#--------------------------------------------------------------
-variable domain           { default = "demo.vm" }
-variable network0_cidr    { default = "10.1.0.0/16" }
-variable network0_subnet0 { default = "10.1.1.0/24" } 
-
 resource "aws_vpc" "awssite" {
     cidr_block = "${var.network0_cidr}"
     enable_dns_support = true
@@ -145,7 +138,7 @@ resource "aws_default_security_group" "defaultsg" {
   }
 }
 resource "aws_vpc_dhcp_options" "defaultdhcp" {
-  domain_name          = "puppet.lab"
+  domain_name          = "${var.domain}"
   domain_name_servers  = [ "AmazonProvidedDNS" ]
   tags {
     Name = "cdrobey-dhcp"
@@ -158,8 +151,4 @@ resource "aws_vpc_dhcp_options" "defaultdhcp" {
 resource "aws_vpc_dhcp_options_association" "defaultresolver" {
   vpc_id = "${aws_vpc.awssite.id}"
   dhcp_options_id = "${aws_vpc_dhcp_options.defaultdhcp.id}"
-}
-
-output "subnet_id" {
-  value = "${aws_subnet.network0_subnet0.id}"
 }

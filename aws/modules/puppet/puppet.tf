@@ -6,7 +6,7 @@
 # Resources: Build Puppet Master Configuration
 #--------------------------------------------------------------
 data "template_file" "init" {
-    template = "${file("modules/puppet_master/bootstrap/bootstrap_pe.tpl")}"
+    template = "${file("modules/puppet/bootstrap/bootstrap_pe.tpl")}"
     vars {
         master_name   = "${var.name}"
         master_fqdn   = "${var.name}.${var.domain}"

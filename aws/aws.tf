@@ -19,9 +19,9 @@ module "site" {
 module "puppet" {
   source = "modules/puppet"
 
-  name          = "${var.puppet_master_name}"
-  domain        = "${var.puppet_master_domain}"
-  ami           = "${var.puppet_master_ami}"
+  name          = "${var.puppet_name}"
+  domain        = "${var.domain}"
+  ami           = "${var.puppet_ami}"
   subnet_id     = "${module.site.subnet_id}"
   sshkey        = "${var.aws_sshkey}"
   sshkey_path   = "${var.aws_sshkey_path}"
@@ -39,8 +39,8 @@ module "linux01" {
   source = "modules/linux"
 
   name           = "${var.linux_name}01"
-  domain         = "${var.puppet_master_domain}"
-  ami            = "${var.puppet_master_ami}"
+  domain         = "${var.domain}"
+  ami            = "${var.puppet_ami}"
   subnet_id      = "${module.site.subnet_id}"
   sshkey         = "${var.aws_sshkey}"
   sshkey_path    = "${var.aws_sshkey_path}"

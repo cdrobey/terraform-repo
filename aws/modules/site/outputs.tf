@@ -1,6 +1,9 @@
 #--------------------------------------------------------------
-# Module Outputs
+# This module creates all site resources
 #--------------------------------------------------------------
-output "linux_name" {
-  value = "${aws_instance.linux.private_dns}"
+
+
+
+output "subnet_id" {
+  value = "${aws_subnet.network0_subnet0.id}"
 }
