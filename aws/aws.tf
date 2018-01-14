@@ -44,7 +44,7 @@ module "linux01" {
   subnet_id      = "${module.site.subnet_id}"
   sshkey         = "${var.aws_sshkey}"
   sshkey_path    = "${var.aws_sshkey_path}"
-  puppet_name    = "${module.puppet_master.puppet_name}"
+  puppet_name    = "${module.puppet.puppet_name}"
   pp_role        = "${var.pp_role}"
   pp_application = "${var.pp_application}"
   pp_environment = "${var.pp_environment}"
