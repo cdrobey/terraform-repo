@@ -49,3 +49,22 @@ module "linux01" {
   pp_application = "${var.pp_application}"
   pp_environment = "${var.pp_environment}"
 }
+
+#--------------------------------------------------------------
+# Module: Build Windows Server
+#--------------------------------------------------------------
+module "windows01" {
+  source = "modules/windows"
+
+  name           = "${var.windows_name}01"
+  domain         = "${var.domain}"
+  ami            = "${var.windows_ami}"
+  subnet_id      = "${module.site.subnet_id}"
+  sshkey         = "${var.aws_sshkey}"
+  sshkey_path    = "${var.aws_sshkey_path}"
+  puppet_name    = "${module.puppet.puppet_name}"
+  password       = "${var.windows_password}"
+  pp_role        = "${var.pp_role}"
+  pp_application = "${var.pp_application}"
+  pp_environment = "${var.pp_environment}"
+}

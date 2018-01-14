@@ -17,6 +17,13 @@ variable network0_sg        { default = "cdrobey_sg" }
 variable domain             { default = "us-west-2.compute.internal" }
 
 #--------------------------------------------------------------
+# Instance Variables
+#--------------------------------------------------------------
+variable pp_role        { default = "base" }
+variable pp_environment { default = "production" }
+variable pp_application { default = "generic" }
+
+#--------------------------------------------------------------
 # Puppet Master Provisioning Variables
 #--------------------------------------------------------------
 variable puppet_name       { default = "cdrobey-puppet" }
@@ -38,11 +45,10 @@ variable jenkins_ami    { default = "ami-6f68cf0f" }
 #--------------------------------------------------------------
 variable linux_name     { default = "cdrobey-linux" }
 variable linux_ami      { default = "ami-6f68cf0f" }
-variable pp_role        { default = "base" }
-variable pp_environment { default = "production" }
-variable pp_application { default = "linux" }
 
 #--------------------------------------------------------------
 # Windows Server Provisioning Variables
 #--------------------------------------------------------------
-variable windows_name    { default = "cdrobey-window" }
+variable windows_name     { default = "cdrobey-window" }
+variable windows_ami      { default = "ami-d7a114af" }
+variable windows_password { default = "Adm1instrat0r" }

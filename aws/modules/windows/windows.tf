@@ -3,64 +3,42 @@
 #--------------------------------------------------------------
 
 #--------------------------------------------------------------
-# win Variables
-#--------------------------------------------------------------
-variable "name"          {}
-variable "domain"        {}
-variable "datacenter"    {}
-variable "datastore"     {}
-variable "network"       {}
-variable "dns_servers"   { type = "list" }
-variable "dns_suffixes"  { type = "list"}
-variable "time_zone"     {}
-variable "user_name"     {}
-variable "password"      {}
-variable "pp_role"        { default = "base"}
-variable "pp_application" { default = "windows"}
-variable "pp_environment" { default = "production"}
-
-#--------------------------------------------------------------
 # Resources: Build win Configuration
 #--------------------------------------------------------------
-resource "vsphere_virtual_machine" "w2016" {
-  datacenter    = "${var.datacenter}"
-  name          = "${var.name}.${var.domain}"
-  hostname      = "${var.name}"
-  domain        = "${var.domain}"
-  vcpu          = 2
-  memory        = 4096
-  dns_servers   = "${var.dns_servers}"
-  dns_suffixes  = "${var.dns_suffixes}"
 
-  network_interface {
-    label = "${var.network}"
+resource "aws_instance" "w2016" {
+  connection {
+    type     = "winrm"
+    user     = "Administrator"
+    password = "${var.password}"
+    # set from default of 5m to 10m to avoid winrm timeout
+    timeout  = "10m"
   }
 
-  disk {
-    template  = "Template/TPL-WIN16"
-    type      = "thin"
-    datastore = "${var.datastore}"
+  ami                         = "${var.ami}"
+  instance_type               = "t2.micro"
+  associate_public_ip_address = "true"
+  subnet_id                   = "${var.subnet_id}"
+  key_name                    = "${var.sshkey}"
+
+  tags {
+    Name = "${var.name}"
+    department = "tse"
+    project = "Demo"
+    created_by = "chris.roberson"
   }
 
-  provisioner "file" {
-    source      = "${path.module}/bootstrap/bootstrap_win_pa.ps1"
-    destination = "C:\\bootstrap_win_pa.ps1"
-    connection  = {
-      type        = "winrm"
-      user        = "${var.user_name}"
-      password    = "${var.password}"
-    }
-  }
-
-  provisioner "remote-exec" {
-    connection = {
-      type        = "winrm"
-      user        = "${var.user_name}"
-      password    = "${var.password}"
-    }
-    inline = [
-      "powershell.exe Set-ExecutionPolicy RemoteSigned -force",
-      "powershell.exe -version 4 -ExecutionPolicy Bypass -File C:\\bootstrap_win_pa.ps1 ${var.pp_role} ${var.pp_application} ${var.pp_environment}"
-    ]
-  }
+  # Note that terraform uses Go WinRM which doesn't support https at this time. If server is not on a private network,
+  # recommend bootstraping Chef via user_data.  See asg_user_data.tpl for an example on how to do that.
+  user_data = <<EOF
+<script>
+  winrm quickconfig -q & winrm set winrm/config @{MaxTimeoutms="1800000"} & winrm set winrm/config/service @{AllowUnencrypted="true"} & winrm set winrm/config/service/auth @{Basic="true"}
+</script>
+<powershell>
+  netsh advfirewall firewall add rule name="WinRM in" protocol=TCP dir=in profile=any localport=5985 remoteip=any localip=any action=allow
+  # Set Administrator password
+  $admin = [adsi]("WinNT://./administrator, user")
+  $admin.psbase.invoke("SetPassword", "${var.password}")
+</powershell>
+EOF
 }

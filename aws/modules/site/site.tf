@@ -112,6 +112,14 @@ resource "aws_default_security_group" "defaultsg" {
     protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+    ingress {
+    from_port   = "3389"
+    to_port     = "3389"
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  3389
     ingress {
     from_port   = "8170"
     to_port     = "8170"
@@ -122,6 +130,12 @@ resource "aws_default_security_group" "defaultsg" {
     from_port   = "61613"
     to_port     = "61613"
     protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = 5985
+    to_port     = 5986
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
@@ -136,6 +150,7 @@ resource "aws_default_security_group" "defaultsg" {
     project = "Demo"
     created_by = "chris.roberson"
   }
+  
 }
 resource "aws_vpc_dhcp_options" "defaultdhcp" {
   domain_name          = "${var.domain}"
