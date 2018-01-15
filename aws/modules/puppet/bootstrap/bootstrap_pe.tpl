@@ -82,20 +82,20 @@ FILE
   chmod 400 /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
   chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/ssh/id-control_repo.rsa.pub
 
-    mkdir -p /etc/puppetlabs/puppetserver/eyaml
+    mkdir -p /etc/puppetlabs/puppet/eyaml
 
-  cat > /etc/puppetlabs/puppetserver/eyaml/private_key.pkcs7.pem << FILE
+  cat > /etc/puppetlabs/puppet/eyaml/private_key.pkcs7.pem << FILE
 ${eyaml_pri_key}
 FILE
-  chmod 400 /etc/puppetlabs/puppetserver/eyaml/private_key.pkcs7.pem
-  chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/eyaml/private_key.pkcs7.pem
+  chmod 400 /etc/puppetlabs/puppet/eyaml/private_key.pkcs7.pem
+  chown pe-puppet:pe-puppet /etc/puppetlabs/puppet/eyaml/private_key.pkcs7.pem
 
 
-  cat > /etc/puppetlabs/puppetserver/eyaml/public_key.pkcs7.pem << FILE
+  cat > /etc/puppetlabs/puppet/eyaml/public_key.pkcs7.pem << FILE
 ${eyaml_pub_key}
 FILE
-  chmod 400 /etc/puppetlabs/puppetserver/eyaml/public_key.pkcs7.pem
-  chown pe-puppet:pe-puppet /etc/puppetlabs/puppetserver/eyaml/public_key.pkcs7.pem
+  chmod 400 /etc/puppetlabs/puppet/eyaml/public_key.pkcs7.pem
+  chown pe-puppet:pe-puppet /etc/puppetlabs/puppet/eyaml/public_key.pkcs7.pem
 
   puppetserver gem install hiera-eyaml
   /opt/puppetlabs/puppet/bin/gem install hiera-eyaml

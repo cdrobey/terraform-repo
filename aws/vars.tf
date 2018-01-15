@@ -37,8 +37,11 @@ variable eyaml_pub_key     { default = "~/.eyaml/public_key.pkcs7.pem" }
 #--------------------------------------------------------------
 # Jenkins Server Provisioning Variables
 #--------------------------------------------------------------
-variable jenkins_name   { default = "cdrobey-jenkins" }
-variable jenkins_ami    { default = "ami-6f68cf0f" }
+variable jenkins_name           { default = "cdrobey-jenkins" }
+variable jenkins_ami            { default = "ami-6f68cf0f" }
+variable jenkins_pp_role        { default = "jenkins"}
+variable jenkins_pp_application { default = "jenkins"}
+variable jenkins_pp_environment { default = "production"}
 
 #--------------------------------------------------------------
 # LINUX Server Provisioning Variables

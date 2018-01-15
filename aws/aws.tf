@@ -51,6 +51,24 @@ module "linux01" {
 }
 
 #--------------------------------------------------------------
+# Module: Build Jenkins Server
+#--------------------------------------------------------------
+module "jenkins" {
+  source = "modules/jenkins"
+
+  name           = "${var.jenkins_name}"
+  domain         = "${var.domain}"
+  ami            = "${var.puppet_ami}"
+  subnet_id      = "${module.site.subnet_id}"
+  sshkey         = "${var.aws_sshkey}"
+  sshkey_path    = "${var.aws_sshkey_path}"
+  puppet_name    = "${module.puppet.puppet_name}"
+  pp_role        = "${var.jenkins_pp_role}"
+  pp_application = "${var.jenkins_pp_application}"
+  pp_environment = "${var.jenkins_pp_environment}"
+}
+
+#--------------------------------------------------------------
 # Module: Build Windows Server
 #--------------------------------------------------------------
 module "windows01" {
