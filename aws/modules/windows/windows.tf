@@ -28,7 +28,7 @@ resource "aws_instance" "w2016" {
   }
   
   ami                         = "${var.ami}"
-  instance_type               = "t2.micro"
+  instance_type               = "t2.small"
   associate_public_ip_address = "true"
   subnet_id                   = "${var.subnet_id}"
   key_name                    = "${var.sshkey}"

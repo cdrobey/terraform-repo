@@ -24,9 +24,9 @@
 
 $$PEINSTALL_FILE="c:\pe_install.ps1"
 $$PEINSTALL_URL="https://${puppet_name}:8140/packages/current/install.ps1"
-$$PP_ROLE=${pp_role}
-$$PP_APPLICATION=${pp_application}
-$$PP_ENVIRONMENT=${pp_environment}
+$$PP_ROLE="${pp_role}"
+$$PP_APPLICATION="${pp_application}"
+$$PP_ENVIRONMENT="${pp_environment}"
 $$CSR_PATH="C:\ProgramData\PuppetLabs\puppet\etc\"
 $$CSR_FILE="csr_attributes.yaml"
 $$ADMIN_PASSWORD="${password}"
@@ -50,7 +50,7 @@ function pre_install_pa {
 
   New-Item -ItemType Directory -Force -Path $$CSR_PATH
 
-  $$CSRATTRIBUTES = "---`r`nextension_requests:`r`n  pp_role: $${PP_ROLE}`r`n  pp_environment: $${PP_ENVIRONMENT}`r`n  pp_application: $${PP_APPLICATION}`r`n"
+  $$CSRATTRIBUTES = "---`r`nextension_requests:`r`n  pp_role: $$PP_ROLE`r`n  pp_environment: $$PP_ENVIRONMENT`r`n  pp_application: $$PP_APPLICATION`r`n"
   $$CSRATTRIBUTES | out-file -Encoding ascii $$CSR_PATH/$$CSR_FILE
 }
 
