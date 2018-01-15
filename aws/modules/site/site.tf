@@ -119,7 +119,7 @@ resource "aws_default_security_group" "defaultsg" {
     protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  3389
+
     ingress {
     from_port   = "8170"
     to_port     = "8170"

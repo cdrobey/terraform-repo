@@ -51,4 +51,4 @@ variable linux_ami      { default = "ami-6f68cf0f" }
 #--------------------------------------------------------------
 variable windows_name     { default = "cdrobey-window" }
 variable windows_ami      { default = "ami-d7a114af" }
-variable windows_password { default = "Adm1instrat0r" }
+variable windows_password { default = "Adm1nistrat0r" }
