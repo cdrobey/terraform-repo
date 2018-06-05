@@ -1,8 +1,8 @@
 #--------------------------------------------------------------
 # Provider Variables
 #--------------------------------------------------------------
-provider "aws" {
-  access_key = "${var.aws_access_key}"
-  secret_key = "${var.aws_secret_key}"
-  region     = "${var.region}"
+provider "google" {
+  credentials = "${file("${var.gcp_auth_path}")}"
+  project     = "${var.project}"
+  region      = "${var.region}"
 }
