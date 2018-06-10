@@ -5,14 +5,21 @@
 #--------------------------------------------------------------
 # Puppet Master Variables
 #--------------------------------------------------------------
-variable "name"          {}
-variable "domain"        {}
-variable "ami"           {}
-variable "subnet_id"     {}
-variable "sshkey"        {}
-variable "sshkey_path"   {}
-variable "git_pri_key"   {}
-variable "git_pub_key"   {}
-variable "git_url"       {}
+variable "name" {}
+
+variable "project" {}
+
+variable "region" {}
+
+variable "domain" {}
+variable "image" {}
+variable "network" {}
+variable "git_pri_key" {}
+variable "git_pub_key" {}
+variable "git_url" {}
 variable "eyaml_pri_key" {}
 variable "eyaml_pub_key" {}
+
+variable tag_name {
+  default = "puppet"
+}

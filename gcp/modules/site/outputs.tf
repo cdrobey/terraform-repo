@@ -2,6 +2,6 @@
 # This module creates all site resources
 #--------------------------------------------------------------
 
-output "network0_name" {
-  value = "${google_compute_network.network0.name}"
+output "network" {
+  value = "${google_compute_subnetwork.network0subnet0.name}"
 }

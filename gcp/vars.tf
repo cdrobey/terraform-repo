@@ -52,8 +52,8 @@ variable puppet_name {
   default = "cdrobey-puppet"
 }
 
-variable puppet_ami {
-  default = "ami-6f68cf0f"
+variable puppet_image {
+  default = "centos-cloud/centos-7"
 }
 
 variable git_pri_key {

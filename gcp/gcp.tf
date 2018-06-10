@@ -17,22 +17,20 @@ module "site" {
 #--------------------------------------------------------------
 # Module: Build Puppet Master Server
 #--------------------------------------------------------------
-#module "puppet" {
-#  source = "modules/puppet"
-#
-#  name          = "${var.puppet_name}"
-#  domain        = "${var.domain}"
-#  ami           = "${var.puppet_ami}"
-##  subnet_id     = "${module.site.subnet_id}"
-#  sshkey        = "${var.aws_sshkey}"
-#  sshkey_path   = "${var.aws_sshkey_path}"
-#  git_pri_key   = "${var.git_pri_key}"
-#  git_pub_key   = "${var.git_pub_key}"
-#  git_url       = "${var.git_url}"
-#  eyaml_pri_key = "${var.eyaml_pri_key}"
-#  eyaml_pub_key = "${var.eyaml_pub_key}"
-#}
-
+module "puppet" {
+  source        = "modules/puppet"
+  name          = "${var.puppet_name}"
+  project       = "${var.project}"
+  region        = "us-east1"
+  domain        = "${var.domain}"
+  image         = "${var.puppet_image}"
+  network       = "${module.site.network}"
+  git_pri_key   = "${var.git_pri_key}"
+  git_pub_key   = "${var.git_pub_key}"
+  git_url       = "${var.git_url}"
+  eyaml_pri_key = "${var.eyaml_pri_key}"
+  eyaml_pub_key = "${var.eyaml_pub_key}"
+}
 
 #--------------------------------------------------------------
 # Module: Build Linux Server
