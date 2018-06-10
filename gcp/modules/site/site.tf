@@ -9,10 +9,11 @@ resource "google_compute_network" "network0" {
 }
 
 resource "google_compute_subnetwork" "network0subnet0" {
-  name = "network0subnet0"
+  name    = "network0subnet0"
+  project = "${var.project}"
+  region  = "${var.region}"
 
-  # Region failing to take variable or use the default provider.
-  region        = "us-east1"
+  #region        = "us-east1"
   network       = "${google_compute_network.network0.name}"
   ip_cidr_range = "${var.network0_subnet0_cidr}"
 }

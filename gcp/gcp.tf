@@ -6,11 +6,12 @@
 # Module: Create Site Infrastructure
 #--------------------------------------------------------------
 module "site" {
-  source = "modules/site"
-
-  network0_cidr    = "${var.network0_cidr}"
-  network0_subnet0 = "${var.network0_subnet0}"
-  domain           = "${var.domain}"
+  source                = "modules/site"
+  project               = "${var.project}"
+  region                = "us-east1"
+  network0_cidr         = "${var.network0_cidr}"
+  network0_subnet0_cidr = "${var.network0_subnet0_cidr}"
+  domain                = "${var.domain}"
 }
 
 #--------------------------------------------------------------
@@ -32,23 +33,25 @@ module "site" {
 #  eyaml_pub_key = "${var.eyaml_pub_key}"
 #}
 
+
 #--------------------------------------------------------------
 # Module: Build Linux Server
 #--------------------------------------------------------------
-module "linux01" {
-  source = "modules/linux"
+#module "linux01" {
+#  source = "modules/linux"
+#
+#  name           = "${var.linux_name}01"
+#  domain         = "${var.domain}"
+#  ami            = "${var.puppet_ami}"
+#  subnet_id      = "${module.site.subnet_id}"
+#  sshkey         = "${var.aws_sshkey}"
+#  sshkey_path    = "${var.aws_sshkey_path}"
+#  puppet_name    = "${module.puppet.puppet_name}"
+#  pp_role        = "${var.pp_role}"
+#  pp_application = "${var.pp_application}"
+#  pp_environment = "${var.pp_environment}"
+#}
 
-  name           = "${var.linux_name}01"
-  domain         = "${var.domain}"
-  ami            = "${var.puppet_ami}"
-  subnet_id      = "${module.site.subnet_id}"
-  sshkey         = "${var.aws_sshkey}"
-  sshkey_path    = "${var.aws_sshkey_path}"
-  puppet_name    = "${module.puppet.puppet_name}"
-  pp_role        = "${var.pp_role}"
-  pp_application = "${var.pp_application}"
-  pp_environment = "${var.pp_environment}"
-}
 
 ##--------------------------------------------------------------
 ## Module: Build Jenkins Server
@@ -86,3 +89,4 @@ module "linux01" {
 #  pp_application = "${var.pp_application}"
 #  pp_environment = "${var.pp_environment}"
 #}
+

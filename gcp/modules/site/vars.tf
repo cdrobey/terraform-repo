@@ -17,6 +17,7 @@ variable zone {
   default = "us-east1-1b"
 }
 
+
 variable domain {
   default = "demo.vm"
 }
