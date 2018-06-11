@@ -10,7 +10,7 @@ data "template_file" "init" {
 
   vars {
     master_name   = "${var.name}"
-    master_fqdn   = "${var.name}.${var.domain}"
+    master_fqdn   = "${var.name}"
     git_pri_key   = "${file("${var.git_pri_key}")}"
     git_pub_key   = "${file("${var.git_pub_key}")}"
     git_url       = "${var.git_url}"

@@ -1,13 +1,30 @@
 #--------------------------------------------------------------
 # Module Variables
 #--------------------------------------------------------------
-variable "name"           {}
-variable "domain"         {}
-variable "ami"            {}
-variable "subnet_id"      {}
-variable "sshkey"         {}
-variable "sshkey_path"    {}
-variable "puppet_name"    {}
-variable "pp_role"        {}
-variable "pp_application" {}
+#--------------------------------------------------------------
+# This module creates the puppet master resources
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+# Puppet Master Variables
+#--------------------------------------------------------------
+variable "name" {}
+
+variable "project" {}
+
+variable "region" {}
+
+variable "puppet_name" {}
+
+variable "ssh_user" {}
+variable "ssh_key" {}
+variable "machine_type" {}
+variable "image" {}
+variable "network" {}
+variable "pp_role" {}
 variable "pp_environment" {}
+variable "pp_application" {}
+
+variable tag_name {
+  default = "linux"
+}

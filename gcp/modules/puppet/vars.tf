@@ -8,11 +8,7 @@
 variable "name" {}
 
 variable "project" {}
-
 variable "region" {}
-
-variable "domain" {}
-
 variable "ssh_user" {}
 variable "ssh_key" {}
 variable "image" {}

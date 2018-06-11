@@ -25,14 +25,6 @@ variable network0_subnet0_cidr {
   default = "10.1.1.0/24"
 }
 
-variable network0_sg {
-  default = "cdrobey_sg"
-}
-
-variable domain {
-  default = "us-west-2.compute.internal"
-}
-
 #--------------------------------------------------------------
 # Instance Variables
 #--------------------------------------------------------------
@@ -41,7 +33,7 @@ variable pp_role {
 }
 
 variable pp_environment {
-  default = "production"
+  default = "feature"
 }
 
 variable pp_application {
@@ -83,11 +75,15 @@ variable eyaml_pub_key {
 # Jenkins Server Provisioning Variables
 #--------------------------------------------------------------
 variable jenkins_name {
-  default = "cdrobey-jenkins"
+  default = "jenkins"
 }
 
-variable jenkins_ami {
-  default = "ami-6f68cf0f"
+variable jenkins_machine_type {
+  default = "n1-standard-1"
+}
+
+variable jenkins_image {
+  default = "centos-cloud/centos-7"
 }
 
 variable jenkins_pp_role {
@@ -99,31 +95,41 @@ variable jenkins_pp_application {
 }
 
 variable jenkins_pp_environment {
-  default = "production"
+  default = "feature"
 }
 
 #--------------------------------------------------------------
 # LINUX Server Provisioning Variables
 #--------------------------------------------------------------
 variable linux_name {
-  default = "cdrobey-linux"
+  default = "linux"
 }
 
-variable linux_ami {
-  default = "ami-6f68cf0f"
+variable linux_machine_type {
+  default = "g1-small"
+}
+
+variable linux_image {
+  default = "centos-cloud/centos-7"
 }
 
 #--------------------------------------------------------------
 # Windows Server Provisioning Variables
-#--------------------------------------------------------------
+#-------------------------------------------------------------
+
 variable windows_name {
-  default = "cdrobey-window"
+  default = "windows"
 }
 
-variable windows_ami {
-  default = "ami-d7a114af"
+variable windows_machine_type {
+  default = "g1-small"
+}
+
+variable windows_image {
+  default = "windows-cloud/windows-server-2012-r2-dc-v20180508"
 }
 
 variable windows_password {
   default = "Adm1nistrat0r"
 }
+

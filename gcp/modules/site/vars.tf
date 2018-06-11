@@ -17,11 +17,6 @@ variable zone {
   default = "us-east1-1b"
 }
 
-
-variable domain {
-  default = "demo.vm"
-}
-
 variable network0_cidr {
   default = "10.1.0.0/16"
 }

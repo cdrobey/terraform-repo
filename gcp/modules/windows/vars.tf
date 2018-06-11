@@ -5,14 +5,30 @@
 #--------------------------------------------------------------
 # win Variables
 #--------------------------------------------------------------
-variable "name"           {}
-variable "domain"         {}
-variable "ami"            {}
-variable "subnet_id"      {}
-variable "sshkey"         {}
-variable "sshkey_path"    {}
-variable "puppet_name"    {}
-variable "password"       {}
-variable "pp_role"        {}
-variable "pp_application" {}
+#--------------------------------------------------------------
+# Module Variables
+#--------------------------------------------------------------
+#--------------------------------------------------------------
+# This module creates the puppet master resources
+#--------------------------------------------------------------
+
+#--------------------------------------------------------------
+# Puppet Master Variables
+#--------------------------------------------------------------
+variable "name" {}
+
+variable "project" {}
+
+variable "region" {}
+
+variable "puppet_name" {}
+variable "machine_type" {}
+variable "image" {}
+variable "network" {}
+variable "pp_role" {}
 variable "pp_environment" {}
+variable "pp_application" {}
+
+variable tag_name {
+  default = "windows"
+}

@@ -118,10 +118,8 @@ deploy
 puppetlabs
 TEXT
 
-  puppet-code -t $${HOME}/.puppetlabs/token deploy production -w
+  puppet-code -t $${HOME}/.puppetlabs/token deploy -w --all
   puppet agent -t
-
-
 
   #--------------------------------------------------------------
   # Configure and apply the node manager module to complete

@@ -6,38 +6,57 @@
 # Resources: Build win Configuration
 #--------------------------------------------------------------
 data "template_file" "init" {
-    template = "${file("modules/windows/bootstrap/bootstrap_windows_pa.tpl")}"
-    vars {
-        puppet_name     = "${var.puppet_name}"
-        password        = "${var.password}"
-        pp_role         = "${var.pp_role}"
-        pp_application  = "${var.pp_application}"
-        pp_environment  = "${var.pp_environment}"
-    }
+  template = "${file("modules/windows/bootstrap/bootstrap_windows_pa.tpl")}"
+
+  vars {
+    puppet_name    = "${var.puppet_name}"
+    password       = "Hello"
+    pp_role        = "${var.pp_role}"
+    pp_application = "${var.pp_application}"
+    pp_environment = "${var.pp_environment}"
+  }
 }
 
-resource "aws_instance" "w2016" {
+data "google_compute_zones" "available" {
+  project = "${var.project}"
+  region  = "${var.region}"
+}
 
+resource "google_compute_instance" "windows" {
+  name         = "${var.name}"
+  project      = "${var.project}"
+  machine_type = "${var.machine_type}"
+  zone         = "${data.google_compute_zones.available.names[0]}"
 
-  connection {
-    type     = "winrm"
-    user     = "Administrator"
-    password = "${var.password}"
-    # set from default of 5m to 10m to avoid winrm timeout
-    timeout  = "10m"
+  tags = ["${var.tag_name}"]
+
+  boot_disk {
+    initialize_params {
+      image = "${var.image}"
+    }
   }
-  
-  ami                         = "${var.ami}"
-  instance_type               = "t2.small"
-  associate_public_ip_address = "true"
-  subnet_id                   = "${var.subnet_id}"
-  key_name                    = "${var.sshkey}"
 
-  tags {
-    Name = "${var.name}"
-    department = "tse"
-    project = "Demo"
-    created_by = "chris.roberson"
+  network_interface {
+    subnetwork         = "${var.network}"
+    subnetwork_project = "${var.project}"
+
+    access_config {}
   }
-  user_data = "${data.template_file.init.rendered}"
+
+  #connection {
+  #  type        = "winrm"
+  #  user        = "${var.ssh_user}"
+  #  private_key = "${file(var.ssh_key)}"
+  #}
+
+  #provisioner "file" {
+  #  content     = "${data.template_file.init.rendered}"
+  #  destination = "/tmp/bootstrap_pe.sh"
+  #}
+
+  #provisioner "remote-exec" {
+  #  inline = [
+  #    "sudo /usr/bin/sh /tmp/bootstrap_pe.sh",
+  #  ]
+  #}
 }
