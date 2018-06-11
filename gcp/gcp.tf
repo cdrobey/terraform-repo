@@ -21,6 +21,8 @@ module "puppet" {
   source        = "modules/puppet"
   name          = "${var.puppet_name}"
   project       = "${var.project}"
+  ssh_key       = "${var.gcp_ssh_key}"
+  ssh_user      = "${var.gcp_ssh_user}"
   region        = "us-east1"
   domain        = "${var.domain}"
   image         = "${var.puppet_image}"

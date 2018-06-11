@@ -3,6 +3,9 @@
 #--------------------------------------------------------------
 variable gcp_auth_path {}
 
+variable gcp_ssh_user {}
+variable gcp_ssh_key {}
+
 #--------------------------------------------------------------
 # Site Variables
 #--------------------------------------------------------------
@@ -49,7 +52,7 @@ variable pp_application {
 # Puppet Master Provisioning Variables
 #--------------------------------------------------------------
 variable puppet_name {
-  default = "cdrobey-puppet"
+  default = "puppet"
 }
 
 variable puppet_image {

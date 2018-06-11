@@ -5,6 +5,7 @@
 #--------------------------------------------------------------
 set -x
 
+#
 #--------------------------------------------------------------
 # Global Variables:
 #   - PATH:       PATHs needed for command execution
@@ -16,9 +17,9 @@ PATH=$${PATH}:/opt/puppetlabs/bin
 HOME=/root
 WORKDIR="/tmp"
 LOGFILE="$${WORKDIR}/bootstrap$$$$.log"
-PVER=2017.3.0
+PVER=2018.1.0
 PFILE="puppet-enterprise-$${PVER}-el-7-x86_64.tar.gz"
-PURL="https://s3.amazonaws.com/pe-builds/released/2017.3.0/$${PFILE}"
+PURL="https://s3.amazonaws.com/pe-builds/released/$${PVER}/$${PFILE}"
 
 #--------------------------------------------------------------
 # Redirect all stdout and stderr to logfile,

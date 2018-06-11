@@ -5,46 +5,49 @@
 #--------------------------------------------------------------
 # Puppet Master Variables
 #--------------------------------------------------------------
-variable "name"           {}
-variable "domain"         {}
-variable "datacenter"     {}
-variable "network"        {}
-variable "datastore"      {}
-variable "dns_servers"    { type = "list" }
-variable "time_zone"      {}
-variable "git_pri_key"    {}
-variable "git_pub_key"    {}
-variable "git_url"        {}
-variable "eyaml_pri_key"  {}
-variable "eyaml_pub_key"  {}
+variable "name" {}
+
+variable "domain" {}
+variable "datacenter" {}
+variable "network" {}
+variable "datastore" {}
+
+variable "dns_servers" {
+  type = "list"
+}
+
+variable "time_zone" {}
+variable "git_pri_key" {}
+variable "git_pub_key" {}
+variable "git_url" {}
+variable "eyaml_pri_key" {}
+variable "eyaml_pub_key" {}
 
 #--------------------------------------------------------------
 # Resources: Build Puppet Master Configuration
 #--------------------------------------------------------------
 data "template_file" "init" {
-    template = "${file("modules/puppet_master/bootstrap/bootstrap_pe.tpl")}"
-    vars {
-        master_name   = "${var.name}"
-        master_fqdn   = "${var.name}.${var.domain}"
-        git_pri_key   = "${file("${var.git_pri_key}")}"
-        git_pub_key   = "${file("${var.git_pub_key}")}"
-        git_url       = "${var.git_url}"
-        eyaml_pri_key = "${file("${var.eyaml_pri_key}")}"
-        eyaml_pub_key = "${file("${var.eyaml_pub_key}")}"
+  template = "${file("modules/puppet_master/bootstrap/bootstrap_pe.tpl")}"
 
-
-    }
+  vars {
+    master_name   = "${var.name}"
+    master_fqdn   = "${var.name}.${var.domain}"
+    git_pri_key   = "${file("${var.git_pri_key}")}"
+    git_pub_key   = "${file("${var.git_pub_key}")}"
+    git_url       = "${var.git_url}"
+    eyaml_pri_key = "${file("${var.eyaml_pri_key}")}"
+    eyaml_pub_key = "${file("${var.eyaml_pub_key}")}"
+  }
 }
 
 resource "vsphere_virtual_machine" "pupper_master" {
-  datacenter = "${var.datacenter}"
-  name   = "${var.name}.${var.domain}"
-  domain        = "${var.domain}"
-  vcpu          = 4
-  memory        = 8192
-  dns_servers   = "${var.dns_servers}"
-  time_zone     = "${var.time_zone}"
-
+  datacenter  = "${var.datacenter}"
+  name        = "${var.name}.${var.domain}"
+  domain      = "${var.domain}"
+  vcpu        = 4
+  memory      = 8192
+  dns_servers = "${var.dns_servers}"
+  time_zone   = "${var.time_zone}"
 
   network_interface {
     label = "${var.network}"
@@ -57,9 +60,27 @@ resource "vsphere_virtual_machine" "pupper_master" {
   }
 
   connection {
-    type = "ssh"
-    user = "root"
+    type        = "ssh"
+    user        = "root"
     private_key = "${file("~/.ssh/fr")}"
+  }
+
+  provisioner "file" {
+    source      = "${path.module}/bootstrap/bootstrap_pe.sh"
+    destination = "/tmp/bootstrap_pe.sh"
+  }
+
+  provisioner "remote-exec" {
+    connection = {
+      type     = "winrm"
+      user     = "${var.user_name}"
+      password = "${var.password}"
+    }
+
+    inline = [
+      "powershell.exe Set-ExecutionPolicy RemoteSigned -force",
+      "powershell.exe -version 4 -ExecutionPolicy Bypass -File C:\\bootstrap_win_pa.ps1 ${var.pp_role} ${var.pp_application} ${var.pp_environment}",
+    ]
   }
 
   provisioner "remote-exec" {

@@ -30,24 +30,38 @@ resource "google_compute_instance" "puppet" {
   machine_type = "n1-standard-1"
   zone         = "${data.google_compute_zones.available.names[0]}"
 
-  #zone         = "us-central1-a"
-
   tags = ["${var.tag_name}"]
+
   boot_disk {
     initialize_params {
       image = "centos-cloud/centos-7"
     }
   }
+
   // Local SSD disk
   scratch_disk = {}
+
   network_interface {
     subnetwork         = "${var.network}"
     subnetwork_project = "${var.project}"
 
-    access_config {
-      // Ephemeral IP
-    }
+    access_config {}
   }
 
-  #user_data = "${data.template_file.init.rendered}"
+  connection {
+    type        = "ssh"
+    user        = "${var.ssh_user}"
+    private_key = "${file(var.ssh_key)}"
+  }
+
+  provisioner "file" {
+    content     = "${data.template_file.init.rendered}"
+    destination = "/tmp/bootstrap_pe.sh"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo /usr/bin/sh /tmp/bootstrap_pe.sh",
+    ]
+  }
 }
